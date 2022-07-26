@@ -20,6 +20,7 @@ public class Game : MonoBehaviour
     private void StartGame()
     {
         CreatePlayer();
+        CreateEnemy();
     }
 
     private void CreatePlayer()
@@ -31,7 +32,9 @@ public class Game : MonoBehaviour
 
     private void CreateEnemy()
     {
-        //TODO ENEmy
+        Enemy enemy = Instantiate(_enemy);
+        _enemys.Add(enemy);
+        enemy.gameObject.transform.position = _spawnEnemyPosition.position;
     }
 
     private void CreateBuff()

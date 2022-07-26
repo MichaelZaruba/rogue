@@ -85,7 +85,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<Ground>())
+        if (collision.gameObject.GetComponent<Ground>() && _rigidbody.velocity.y < 0.01f)
         {
             _animator.SetBool(IS_JUMPING, false);
             _onGround = true;
