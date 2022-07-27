@@ -62,14 +62,16 @@ public class Game : MonoBehaviour
 
     private void CreateLevel()
     {
-        
-        Level level = Instantiate(_levelsSafe[_numberLevel - 1]);
-        level.Initialize();
-        _spawnEnemies = level.SpawnsEnemies;
-        _spawnPlayer = level.SpawnPlayer;
-        _finish = level.Finish;
-        _levels.Add(level);
-        _finish.Initialize(this);
+        try
+        {
+            Level level = Instantiate(_levelsSafe[_numberLevel - 1]);
+            level.Initialize();
+            _spawnEnemies = level.SpawnsEnemies;
+            _spawnPlayer = level.SpawnPlayer;
+            _finish = level.Finish;
+            _levels.Add(level);
+        }
+        catch { Debug.Log("Need add level!"); }
     }
 
     private void CreatePlayer()

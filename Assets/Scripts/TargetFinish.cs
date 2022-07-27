@@ -6,6 +6,7 @@ using UnityEngine;
 public class TargetFinish : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _finishText;
+    private bool _isFinish;
     private Game _game;
     
     public void Initialize(Game game)
@@ -13,25 +14,26 @@ public class TargetFinish : MonoBehaviour
         _game = game;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void Update()
     {
-        if (collision.gameObject.GetComponent<Finish>())
-        {
-            _finishText.gameObject.SetActive(true);
+        if (Input.GetMouseButtonUp(0) && _isFinish)
             _game.NextLevel();
-        }
-
-        if (Input.GetMouseButtonDown(0) && collision.gameObject.GetComponent<Finish>())
-        {
-            Debug.Log("tut");
-           
-        }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<Finish>())
         {
+            _isFinish = true;
+            _finishText.gameObject.SetActive(true);          
+        }
+    }
+ 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<Finish>())
+        {
+            _isFinish = false;
             _finishText.gameObject.SetActive(false);
         }
     }
