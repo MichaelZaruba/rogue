@@ -18,7 +18,6 @@ public  class Enemy : MonoBehaviour
         Move();
     }
 
-
     private void Move()
     {      
         if (_positionCorrect.x -transform.position.x  < 5f)
