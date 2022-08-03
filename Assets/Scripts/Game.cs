@@ -12,7 +12,6 @@ public class Game : MonoBehaviour
     [SerializeField] private List<Level> _levelsSafe;
     [SerializeField, Range(1,10)] private int _numberLevel;
 
-    private Finish _finish;
     private SpawnPlayer _spawnPlayer;
 
     private List<Level> _levels = new List<Level>();   
@@ -68,7 +67,6 @@ public class Game : MonoBehaviour
             level.Initialize();
             _spawnEnemies = level.SpawnsEnemies;
             _spawnPlayer = level.SpawnPlayer;
-            _finish = level.Finish;
             _levels.Add(level);
         }
         catch { Debug.Log("Need add level!"); }
@@ -90,9 +88,14 @@ public class Game : MonoBehaviour
 
     private void CreateEnemy()
     {
-        Enemy enemy = Instantiate(_enemy);
-        _enemys.Add(enemy);
-        enemy.gameObject.transform.position = _spawnEnemies[0].transform.position;
+        Enemy enemy;
+        foreach (var position in _spawnEnemies)
+        {
+            enemy = Instantiate(_enemy);                    
+            enemy.gameObject.transform.position = position.transform.position;
+            _enemys.Add(enemy);
+        }
+       
     }
 
     private void CreateBuff()

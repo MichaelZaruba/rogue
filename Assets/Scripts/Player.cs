@@ -2,25 +2,25 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Const;
 
 public class Player : MonoBehaviour
 {   
     [SerializeField] private Rigidbody2D _rigidbody;
 
-    [SerializeField] Animator _animator;
-    [SerializeField] SpriteRenderer _spriteRenderer;
-
+    [SerializeField] private Animator _animator;
+    [SerializeField] private  SpriteRenderer _spriteRenderer;
+    [SerializeField] private GameObject Ground;
     [SerializeField,Range(1f,10f)] private float _speed;
     [SerializeField, Range(3f,12f)] private float _powerJump;
 
     private float _horizontalSpeed;
-
-    private const string SPEED = "speed";
-    private const string IS_JUMPING = "isJumping";
-    private const string VERTICAL_SPEED = "VerticalSpeed";
   
-    private bool _onGround;
+    public bool OnGround;
     private bool isRightSide = true;
+
+    public Rigidbody2D Rigidbody => _rigidbody;
+    public Animator Animator => _animator;
 
     void Update()
     {       
@@ -49,14 +49,14 @@ public class Player : MonoBehaviour
 
     private void Jump()
     {
-        _animator.SetBool(IS_JUMPING, true);
+        _animator.SetBool(WorkAnim.IS_JUMPING, true);
         _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _powerJump);
-        _onGround = false;
+        OnGround = false;
     }
 
     private bool IsClickSpace()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && _onGround)
+        if (Input.GetKeyDown(KeyCode.Space) && OnGround)
         {
             return true;
         }
@@ -79,16 +79,8 @@ public class Player : MonoBehaviour
 
     private void AnimationChange()
     {
-        _animator.SetFloat(SPEED, Mathf.Abs(_horizontalSpeed));
-        _animator.SetFloat(VERTICAL_SPEED, _rigidbody.velocity.y);
+        _animator.SetFloat(WorkAnim.SPEED, Mathf.Abs(_horizontalSpeed));
+        _animator.SetFloat(WorkAnim.VERTICAL_SPEED, _rigidbody.velocity.y);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.GetComponent<Ground>() && _rigidbody.velocity.y < 0.01f)
-        {
-            _animator.SetBool(IS_JUMPING, false);
-            _onGround = true;
-        }    
-    }
 }

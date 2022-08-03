@@ -158,6 +158,8 @@ MonoBehaviour:
   _levelsSafe:
   - {fileID: 5241138065333622459, guid: 9b3f4145856f8234893a0076ebf03f7b, type: 3}
   - {fileID: 5241138065333622459, guid: d789c52602c0e8546acab7a877ea493a, type: 3}
+  - {fileID: 5241138065333622459, guid: 7d7940f783db8fe498bdeff34b7cdb8d, type: 3}
+  - {fileID: 5241138065333622459, guid: af9e3f3bfee75ed4697b155c86041f75, type: 3}
   _numberLevel: 1
 --- !u!4 &446148897
 Transform:
