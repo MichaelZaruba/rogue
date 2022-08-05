@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3348112036272478038}
   - component: {fileID: 3348112036272478034}
   - component: {fileID: 3348112036272478046}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3348112036272478036}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.086, y: -1.919, z: 0}
+  m_LocalPosition: {x: -2.444, y: -2.234, z: 0}
   m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
