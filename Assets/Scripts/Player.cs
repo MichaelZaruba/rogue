@@ -15,7 +15,9 @@ public class Player : MonoBehaviour
     [SerializeField, Range(3f,12f)] private float _powerJump;
 
     private float _horizontalSpeed;
-  
+
+    public string _currentState;
+
     public bool OnGround;
     private bool isRightSide = true;
 
@@ -81,6 +83,14 @@ public class Player : MonoBehaviour
     {
         _animator.SetFloat(WorkAnim.SPEED, Mathf.Abs(_horizontalSpeed));
         _animator.SetFloat(WorkAnim.VERTICAL_SPEED, _rigidbody.velocity.y);
+    }
+
+    public void ChangeAnimationState(string newState)
+    {
+        if (_currentState == newState)
+            return;
+        _currentState = newState;
+        Animator.Play(newState);
     }
 
 }
