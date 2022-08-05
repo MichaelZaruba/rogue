@@ -6,8 +6,10 @@ namespace Const
 {
     public class WorkAnim : MonoBehaviour
     {
-        public const string SPEED = "speed";
-        public const string IS_JUMPING = "isJumping";
-        public const string VERTICAL_SPEED = "VerticalSpeed";
+        public const string Player_Idle = "standing animation";
+        public const string Player_Run = "run";
+        public const string Player_Jump = "jump_anim";
+        public const string Player_Fall = "falling";
+        public const string Player_Attack = "attack";
     }
 }

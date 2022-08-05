@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1388008006196040808}
   - component: {fileID: 1388008006196040813}
   - component: {fileID: 8702036887575842315}
+  - component: {fileID: 438554365478287376}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -156,6 +157,7 @@ MonoBehaviour:
   _animator: {fileID: 1388008006196040813}
   _spriteRenderer: {fileID: 1388008006196040815}
   Ground: {fileID: 0}
+  _animationChange: {fileID: 438554365478287376}
   _speed: 5
   _powerJump: 9.93
   OnGround: 0
@@ -192,6 +194,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _finishText: {fileID: 5753563182721206331}
+--- !u!114 &438554365478287376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388008006196040811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1aec009fdff2db4b8f49cd26c3eabc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 
+  animator: {fileID: 1388008006196040813}
 --- !u!1 &2714826878971875219
 GameObject:
   m_ObjectHideFlags: 0

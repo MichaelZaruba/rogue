@@ -11,12 +11,14 @@ public class Player : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private  SpriteRenderer _spriteRenderer;
     [SerializeField] private GameObject Ground;
+    [SerializeField] private AnimationChange _animationChange;
     [SerializeField,Range(1f,10f)] private float _speed;
     [SerializeField, Range(3f,12f)] private float _powerJump;
 
     private float _horizontalSpeed;
+    private float _verticalSpeed;
 
-    public string _currentState;
+    
 
     public bool OnGround;
     private bool isRightSide = true;
@@ -42,17 +44,18 @@ public class Player : MonoBehaviour
     private void CalculateSpeed()
     {
         _horizontalSpeed = _speed * Input.GetAxis("Horizontal");
+        _verticalSpeed = _rigidbody.velocity.y;
     }
 
     private void Move()
     {       
-        _rigidbody.velocity = new Vector2(_horizontalSpeed, _rigidbody.velocity.y);
+        _rigidbody.velocity = new Vector2(_horizontalSpeed, _verticalSpeed);
     }
 
     private void Jump()
     {
-        _animator.SetBool(WorkAnim.IS_JUMPING, true);
         _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _powerJump);
+        _animationChange.ChangeAnimationState(Const.WorkAnim.Player_Jump);
         OnGround = false;
     }
 
@@ -81,16 +84,20 @@ public class Player : MonoBehaviour
 
     private void AnimationChange()
     {
-        _animator.SetFloat(WorkAnim.SPEED, Mathf.Abs(_horizontalSpeed));
-        _animator.SetFloat(WorkAnim.VERTICAL_SPEED, _rigidbody.velocity.y);
+        if (OnGround)
+        {
+            if (_horizontalSpeed > 0.01f)
+                _animationChange.ChangeAnimationState(Const.WorkAnim.Player_Run);
+            else _animationChange.ChangeAnimationState(Const.WorkAnim.Player_Idle);
+        }
+        else
+        {
+            if (_verticalSpeed > 0)
+                _animationChange.ChangeAnimationState(Const.WorkAnim.Player_Jump);
+            else _animationChange.ChangeAnimationState(Const.WorkAnim.Player_Fall);
+        }
     }
 
-    public void ChangeAnimationState(string newState)
-    {
-        if (_currentState == newState)
-            return;
-        _currentState = newState;
-        Animator.Play(newState);
-    }
+    
 
 }
