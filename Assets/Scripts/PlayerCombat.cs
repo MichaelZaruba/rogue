@@ -7,6 +7,10 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float _prepareAttackTime;
     [SerializeField] private Player _player;
     [SerializeField] private Transform _attackPoint;
+    [SerializeField] private float _attackRange;
+    [SerializeField] private LayerMask _enemyLayers;
+    [SerializeField] private int attackDamage = 30;
+    
 
     private bool _isAttacking;
 
@@ -15,6 +19,7 @@ public class PlayerCombat : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Attack();
+            
         }
     }
 
@@ -25,6 +30,12 @@ public class PlayerCombat : MonoBehaviour
         _isAttacking = true;
         _player.Animator.SetBool("isAttacking", true);
         StartCoroutine(StopAttack());
+      Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(_attackPoint.position, _attackRange, _enemyLayers);
+      foreach(Collider2D enemy in hitEnemies)
+      {
+         enemy.GetComponent<Enemy>().takeDamage(attackDamage);
+         
+      }
     }
 
     private IEnumerator StopAttack ()
