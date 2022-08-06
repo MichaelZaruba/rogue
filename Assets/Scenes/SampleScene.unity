@@ -161,6 +161,7 @@ MonoBehaviour:
   - {fileID: 5241138065333622459, guid: 7d7940f783db8fe498bdeff34b7cdb8d, type: 3}
   - {fileID: 5241138065333622459, guid: af9e3f3bfee75ed4697b155c86041f75, type: 3}
   _numberLevel: 1
+  _enemyFactory: {fileID: 11400000, guid: e3148de9c8e11af4297878eedcbc5611, type: 2}
 --- !u!4 &446148897
 Transform:
   m_ObjectHideFlags: 0

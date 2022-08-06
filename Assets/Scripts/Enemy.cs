@@ -1,55 +1,45 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
-   [SerializeField] private Rigidbody2D _rigidbody;
+    [SerializeField] private TextMeshProUGUI _healthUI;
+    [SerializeField] private Image _healthBar;
 
-   [SerializeField] private float _speed;
+    [SerializeField] private float _health = 100;
 
-   [SerializeField] private int _maxHealth = 100;
+    [SerializeField] private int _damage;
 
-   [SerializeField] private int _currentHealth = 100;
+    [SerializeField] protected Rigidbody2D _rigidbody;
+
+    [SerializeField] protected float _speed;
+
+    private float _startHealth;
 
 
-   Vector3 _positionCorrect;
+    private Game _game;
 
-   private void Start()
-   {
-      _currentHealth = _maxHealth;
-   }
-
-   public void takeDamage(int damage)
-   {
-      _currentHealth -= damage;
-
-      //there should be damage-taking animation but we dont have one
-
-      if (_currentHealth <= 0)
-      {
-         Die();
-      }
-   }
-
-   void Die()
+    public void Initialize(Game game)
     {
-      Debug.Log("Enemy Died!");
-      GetComponent<Collider2D>().enabled = false;
-      this.enabled = false;
-   }
-
-   private void Initialize()
-    {
-       _positionCorrect = transform.position;
+        _startHealth = _health;
+        _healthUI.text = _health.ToString();
+           _game = game;
     }
 
-    private void Update()
+    public void takeDamage(int damage)
     {
-        Move();
+        _health -= damage;
+        _healthBar.fillAmount = _health / _startHealth;
+        _healthUI.text = _health.ToString();
+        if (_health <= 0)
+        {
+            Die();
+        }
     }
 
-    private void Move()
-    {      
-        if (_positionCorrect.x -transform.position.x  < 5f)
-            _rigidbody.velocity = new Vector2(-_speed, _rigidbody.velocity.y);
+    private void Die()
+    {
+        _game.ReclaimEnemy(this);
     }
 }

@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e91e88eefd2abef48866265ebda1a191, type: 3}
+  m_Name: EnemyFactory
+  m_EditorClassIdentifier: 
+  _bokalPrefab: {fileID: 3422527672630338333, guid: 2f9f0b6a23ba65149a6af9e9a5b5da6f, type: 3}
+  _panetaPrefab: {fileID: 1580698289911671063, guid: 78caf6ef8359b5d4394cd686bcdaaf8b, type: 3}

@@ -7,13 +7,15 @@ using Const;
 public class Player : MonoBehaviour
 {   
     [SerializeField] private Rigidbody2D _rigidbody;
-
+    [SerializeField] private Transform _attackTransform;
     [SerializeField] private Animator _animator;
     [SerializeField] private  SpriteRenderer _spriteRenderer;
     [SerializeField] private GameObject Ground;
     [SerializeField] private AnimationChange _animationChange;
     [SerializeField,Range(1f,10f)] private float _speed;
     [SerializeField, Range(3f,12f)] private float _powerJump;
+
+    private float _attackCorrectPosition = 1.3f;
 
     private float _horizontalSpeed;
     private float _verticalSpeed;
@@ -75,11 +77,13 @@ public class Player : MonoBehaviour
         {
             isRightSide = false;
             _spriteRenderer.flipX = true;
+            _attackTransform.position = new Vector3(transform.position.x - _attackCorrectPosition, transform.position.y, transform.position.z);
         }
         if (_horizontalSpeed > 0 && !isRightSide)
         {
             isRightSide = true;
             _spriteRenderer.flipX = false;
+            _attackTransform.position = new Vector3(transform.position.x + _attackCorrectPosition, transform.position.y, transform.position.z);
         }
     }
 

@@ -5,13 +5,12 @@ using UnityEngine;
 public class Game : MonoBehaviour
 {
     [SerializeField] private Player _player;
-    [SerializeField] private Enemy _enemy;
     [SerializeField] private LookAtTargetCamera _lookAtTargetCamera;
 
      
     [SerializeField] private List<Level> _levelsSafe;
     [SerializeField, Range(1,10)] private int _numberLevel;
-
+    [SerializeField] private EnemyFactory _enemyFactory;
     private SpawnPlayer _spawnPlayer;
 
     private List<Level> _levels = new List<Level>();   
@@ -91,11 +90,18 @@ public class Game : MonoBehaviour
         Enemy enemy;
         foreach (var position in _spawnEnemies)
         {
-            enemy = Instantiate(_enemy);                    
+            enemy = _enemyFactory.Get(position.EnemyType);
+            enemy.Initialize(this);
             enemy.gameObject.transform.position = position.transform.position;
             _enemys.Add(enemy);
         }
        
+    }
+
+    public void ReclaimEnemy(Enemy enemy)
+    {
+        _enemys.Remove(enemy);
+        Destroy(enemy.gameObject);
     }
 
     private void CreateBuff()
