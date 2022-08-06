@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     
 
     public bool OnGround;
+    public bool IsAttacking;
     private bool isRightSide = true;
 
     public Rigidbody2D Rigidbody => _rigidbody;
@@ -84,9 +85,14 @@ public class Player : MonoBehaviour
 
     private void AnimationChange()
     {
+        if (IsAttacking)
+        {
+            _animationChange.ChangeAnimationState(Const.WorkAnim.Player_Attack);
+            return;
+        }
         if (OnGround)
         {
-            if (_horizontalSpeed > 0.01f)
+            if (Math.Abs(_horizontalSpeed) > 0.01f)
                 _animationChange.ChangeAnimationState(Const.WorkAnim.Player_Run);
             else _animationChange.ChangeAnimationState(Const.WorkAnim.Player_Idle);
         }
