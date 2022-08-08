@@ -5,15 +5,17 @@ using Const;
 
 public class CheckGround : MonoBehaviour
 {
-    [SerializeField] private Player _player;
+    [SerializeField] private PlayerMovement _player;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<Ground>() && _player.Rigidbody.velocity.y < 0.01f)
         {
-           _player.OnGround = true;
+            _player.OnGround = true;
         }
     }
+
 
 
 

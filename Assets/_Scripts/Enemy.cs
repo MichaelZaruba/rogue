@@ -38,6 +38,16 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("zdec");
+        if (collision.gameObject.GetComponent<PlayerCharacteristic>())
+        {
+            Debug.Log("tut");
+            collision.gameObject.GetComponent<PlayerCharacteristic>().GetDamage(_damage);
+        }
+    }
+
     private void Die()
     {
         _game.ReclaimEnemy(this);
