@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
-    [SerializeField] public SpawnPlayer SpawnPlayer;
-    [SerializeField] public Finish Finish;
-    [SerializeField] public List<SpawnEnemy> SpawnsEnemies = new List<SpawnEnemy>();
-    [SerializeField]  public List< Ground> Grounds = new List<Ground>();
+     public SpawnPlayer SpawnPlayer;
+     public Finish Finish;
+     public List<SpawnEnemy> SpawnsEnemies = new List<SpawnEnemy>();
+     public List< Ground> Grounds = new List<Ground>();
+     public List<Decorate> Decorate = new List<Decorate>();
+     public List<Chest> Chess = new List<Chest>();
+     public List<GameItem> GameItem = new List<GameItem>();
 
     public void Initialize()
     {
