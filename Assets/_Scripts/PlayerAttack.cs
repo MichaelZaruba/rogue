@@ -15,16 +15,17 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _textAttack;
     [SerializeField] private TextMeshProUGUI _textDie;
 
+    [SerializeField] private float _staminaPerAttack;
     [SerializeField, Range(0f, 1f)] private float _prepareAttackTime;
     [SerializeField, Range(0f, 1f)] private float _endAttackTime;
 
-    private PlayerCharacteristic _characteristic;
+    private Player _characteristic;
 
     private bool _isAttacking;
 
     private void Awake()
     {
-        _characteristic = GetComponent<PlayerCharacteristic>();
+        _characteristic = GetComponent<Player>();
     }
 
     private void Update()
@@ -45,7 +46,7 @@ public class PlayerAttack : MonoBehaviour
         {
             _isAttacking = true;
             _player.IsAttacking = true;
-            _characteristic.MinusStamina(3, true);
+            _characteristic.MinusStamina(_staminaPerAttack, true);
             StartCoroutine(PrerareAttack());
         }
            

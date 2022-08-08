@@ -8,7 +8,7 @@ public class LookAtTargetCamera : MonoBehaviour
 
 	private float _offsetZ = -10f;
 
-    public void Initialize(PlayerCharacteristic player)
+    public void Initialize(Player player)
     {
 		_player = player.transform;
 		_smooth = 5f;

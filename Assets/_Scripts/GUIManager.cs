@@ -8,10 +8,17 @@ public class GUIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _gensText;
 
     private int _gens;
-    public const string Gens = "Gens";
+    public const string GensSafe = "Gens";
     public static GUIManager _instance;
 
-    public int Star
+
+    private void Awake()
+    {
+        _instance = this;
+       _gens =  PlayerPrefs.GetInt(GensSafe);
+        _gensText.text = _gens.ToString();
+    }
+    public int Gens
     {
         get
         {
@@ -21,7 +28,7 @@ public class GUIManager : MonoBehaviour
         set
         {
             _gens = value;
-            PlayerPrefs.SetInt(Gens, _gens);
+            PlayerPrefs.SetInt(GensSafe, _gens);
             _gensText.text = _gens.ToString();
         }
     }

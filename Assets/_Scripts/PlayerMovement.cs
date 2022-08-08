@@ -11,9 +11,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Animator _animator;
     [SerializeField] private  SpriteRenderer _spriteRenderer;
     [SerializeField] private AnimationChange _animationChange;
+    [SerializeField] private float _staminaPerJump;
+    [SerializeField] private float _staminaPerFastMove;
     [SerializeField, Range(3f,12f)] private float _powerJump;
 
-    private PlayerCharacteristic _characteristic;
+    private Player _characteristic;
+    
     private float _attackCorrectPosition = 1.3f;
 
     private float _horizontalSpeed;
@@ -30,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        _characteristic = GetComponent<PlayerCharacteristic>();
+        _characteristic = GetComponent<Player>();
     }
 
     void Update()
@@ -45,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if(_characteristic.Stamina > 0)
             {
-                _characteristic.MinusStamina(5, true);
+                _characteristic.MinusStamina(_staminaPerJump, true);
                 Jump();
             }
             
@@ -65,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftShift) && _characteristic.Stamina > 0)
         {
             if (_rigidbody.velocity.magnitude != 0)
-            _characteristic.MinusStamina(0.15f, true);
+            _characteristic.MinusStamina(_staminaPerFastMove, true);
             
             CalculateFastSpeed();
         }

@@ -1,9 +1,11 @@
-﻿using TMPro;
+﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] private Gens _gen;
     [SerializeField] private TextMeshProUGUI _healthUI;
     [SerializeField] private Image _healthBar;
 
@@ -14,6 +16,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected Rigidbody2D _rigidbody;
 
     [SerializeField] protected float _speed;
+    [SerializeField] private int _amountGens;
+    private List<Gens> _gens = new List<Gens>();
 
     private float _startHealth;
 
@@ -40,17 +44,24 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("zdec");
-        if (collision.gameObject.GetComponent<PlayerCharacteristic>())
+        if (collision.gameObject.GetComponent<Player>())
         {
-            Debug.Log("tut");
-            collision.gameObject.GetComponent<PlayerCharacteristic>().GetDamage(_damage);
+            collision.gameObject.GetComponent<Player>().GetDamage(_damage);
         }
     }
 
 
     private void Die()
     {
+       int countGens =  Random.Range(3, 10);
+        for (int i = 0; i < countGens; i++)
+        {
+            Gens gen = Instantiate(_gen);
+            _gens.Add(gen);
+            gen.transform.position = new Vector3 (transform.position.x + Random.Range(-1f,1f), transform.position.y + Random.Range(-1f, 1f), transform.position.z);
+        }
+      
         _game.ReclaimEnemy(this);
+        
     }
 }

@@ -482,12 +482,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2396fe72fa6388f46b4136815a5e674a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gen: {fileID: 4758106444361321226, guid: 36be609e6d76b1a48ae814142084a432, type: 3}
   _healthUI: {fileID: 3382683154544708528}
   _healthBar: {fileID: 7157649473944035424}
   _health: 100
   _damage: 10
   _rigidbody: {fileID: 3348112036272478038}
   _speed: 2
+  _amountGens: 0
   _rangeToPatrol: 3
 --- !u!1 &8966464575212128889
 GameObject:

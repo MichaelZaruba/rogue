@@ -296,6 +296,8 @@ MonoBehaviour:
   _animator: {fileID: 1388008006196040813}
   _spriteRenderer: {fileID: 1388008006196040815}
   _animationChange: {fileID: 7152937503312238008}
+  _staminaPerJump: 5
+  _staminaPerFastMove: 0.15
   _powerJump: 9.93
   OnGround: 0
   IsAttacking: 0
@@ -351,6 +353,7 @@ MonoBehaviour:
     m_Bits: 1024
   _textAttack: {fileID: 8899930220842906108}
   _textDie: {fileID: 0}
+  _staminaPerAttack: 3
   _prepareAttackTime: 0.168
   _endAttackTime: 0.183
 --- !u!114 &7152937503312238008

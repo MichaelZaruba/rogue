@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
-    [SerializeField] private PlayerCharacteristic _player;
+    [SerializeField] private Player _player;
     [SerializeField] private LookAtTargetCamera _lookAtTargetCamera;
     [SerializeField] private Image _staminaImage;
     [SerializeField] private Image _healthImage;
@@ -17,14 +17,14 @@ public class Game : MonoBehaviour
     private List<Level> _levels = new List<Level>();   
     private List<SpawnEnemy> _spawnEnemies = new List<SpawnEnemy>();
 
-    private List<PlayerCharacteristic> _players = new List<PlayerCharacteristic>();
+    private List<Player> _players = new List<Player>();
     private List<Enemy> _enemys = new List<Enemy>();
 
-    private PlayerCharacteristic _characteristic;
+    private Player _characteristic;
 
     private void Start()
     {
-        _characteristic =  _player.GetComponent<PlayerCharacteristic>();
+        _characteristic =  _player.GetComponent<Player>();
         StartNewGame();
     }
 
@@ -83,15 +83,15 @@ public class Game : MonoBehaviour
 
     private void CreatePlayer()
     {
-        PlayerCharacteristic player =  Instantiate(_player);
+        Player player =  Instantiate(_player);
         CameraTarget(player);
         player.transform.localPosition = _spawnPlayer.transform.position;
         player.gameObject.GetComponent<TargetFinish>().Initialize(this);
-        player.GetComponent<PlayerCharacteristic>().Initialize(_staminaImage, _healthImage, this);
+        player.GetComponent<Player>().Initialize(_staminaImage, _healthImage, this);
         _players.Add(player);
     }
 
-    private void CameraTarget(PlayerCharacteristic player)
+    private void CameraTarget(Player player)
     {
         _lookAtTargetCamera.Initialize(player);
     }
@@ -115,7 +115,7 @@ public class Game : MonoBehaviour
         Destroy(enemy.gameObject);
     }
 
-    public void ReclaimPlayer(PlayerCharacteristic player)
+    public void ReclaimPlayer(Player player)
     {
         _players.Remove(player);
         Destroy(player.gameObject);

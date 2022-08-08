@@ -5,11 +5,13 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(PlayerAttack))]
 [RequireComponent(typeof(PlayerMovement))]
-public class PlayerCharacteristic : MonoBehaviour
+public class Player : MonoBehaviour
 {
     private Game _game;
+
     private Image _staminaImage;
     private Image _healthImage;
+
     private float _maxStamina;
     private float _maxHp;
     private Coroutine _coroutine;
@@ -97,6 +99,15 @@ public class PlayerCharacteristic : MonoBehaviour
     {
         Health -= damage;
         _healthImage.fillAmount = Health / _maxHp; 
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<Gens>())
+        {
+            GUIManager._instance.Gens += 1;
+            Destroy(collision.gameObject);
+        }
     }
 
     private void Die()
