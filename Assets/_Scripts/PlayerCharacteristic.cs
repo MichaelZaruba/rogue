@@ -29,12 +29,13 @@ public class PlayerCharacteristic : MonoBehaviour
         _maxStamina = Stamina;
         _maxHp = Health;
     }
-    public void Initialize(Image stamina, Image health)
+    public void Initialize(Image stamina, Image health, Game game)
     {
         _healthImage = health;
         _staminaImage = stamina;
         _healthImage.fillAmount = Health / _maxHp;
         _staminaImage.fillAmount = Stamina / _maxStamina;
+        _game = game;
     }
 
 
@@ -85,7 +86,7 @@ public class PlayerCharacteristic : MonoBehaviour
         while (Stamina < _maxStamina)
         {
             yield return new WaitForSeconds(0.05f);
-            Stamina += 0.15f;
+            Stamina += 0.25f;
         }
         Stamina = _maxStamina;
 

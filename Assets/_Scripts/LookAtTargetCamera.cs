@@ -16,7 +16,11 @@ public class LookAtTargetCamera : MonoBehaviour
 
 	private void LateUpdate()
 	{
+		if (_player != null)
+        {
 			Vector3 currentPosition = Vector3.Lerp(transform.position, _player.position, _smooth * Time.fixedTime);
 			transform.position = new Vector3(currentPosition.x, currentPosition.y, _offsetZ);
+		}
+			
 	}
 }

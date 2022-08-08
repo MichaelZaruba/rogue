@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private float _health = 100;
 
-    [SerializeField] private int _damage;
+    [SerializeField] protected int _damage;
 
     [SerializeField] protected Rigidbody2D _rigidbody;
 
@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("zdec");
         if (collision.gameObject.GetComponent<PlayerCharacteristic>())
@@ -47,6 +47,7 @@ public class Enemy : MonoBehaviour
             collision.gameObject.GetComponent<PlayerCharacteristic>().GetDamage(_damage);
         }
     }
+
 
     private void Die()
     {

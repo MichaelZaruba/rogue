@@ -87,7 +87,7 @@ public class Game : MonoBehaviour
         CameraTarget(player);
         player.transform.localPosition = _spawnPlayer.transform.position;
         player.gameObject.GetComponent<TargetFinish>().Initialize(this);
-        player.GetComponent<PlayerCharacteristic>().Initialize(_staminaImage, _healthImage);
+        player.GetComponent<PlayerCharacteristic>().Initialize(_staminaImage, _healthImage, this);
         _players.Add(player);
     }
 
