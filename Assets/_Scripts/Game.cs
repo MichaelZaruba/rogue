@@ -20,11 +20,9 @@ public class Game : MonoBehaviour
     private List<Player> _players = new List<Player>();
     private List<Enemy> _enemys = new List<Enemy>();
 
-    private Player _characteristic;
 
     private void Start()
     {
-        _characteristic =  _player.GetComponent<Player>();
         StartNewGame();
     }
 
@@ -33,12 +31,6 @@ public class Game : MonoBehaviour
         CreateLevel();
         CreatePlayer();
         CreateEnemy();
-    }
-
-    private void Update()
-    {
-        if (_player == null)
-            Debug.Log("you lose");
     }
 
     public void NextLevel()

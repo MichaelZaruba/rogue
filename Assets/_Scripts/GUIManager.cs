@@ -11,13 +11,13 @@ public class GUIManager : MonoBehaviour
     public const string GensSafe = "Gens";
     public static GUIManager _instance;
 
-
     private void Awake()
     {
         _instance = this;
        _gens =  PlayerPrefs.GetInt(GensSafe);
         _gensText.text = _gens.ToString();
     }
+
     public int Gens
     {
         get

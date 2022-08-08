@@ -2,5 +2,5 @@
 
 public class Decorate : MonoBehaviour
 {
-
+    //TODO decorate logic
 }

@@ -91,7 +91,6 @@ public class Player : MonoBehaviour
             Stamina += 0.25f;
         }
         Stamina = _maxStamina;
-
     }
     #endregion
 

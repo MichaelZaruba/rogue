@@ -48,8 +48,7 @@ public class PlayerAttack : MonoBehaviour
             _player.IsAttacking = true;
             _characteristic.MinusStamina(_staminaPerAttack, true);
             StartCoroutine(PrerareAttack());
-        }
-           
+        }        
     }
 
     private IEnumerator PrerareAttack()
@@ -71,8 +70,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = new Color(1,1,1,0.5f);
-        
+        Gizmos.color = new Color(1,1,1,0.5f);   
         Gizmos.DrawSphere(_attackPoint.position, 1.28f);
     }
 }

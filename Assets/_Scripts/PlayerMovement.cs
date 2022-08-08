@@ -44,31 +44,24 @@ public class PlayerMovement : MonoBehaviour
             _characteristic.MinusStamina(0, false);
         }
 
-        if (IsClickSpace())
+        if (IsClickSpace() && _characteristic.Stamina > 0)
         {
-            if(_characteristic.Stamina > 0)
-            {
                 _characteristic.MinusStamina(_staminaPerJump, true);
-                Jump();
-            }
-            
+                Jump();     
         }
+
         else if (Input.GetKeyUp(KeyCode.Space)) 
         {
             _characteristic.MinusStamina(0, false);
         }
-                
-       
-
     }
 
     private void FixedUpdate()
-    {
-       
+    { 
         if (Input.GetKey(KeyCode.LeftShift) && _characteristic.Stamina > 0)
         {
             if (_rigidbody.velocity.magnitude != 0)
-            _characteristic.MinusStamina(_staminaPerFastMove, true);
+                _characteristic.MinusStamina(_staminaPerFastMove, true);
             
             CalculateFastSpeed();
         }
@@ -151,7 +144,4 @@ public class PlayerMovement : MonoBehaviour
             else _animationChange.ChangeAnimationState(Const.WorkAnim.Player_Fall);
         }
     }
-
-    
-
 }

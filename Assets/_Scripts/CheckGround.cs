@@ -15,8 +15,4 @@ public class CheckGround : MonoBehaviour
             _player.OnGround = true;
         }
     }
-
-
-
-
 }
