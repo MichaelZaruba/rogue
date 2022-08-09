@@ -10,6 +10,8 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] private Transform _attackPoint;
 
+    [SerializeField] private GhostSprites _ghostSprites;
+
     [SerializeField] private LayerMask _enemyLayers;
     [SerializeField] private AnimationChange _animationChange;
     [SerializeField] private TextMeshProUGUI _textAttack;
@@ -54,7 +56,11 @@ public class PlayerAttack : MonoBehaviour
         if (_characteristic.Stamina >= _staminaPerAttack)
         {
             if (troughAttack)
+            {
+                _ghostSprites.trailSize = 15;
                 _player.IsAttackingThrough = true;
+            }
+               
             if(isAttackingDown)
                 _player.IsAttackingDown = true;
             _player.IsAttacking = true;
@@ -97,6 +103,7 @@ public class PlayerAttack : MonoBehaviour
         _player.IsAttackingDown = false;
         _player.IsAttackingThrough = false;
         _player.IsAttacking = false;
+        _ghostSprites.trailSize = 5;
         _characteristic.MinusStamina(0, false);
     }
 
