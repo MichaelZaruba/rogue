@@ -21,11 +21,13 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float _prepareAttackTime;
     [SerializeField, Range(0f, 1f)] private float _endAttackTime;
     private List<Collider2D> _enemyCollider = new List<Collider2D>();
+    private PlayerMovement _playerMovement;
     private Player _characteristic;
 
 
     private void Awake()
     {
+        _playerMovement = GetComponent<PlayerMovement>();
         _characteristic = GetComponent<Player>();
     }
 
@@ -57,6 +59,7 @@ public class PlayerAttack : MonoBehaviour
         {
             if (troughAttack)
             {
+                _playerMovement.CorrectEffect.SetActive(true);
                 _ghostSprites.trailSize = 15;
                 _player.IsAttackingThrough = true;
             }
@@ -84,7 +87,7 @@ public class PlayerAttack : MonoBehaviour
         {
             Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), enemy);
             _textAttack.gameObject.SetActive(true);
-            _textAttack.text = _characteristic.Damage.ToString();
+            _textAttack.text = "-" + _characteristic.Damage.ToString();
             enemy.GetComponent<Enemy>().TakeDamage(_characteristic.Damage);
             _enemyCollider.Add(enemy);
         }
@@ -99,6 +102,8 @@ public class PlayerAttack : MonoBehaviour
                 Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), enemy, false);   
             }
         }
+        _playerMovement.EffectLeft.SetActive(false);
+        _playerMovement.EffectRight.SetActive(false);  
         _textAttack.gameObject.SetActive(false);
         _player.IsAttackingDown = false;
         _player.IsAttackingThrough = false;

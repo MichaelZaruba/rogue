@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float _staminaPerFastMove;
     [SerializeField, Range(3f,12f)] private float _powerJump;
 
+
     private Player _characteristic;
     
     private float _attackCorrectPosition = 1.3f;
@@ -24,16 +25,24 @@ public class PlayerMovement : MonoBehaviour
 
     private bool _isRightSide = true;
 
+    public GameObject EffectRight;
+    public GameObject EffectLeft;
+
+    [HideInInspector]  public GameObject CorrectEffect;
+    public Rigidbody2D Rigidbody => _rigidbody;
+    public Animator Animator => _animator;
+
     public bool OnGround;
     public bool IsAttacking;
     public bool IsAttackingThrough;
     public bool IsAttackingDown;
-    public Rigidbody2D Rigidbody => _rigidbody;
-    public Animator Animator => _animator;
+
+    
 
     private void Awake()
     {
-        _characteristic = GetComponent<Player>();
+        CorrectEffect = EffectRight;
+       _characteristic = GetComponent<Player>();
     }
 
     void Update()
@@ -134,12 +143,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_horizontalSpeed < 0 && _isRightSide)
         {
+            CorrectEffect = EffectLeft;
             _isRightSide = false;
             _spriteRenderer.flipX = true;
             _attackTransform.position = new Vector3(transform.position.x - _attackCorrectPosition, transform.position.y, transform.position.z);
         }
         if (_horizontalSpeed > 0 && !_isRightSide)
         {
+            CorrectEffect = EffectRight;
             _isRightSide = true;
             _spriteRenderer.flipX = false;
             _attackTransform.position = new Vector3(transform.position.x + _attackCorrectPosition, transform.position.y, transform.position.z);
