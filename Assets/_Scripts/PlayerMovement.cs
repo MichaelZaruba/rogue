@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     public bool OnGround;
     public bool IsAttacking;
     public bool IsAttackingThrough;
-
+    public bool IsAttackingDown;
     public Rigidbody2D Rigidbody => _rigidbody;
     public Animator Animator => _animator;
 
@@ -60,19 +60,21 @@ public class PlayerMovement : MonoBehaviour
     {
         if (IsAttackingThrough)
         {
-            Debug.Log("tut");
             CalculateTroughSpeed();
         }
-           
-        if (Input.GetKey(KeyCode.LeftShift) && _characteristic.Stamina > 0 && !IsAttackingThrough)
+        if (IsAttackingDown)
         {
-
+            CalculateDownSpeed();
+        }
+           
+        if (Input.GetKey(KeyCode.LeftShift) && _characteristic.Stamina > 0 && !IsAttackingThrough && !IsAttackingDown)
+        {
             if (_rigidbody.velocity.magnitude != 0)
                 _characteristic.MinusStamina(_staminaPerFastMove, true);
  
                 CalculateFastSpeed();
         }
-        else if (!IsAttackingThrough)
+        else if (!IsAttackingThrough && !IsAttackingDown)
         {
             CalculateSpeed();
         }
@@ -82,10 +84,16 @@ public class PlayerMovement : MonoBehaviour
         ChangeSide();
     }
 
+    private void CalculateDownSpeed()
+    {
+        _horizontalSpeed = _characteristic.Speed * Input.GetAxis("Horizontal");
+        _verticalSpeed = -15f;
+    }
+
     private void CalculateTroughSpeed()
     {
         
-        _horizontalSpeed = _characteristic.Speed * Input.GetAxis("Horizontal") * 4f;
+        _horizontalSpeed = _characteristic.Speed * Input.GetAxis("Horizontal") * 6f;
         _verticalSpeed = _rigidbody.velocity.y;
     }
 
@@ -144,9 +152,10 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
+
         if (OnGround)
         {
-            if (Math.Abs(_horizontalSpeed) > 0.01f)
+            if (Mathf.Abs(Rigidbody.velocity.x)> 0.1f)
                 _animationChange.ChangeAnimationState(Const.WorkAnim.Player_Run);
             else _animationChange.ChangeAnimationState(Const.WorkAnim.Player_Idle);
         }

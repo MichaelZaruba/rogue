@@ -31,17 +31,22 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.LeftShift) && !_player.IsAttacking)
         {
-            Attack(Const.WorkAnim.Player_Attack, 0.2f,2.5f, true);
+            Attack(Const.WorkAnim.Player_Attack, 0.15f,2.5f, true, false);
             return;
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.S) && !_player.IsAttacking && !_player.OnGround)
         {
-            Attack(Const.WorkAnim.Player_Attack, 0.5f, _characteristic.RangeAttack, false);
+            Attack(Const.WorkAnim.Player_Attack, 0.3f, 2.5f, true, true);
+        }
+
+            if (Input.GetMouseButtonDown(0))
+        {
+            Attack(Const.WorkAnim.Player_Attack, 0.5f, _characteristic.RangeAttack, false, false);
         }
     }
 
-    private void Attack(string correctAttack,float endAttackTime, float rangeAttack, bool troughAttack)
+    private void Attack(string correctAttack,float endAttackTime, float rangeAttack, bool troughAttack, bool isAttackingDown)
     {
         if (_player.IsAttacking && _player.IsAttackingThrough)
             return;
@@ -50,6 +55,8 @@ public class PlayerAttack : MonoBehaviour
         {
             if (troughAttack)
                 _player.IsAttackingThrough = true;
+            if(isAttackingDown)
+                _player.IsAttackingDown = true;
             _player.IsAttacking = true;
             _characteristic.MinusStamina(_staminaPerAttack, true);
             StartCoroutine(PrerareAttack(correctAttack, endAttackTime, rangeAttack));
@@ -87,6 +94,7 @@ public class PlayerAttack : MonoBehaviour
             }
         }
         _textAttack.gameObject.SetActive(false);
+        _player.IsAttackingDown = false;
         _player.IsAttackingThrough = false;
         _player.IsAttacking = false;
         _characteristic.MinusStamina(0, false);
