@@ -371,7 +371,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 2c43929708a9dfd49b16eb78ccf8cb1a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -486,10 +486,10 @@ MonoBehaviour:
   _healthUI: {fileID: 3382683154544708528}
   _healthBar: {fileID: 7157649473944035424}
   _health: 100
+  _amountGens: 0
+  _speed: 2
   _damage: 10
   _rigidbody: {fileID: 3348112036272478038}
-  _speed: 2
-  _amountGens: 0
   _rangeToPatrol: 3
 --- !u!1 &8966464575212128889
 GameObject:
