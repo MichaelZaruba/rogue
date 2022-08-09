@@ -22,11 +22,11 @@ public class PlayerMovement : MonoBehaviour
     private float _horizontalSpeed;
     private float _verticalSpeed;
 
-    
+    private bool _isRightSide = true;
 
     public bool OnGround;
     public bool IsAttacking;
-    private bool isRightSide = true;
+    public bool IsAttackingThrough;
 
     public Rigidbody2D Rigidbody => _rigidbody;
     public Animator Animator => _animator;
@@ -57,15 +57,22 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void FixedUpdate()
-    { 
-        if (Input.GetKey(KeyCode.LeftShift) && _characteristic.Stamina > 0)
+    {
+        if (IsAttackingThrough)
         {
+            Debug.Log("tut");
+            CalculateTroughSpeed();
+        }
+           
+        if (Input.GetKey(KeyCode.LeftShift) && _characteristic.Stamina > 0 && !IsAttackingThrough)
+        {
+
             if (_rigidbody.velocity.magnitude != 0)
                 _characteristic.MinusStamina(_staminaPerFastMove, true);
-            
-            CalculateFastSpeed();
+ 
+                CalculateFastSpeed();
         }
-        else
+        else if (!IsAttackingThrough)
         {
             CalculateSpeed();
         }
@@ -73,6 +80,13 @@ public class PlayerMovement : MonoBehaviour
         Move();
         AnimationChange();
         ChangeSide();
+    }
+
+    private void CalculateTroughSpeed()
+    {
+        
+        _horizontalSpeed = _characteristic.Speed * Input.GetAxis("Horizontal") * 4f;
+        _verticalSpeed = _rigidbody.velocity.y;
     }
 
     private void CalculateFastSpeed()
@@ -110,15 +124,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void ChangeSide()
     {
-        if (_horizontalSpeed < 0 && isRightSide)
+        if (_horizontalSpeed < 0 && _isRightSide)
         {
-            isRightSide = false;
+            _isRightSide = false;
             _spriteRenderer.flipX = true;
             _attackTransform.position = new Vector3(transform.position.x - _attackCorrectPosition, transform.position.y, transform.position.z);
         }
-        if (_horizontalSpeed > 0 && !isRightSide)
+        if (_horizontalSpeed > 0 && !_isRightSide)
         {
-            isRightSide = true;
+            _isRightSide = true;
             _spriteRenderer.flipX = false;
             _attackTransform.position = new Vector3(transform.position.x + _attackCorrectPosition, transform.position.y, transform.position.z);
         }
@@ -128,7 +142,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (IsAttacking)
         {
-            _animationChange.ChangeAnimationState(Const.WorkAnim.Player_Attack);
             return;
         }
         if (OnGround)

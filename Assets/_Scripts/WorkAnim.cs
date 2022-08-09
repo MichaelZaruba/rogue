@@ -11,5 +11,6 @@ namespace Const
         public const string Player_Jump = "jump_anim";
         public const string Player_Fall = "falling";
         public const string Player_Attack = "attack";
+        public const string Player_Attack2 = "attack2";
     }
 }

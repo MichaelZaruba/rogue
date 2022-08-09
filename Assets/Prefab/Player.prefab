@@ -301,6 +301,7 @@ MonoBehaviour:
   _powerJump: 9.93
   OnGround: 0
   IsAttacking: 0
+  IsAttackingTrough: 0
 --- !u!95 &1388008006196040813
 Animator:
   serializedVersion: 4
@@ -351,11 +352,12 @@ MonoBehaviour:
   _enemyLayers:
     serializedVersion: 2
     m_Bits: 1024
+  _animationChange: {fileID: 7152937503312238008}
   _textAttack: {fileID: 8899930220842906108}
   _textDie: {fileID: 0}
   _staminaPerAttack: 3
   _prepareAttackTime: 0.168
-  _endAttackTime: 0.183
+  _endAttackTime: 0.35
 --- !u!114 &7152937503312238008
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -368,7 +370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1aec009fdff2db4b8f49cd26c3eabc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: 
+  currentState: Idle
   animator: {fileID: 1388008006196040813}
 --- !u!114 &6656437928768031474
 MonoBehaviour:
@@ -385,7 +387,7 @@ MonoBehaviour:
   Health: 100
   Damage: 23
   RangeAttack: 1.28
-  Stamina: 40
+  Stamina: 100
   Speed: 5
   StaminaActive: 0
 --- !u!1 &2714826878971875219

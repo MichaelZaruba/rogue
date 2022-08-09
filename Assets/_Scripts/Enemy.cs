@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour
         _game = game;
     }
 
-    public void takeDamage(int damage)
+    public void TakeDamage(int damage)
     {
         _health -= damage;
         _healthBar.fillAmount = _health / _startHealth;
