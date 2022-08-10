@@ -171,7 +171,7 @@ Transform:
   m_GameObject: {fileID: 1388008006196040811}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.041, y: -1.946, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 4369919864659821903}
@@ -356,11 +356,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _durationAttackThrough: 0.15
-  _rangeAttackThrough: 2.5
+  _rangeAttackThrough: 2
   _durationAttack: 0.5
-  _rangeAttack: 1.28
+  _rangeAttack: 1
   _durationAttackDown: 0.5
-  _rangeAttackDown: 2.5
+  _rangeAttackDown: 2
   _player: {fileID: 1388008006196040808}
   _attackPoint: {fileID: 2970215902959491422}
   _ghostSprites: {fileID: 4192631616970833221}
