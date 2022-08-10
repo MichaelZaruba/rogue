@@ -62,7 +62,7 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    private void ThroughAttack(string correctAttack, float endAttackTime, float rangeAttack)
+    private void ThroughAttack(string correctAnimationAttack, float endAttackTime, float rangeAttack)
     {
         if (_player.IsAttacking)
             return;
@@ -75,14 +75,12 @@ public class PlayerAttack : MonoBehaviour
 
             _player.IsAttackingThrough = true;
 
-            _player.IsAttacking = true;
             _characteristic.MinusStamina(_staminaPerAttack, true);
-            StartCoroutine(PrerareAttack(correctAttack, endAttackTime, rangeAttack));
-
+            StartCoroutine(PrerareAttack(correctAnimationAttack, endAttackTime, rangeAttack));
         }
     }
 
-    private void Attack(string correctAttack, float endAttackTime, float rangeAttack)
+    private void Attack(string correctAnimationAttack, float endAttackTime, float rangeAttack)
     {
         if (_player.IsAttacking)
             return;
@@ -92,12 +90,12 @@ public class PlayerAttack : MonoBehaviour
             _ghostSprites.trailSize = 0;
             _player.IsAttacking = true;
             _characteristic.MinusStamina(_staminaPerAttack, true);
-            StartCoroutine(PrerareAttack(correctAttack, endAttackTime, rangeAttack));
+            StartCoroutine(PrerareAttack(correctAnimationAttack, endAttackTime, rangeAttack));
         }
 
     }
 
-    private void AttackDown(string correctAttack, float endAttackTime, float rangeAttack)
+    private void AttackDown(string correctAnimationAttack, float endAttackTime, float rangeAttack)
     {
         if (_player.IsAttacking)
             return;
@@ -109,15 +107,15 @@ public class PlayerAttack : MonoBehaviour
 
             _player.IsAttacking = true;
             _characteristic.MinusStamina(_staminaPerAttack, true);
-            StartCoroutine(PrerareAttack(correctAttack, endAttackTime, rangeAttack));
+            StartCoroutine(PrerareAttack(correctAnimationAttack, endAttackTime, rangeAttack));
         }
     }
 
-    private IEnumerator PrerareAttack(string correctAttack, float endAttackTime, float rangeAttack)
+    private IEnumerator PrerareAttack(string correctAnimationAttack, float endAttackTime, float rangeAttack)
     {
         SearchInRange(rangeAttack);
         TakeDamage();
-        AnimationAttack(correctAttack);
+        AnimationAttack(correctAnimationAttack);
         yield return new WaitForSeconds(endAttackTime);
         EndAttack();
     }

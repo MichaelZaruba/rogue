@@ -37,7 +37,6 @@ public class PlayerMovement : MonoBehaviour
     public bool IsAttackingThrough;
     public bool IsAttackingDown;
 
-    
 
     private void Awake()
     {

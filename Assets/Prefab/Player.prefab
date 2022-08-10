@@ -154,6 +154,7 @@ GameObject:
   - component: {fileID: 7152937503312238008}
   - component: {fileID: 6656437928768031474}
   - component: {fileID: 4192631616970833221}
+  - component: {fileID: 4516070411233506763}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -398,10 +399,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bc4685a93904964985b40cb7df3e6f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 100
+  Health: 40
   Damage: 23
   RangeAttack: 1.28
-  Stamina: 100
+  Stamina: 40
   Speed: 5
   StaminaActive: 0
 --- !u!114 &4192631616970833221
@@ -426,6 +427,18 @@ MonoBehaviour:
   colorAlphaOverride: 0
   alphaFluctuationOverride: 0
   alphaFluctuationDivisor: 1
+--- !u!114 &4516070411233506763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388008006196040811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d7fef12a3584ed41b5ab278013378cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2714826878971875219
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(PlayerAttack))]
 [RequireComponent(typeof(PlayerMovement))]
+[RequireComponent(typeof(PlayerAttackRange))]
 public class Player : MonoBehaviour
 {
     private Game _game;
