@@ -170,7 +170,7 @@ public class PlayerMovement : MonoBehaviour
                 _animationChange.ChangeAnimationState(Const.WorkAnim.Player_Run);
             if(Mathf.Abs(Rigidbody.velocity.x) <= 0.01f)
                 _animationChange.ChangeAnimationState(Const.WorkAnim.Player_Idle);
-            if (Mathf.Abs(Rigidbody.velocity.x) >= _characteristic.Speed)
+            if (Mathf.Abs(Rigidbody.velocity.x) >= _characteristic.Speed + 1f)
                 _animationChange.ChangeAnimationState(Const.WorkAnim.Player_Sprint);
         }
         else
