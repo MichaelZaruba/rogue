@@ -12,6 +12,8 @@ namespace Const
         public const string Player_Fall = "falling";
         public const string Player_Attack = "attack";
         public const string Player_Attack2 = "attack2";
+        public const string Player_Dash_Attack = "dashAttack";
+        public const string Player_Sprint = "sprint";
         public const string Bokal_Attack = "IsAggred";
     }
 }

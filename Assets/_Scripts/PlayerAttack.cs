@@ -35,7 +35,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.LeftShift) && !_player.IsAttacking)
         {
-            Attack(Const.WorkAnim.Player_Attack, 0.15f,2.5f, true, false);
+            Attack(Const.WorkAnim.Player_Dash_Attack, 0.15f,2.5f, true, false);
             return;
         }
 
@@ -44,13 +44,13 @@ public class PlayerAttack : MonoBehaviour
             Attack(Const.WorkAnim.Player_Attack, 0.3f, 2.5f, true, true);
         }
 
-            if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0))
         {
             Attack(Const.WorkAnim.Player_Attack, 0.5f, _characteristic.RangeAttack, false, false);
         }
     }
 
-    private void Attack(string correctAttack,float endAttackTime, float rangeAttack, bool troughAttack, bool isAttackingDown)
+    private void Attack(string correctAttack, float endAttackTime, float rangeAttack, bool troughAttack, bool isAttackingDown)
     {
         if (_player.IsAttacking && _player.IsAttackingThrough)
             return;
