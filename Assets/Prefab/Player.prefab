@@ -354,6 +354,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f5b96c157d723d4ea6995d482c8da53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _durationAttackThrough: 0.15
+  _rangeAttackThrough: 2.5
+  _durationAttack: 0.5
+  _rangeAttack: 1.28
+  _durationAttackDown: 0.5
+  _rangeAttackDown: 2.5
   _player: {fileID: 1388008006196040808}
   _attackPoint: {fileID: 2970215902959491422}
   _ghostSprites: {fileID: 4192631616970833221}

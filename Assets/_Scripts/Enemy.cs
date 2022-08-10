@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour
         _game = game;
     }
 
-    public void TakeDamage(int damage)
+    public void GetDamage(int damage)
     {
         _health -= damage;
         _healthBar.fillAmount = _health / _startHealth;
@@ -45,7 +45,7 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Player>())
         {
-            collision.gameObject.GetComponent<Player>().GetDamage(_damage);
+           // collision.gameObject.GetComponent<Player>().GetDamage(_damage);
         }
     }
 
