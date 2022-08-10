@@ -74,7 +74,7 @@ public class PlayerAttack : MonoBehaviour
             _ghostSprites.trailSize = 15;
 
             _player.IsAttackingThrough = true;
-
+            _player.IsAttacking = true;
             _characteristic.MinusStamina(_staminaPerAttack, true);
             StartCoroutine(PrerareAttack(correctAnimationAttack, endAttackTime, rangeAttack));
         }
