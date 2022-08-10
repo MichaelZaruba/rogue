@@ -4,5 +4,14 @@ using UnityEngine;
 
 public class AttackInventory : MonoBehaviour
 {
-    private ItemAttack[] _itemsAttack;
+   [SerializeField] private ItemAttack[] _itemsAttack;
+
+    public void Initialize(PlayerAttack game)
+    {
+        _itemsAttack = GetComponentsInChildren<ItemAttack>();
+        foreach(var item in _itemsAttack)
+        {
+            item.Initialize(game);
+        }
+    }
 }

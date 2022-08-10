@@ -37,6 +37,11 @@ public class PlayerAttack : MonoBehaviour
     private Player _characteristic;
     private Collider2D[] _hitEnemies;
 
+    [Header("ActivateInInventory")]
+    public bool IsThroughAttackActivate;
+    public bool IsThroughDownActivate;
+    public bool IsAttackActivate;
+
     private void Awake()
     {
         _playerMovement = GetComponent<PlayerMovement>();
@@ -45,18 +50,18 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.LeftShift) && !_player.IsAttacking)
+        if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.LeftShift) && !_player.IsAttacking && IsThroughAttackActivate)
         {
             ThroughAttack(Const.WorkAnim.Player_Dash_Attack, _durationAttackThrough, _rangeAttackThrough);
             return;
         }
 
-        if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.S) && !_player.IsAttacking && !_player.OnGround)
+        if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.S)&& IsThroughDownActivate && !_player.IsAttacking && !_player.OnGround)
         {
             AttackDown(Const.WorkAnim.Player_Attack, _durationAttackDown, _rangeAttackDown);
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && IsAttackActivate)
         {
             Attack(Const.WorkAnim.Player_Attack, _durationAttack, _rangeAttack);
         }

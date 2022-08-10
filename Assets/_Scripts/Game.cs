@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
+    [SerializeField] private AttackInventory _attackInventory;
     [SerializeField] private Player _player;
     [SerializeField] private LookAtTargetCamera _lookAtTargetCamera;
     [SerializeField] private Image _staminaImage;
@@ -20,10 +21,10 @@ public class Game : MonoBehaviour
     private List<Player> _players = new List<Player>();
     private List<Enemy> _enemys = new List<Enemy>();
 
-
     private void Start()
-    {
+    {  
         StartNewGame();
+        _attackInventory.Initialize(_players[0].GetComponent<PlayerAttack>());
     }
 
     private void StartNewGame()

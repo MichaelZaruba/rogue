@@ -373,6 +373,9 @@ MonoBehaviour:
   _staminaPerAttack: 3
   _prepareAttackTime: 0.168
   _endAttackTime: 0.35
+  IsThroughAttackActivate: 0
+  IsThroughDownActivate: 0
+  IsAttackActivate: 1
 --- !u!114 &7152937503312238008
 MonoBehaviour:
   m_ObjectHideFlags: 0
