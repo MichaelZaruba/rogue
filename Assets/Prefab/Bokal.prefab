@@ -46,6 +46,8 @@ GameObject:
   - component: {fileID: 2551522386792540492}
   - component: {fileID: 3422527672630338333}
   - component: {fileID: 1449824418491714332}
+  - component: {fileID: -6789050548903423634}
+  - component: {fileID: -7121157541637975733}
   m_Layer: 10
   m_Name: Bokal
   m_TagString: Untagged
@@ -206,16 +208,16 @@ MonoBehaviour:
   _healthBar: {fileID: 2456461549074470153}
   _health: 150
   _amountGens: 0
-  _speed: 2
-  _damage: 10
-  _rigidbody: {fileID: 3140415031687131912}
-  _positionToPatrol: 5
-  _radiusOfVision: 11.5
+  _radiusOfVision: 7.5
   _playerLayer:
     serializedVersion: 2
     m_Bits: 512
-  _animator: {fileID: 2551522386792540492}
+  _speed: 2
+  _damage: 10
+  _rigidbody: {fileID: 3140415031687131912}
   playerPosition: {fileID: 0}
+  _positionToPatrol: 5
+  _animator: {fileID: 2551522386792540492}
   justShot: 0
 --- !u!114 &1449824418491714332
 MonoBehaviour:
@@ -233,6 +235,49 @@ MonoBehaviour:
   _bullet: {fileID: 583039322674414514, guid: 956efd95e67a68844a519a3e184ff0c4, type: 3}
   _bocal: {fileID: 3422527672630338333}
   _animator: {fileID: 2551522386792540492}
+--- !u!114 &-6789050548903423634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2850644086380809682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da906563c73ad0848a7e5920c4ab71dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Movementspeed: 100
+  NextWaypointDistance: 3
+  IsTargetActive: 0
+--- !u!114 &-7121157541637975733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2850644086380809682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
 --- !u!1 &3506813230221797672
 GameObject:
   m_ObjectHideFlags: 0

@@ -45,9 +45,6 @@ public class Paneta : Enemy
         if (!_moveRight)
             _rigidbody.velocity = Vector2.left * _speed;
     }
-    private bool CheckPlayer()
-    {
-        return true;
-    }
+   
 
 }

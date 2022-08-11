@@ -328,6 +328,8 @@ GameObject:
   - component: {fileID: 3348112036272478038}
   - component: {fileID: 3348112036272478034}
   - component: {fileID: 1580698289911671063}
+  - component: {fileID: -409355629874408951}
+  - component: {fileID: 2425445764676025849}
   m_Layer: 10
   m_Name: Paneta
   m_TagString: Untagged
@@ -487,10 +489,58 @@ MonoBehaviour:
   _healthBar: {fileID: 7157649473944035424}
   _health: 100
   _amountGens: 0
+  _radiusOfVision: 7.5
+  _playerLayer:
+    serializedVersion: 2
+    m_Bits: 512
   _speed: 2
   _damage: 10
   _rigidbody: {fileID: 3348112036272478038}
+  playerPosition: {fileID: 0}
   _rangeToPatrol: 3
+--- !u!114 &-409355629874408951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3348112036272478036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da906563c73ad0848a7e5920c4ab71dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Movementspeed: 100
+  NextWaypointDistance: 3
+  IsTargetActive: 0
+--- !u!114 &2425445764676025849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3348112036272478036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
 --- !u!1 &8966464575212128889
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,15 +7,15 @@ using Const;
 public class Bokal : Enemy
 {
     [SerializeField] private float _positionToPatrol;
-    [SerializeField] private float _radiusOfVision;
-    [SerializeField] private LayerMask _playerLayer;
     [SerializeField] private Animator _animator;
 
     private Vector3 _startPosition;
-    public Transform playerPosition;
+    
 
     private bool _moveRight;
     public bool justShot;
+
+    
 
     private void Start()
     {
@@ -28,7 +28,7 @@ public class Bokal : Enemy
         Patrol();
         if (CheckPlayer())
         {
-            MoveToPlayer();
+            
             ChrgeAttack();
         }
     }
@@ -55,25 +55,6 @@ public class Bokal : Enemy
             _rigidbody.velocity = Vector2.left * _speed;
     }
 
-
-
-    private bool CheckPlayer()
-    {
-
-        Collider2D player = Physics2D.OverlapCircle(transform.position, _radiusOfVision, _playerLayer);
-
-        if (player == null)
-            return false;
-        //reurn false if there is a wall between player and bokal
-        playerPosition = player.transform;
-        return true;
-    }
-
-    private void MoveToPlayer()
-    {
-
-    }
-
     private void ChrgeAttack()
     {
         if (justShot)
@@ -81,11 +62,6 @@ public class Bokal : Enemy
         _animator.SetBool(WorkAnim.Bokal_Attack, true);
         justShot = true;
     }
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = new Color(1, 1, 1, 0.5f);
-        Gizmos.DrawSphere(transform.position, _radiusOfVision);
-    }
-
+   
 
 }
