@@ -58,7 +58,7 @@ public class PlayerAttack : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.S)&& IsThroughDownActivate && !_player.IsAttacking && !_player.OnGround)
         {
-            AttackDown(Const.WorkAnim.Player_Attack, _durationAttackDown, _rangeAttackDown);
+            AttackDown(Const.WorkAnim.Player_Jump_Attack, _durationAttackDown, _rangeAttackDown);
         }
 
         if (Input.GetMouseButtonDown(0) && IsAttackActivate)
@@ -188,6 +188,6 @@ public class PlayerAttack : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = new Color(1, 1, 1, 0.5f);
-        Gizmos.DrawSphere(_attackPoint.position, 1.28f);
+        Gizmos.DrawSphere(_attackPoint.position, 2.5f);
     }
 }
