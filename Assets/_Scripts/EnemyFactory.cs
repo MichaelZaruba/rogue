@@ -8,6 +8,7 @@ public class EnemyFactory : GameObjectFactory
 {
     [SerializeField] private Enemy _bokalPrefab;
     [SerializeField] private Enemy _panetaPrefab;
+    [SerializeField] private Enemy _bacteriaPrefab;
 
     public void Reclaim(Enemy content)
     {
@@ -22,6 +23,8 @@ public class EnemyFactory : GameObjectFactory
                 return Get(_bokalPrefab);
             case EnemyType.Paneta:
                 return Get(_panetaPrefab);
+            case EnemyType.Bacteria:
+                return Get(_bacteriaPrefab);
         }
         return null;
     }

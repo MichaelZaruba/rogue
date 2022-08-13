@@ -16,6 +16,8 @@ namespace Const
         public const string Player_Jump_Attack = "jumping_attack_v2";
         public const string Player_Sprint = "sprint";
         public const string Bokal_Attack = "IsAggred";
-
+        public const string Bacteria_Idle = "bacteria_idle";
+        public const string Bacteria_Moving = "bacteria_moving";
+        public const string Bacteria_Attack = "bacteria_attack";
     }
 }

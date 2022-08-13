@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(EnemyAI))]
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private Gens _gen;

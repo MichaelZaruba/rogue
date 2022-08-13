@@ -231,7 +231,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ffd520d573fc83408de01df12ce21c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _reloadAttackTime: 5.16
+  _reloadAttackTime: 3.01
   _bullet: {fileID: 583039322674414514, guid: 956efd95e67a68844a519a3e184ff0c4, type: 3}
   _bocal: {fileID: 3422527672630338333}
   _animator: {fileID: 2551522386792540492}

@@ -1,5 +1,6 @@
 public enum EnemyType
 {
     Bokal,
-    Paneta
+    Paneta,
+    Bacteria
 }

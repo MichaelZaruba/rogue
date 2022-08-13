@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bokalPrefab: {fileID: 3422527672630338333, guid: 2f9f0b6a23ba65149a6af9e9a5b5da6f, type: 3}
   _panetaPrefab: {fileID: 1580698289911671063, guid: 78caf6ef8359b5d4394cd686bcdaaf8b, type: 3}
+  _bacteriaPrefab: {fileID: 7640162598489528260, guid: fcdafcf48bdbdba448ec7b6ae687b26e, type: 3}
