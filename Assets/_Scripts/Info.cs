@@ -36,6 +36,11 @@ public class Info : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _levelHealthUI;
     [SerializeField] private TextMeshProUGUI _levelStaminaUI;
 
+    [Header("SaveLevel")]
+    private const string LEVEL_DAMAGE = "levelDamage";
+    private const string LEVEL_HEALTH = "LevelHealth";
+    private const string LEVEL_STAMINA = "LevelStamina";
+
     [Header("levelNow")]
     private int _levelDamage = 0;
     private int _levelHealth = 0;
@@ -47,6 +52,19 @@ public class Info : MonoBehaviour
 
     public void Initialize(Player player)
     {
+
+        int levelStamina = PlayerPrefs.GetInt(LEVEL_STAMINA);
+        int levelHealth = PlayerPrefs.GetInt(LEVEL_HEALTH);
+        int levelDamage = PlayerPrefs.GetInt(LEVEL_DAMAGE);
+
+        if (levelStamina != 0)
+            _levelStamina = levelStamina;
+        if (levelHealth != 0)
+            _levelHealth = levelHealth;
+        if (levelDamage != 0)
+           _levelDamage = levelDamage;
+
+
         _player =  player;
         _health.text = _player.Health.ToString();
         _damage.text = _player.Damage.ToString();
@@ -65,10 +83,13 @@ public class Info : MonoBehaviour
     {
         if (_levelDamage < _maxLevelDamage && GUIManager._instance.Gens >= _priceDamage)
         {
+
             GUIManager._instance.Gens -= _priceDamage;
             GUIManager._instance.ValueInit();
             _levelDamage++;
             _player.Damage += _appDamage;
+            PlayerPrefs.SetInt(LEVEL_DAMAGE, _levelDamage);
+            PlayerPrefs.SetInt(Player.DAMAGE, _player.Damage);
             _damage.text = _player.Damage.ToString();
             _levelDamageUI.text = "Level " + _levelDamage.ToString();
         }
@@ -82,6 +103,8 @@ public class Info : MonoBehaviour
             GUIManager._instance.ValueInit();
             _levelHealth++;
             _player.Health += _appHealth;
+            PlayerPrefs.SetInt(LEVEL_HEALTH, _levelHealth);
+            PlayerPrefs.SetInt(Player.HEALTH, (int)_player.Health);
             _health.text = _player.Health.ToString();
             _levelHealthUI.text = "Level " + _levelHealth.ToString();
         }
@@ -95,6 +118,8 @@ public class Info : MonoBehaviour
             GUIManager._instance.ValueInit();
             _levelStamina++;
             _player.Stamina += _appStamina;
+            PlayerPrefs.SetInt(LEVEL_STAMINA, _levelStamina);
+            PlayerPrefs.SetInt(Player.STAMINA, (int)_player.Stamina);
             _stamina.text = _player.Stamina.ToString();
             _levelStaminaUI.text = "Level " + _levelStamina.ToString();
         }
