@@ -77,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
            
         if (Input.GetKey(KeyCode.LeftShift) && _characteristic.Stamina > 0 && !IsAttackingThrough && !IsAttackingDown)
         {
-            if (_rigidbody.velocity.magnitude != 0)
+            if (_rigidbody.velocity.magnitude != 0 && OnGround)
                 _characteristic.MinusStamina(_staminaPerFastMove, true);
  
                 CalculateFastSpeed();

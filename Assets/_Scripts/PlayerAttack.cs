@@ -50,7 +50,8 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.LeftShift) && !_player.IsAttacking && IsThroughAttackActivate)
+        if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.LeftShift) &&
+            _playerMovement.Rigidbody.velocity.magnitude > 0.01f &&!_player.IsAttacking && IsThroughAttackActivate)
         {
             ThroughAttack(Const.WorkAnim.Player_Dash_Attack, _durationAttackThrough, _rangeAttackThrough);
             return;

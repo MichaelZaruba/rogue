@@ -191,7 +191,7 @@ namespace Pathfinding {
 		/// </summary>
 		public virtual void OnGraphsPostUpdate () {}
 
-		protected override void Reset () {
+		public override void Reset () {
 			base.Reset();
 			// Create a new random 64 bit value (62 bit actually because we skip negative numbers, but that's still enough by a huge margin)
 			var rnd1 = (ulong)Random.Range(0, int.MaxValue);

@@ -443,7 +443,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -484,20 +484,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2396fe72fa6388f46b4136815a5e674a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _rangePatrol: 3
   _gen: {fileID: 4758106444361321226, guid: 36be609e6d76b1a48ae814142084a432, type: 3}
   _healthUI: {fileID: 3382683154544708528}
   _healthBar: {fileID: 7157649473944035424}
   _health: 100
   _amountGens: 0
-  _radiusOfVision: 7.5
   _playerLayer:
     serializedVersion: 2
     m_Bits: 512
-  _speed: 2
+  _radiusOfVision: 7
+  _speed: 3
   _damage: 10
   _rigidbody: {fileID: 3348112036272478038}
-  playerPosition: {fileID: 0}
-  _rangeToPatrol: 3
+  IsFindPlayer: 0
+  PlayerPosition: {fileID: 0}
+  TestMode: 0
 --- !u!114 &-409355629874408951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -510,8 +512,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da906563c73ad0848a7e5920c4ab71dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Movementspeed: 100
-  NextWaypointDistance: 3
+  Movementspeed: 300
+  NextWaypointDistance: 0.15
   IsTargetActive: 0
 --- !u!114 &2425445764676025849
 MonoBehaviour:

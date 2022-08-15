@@ -4037,11 +4037,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fecb3804e696d1f428703c7383358083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0.5
+  duration: 0.3
   sprites:
-  - {fileID: 21300000, guid: 287f045e19d55884d894c9e3bd488496, type: 3}
-  - {fileID: 21300000, guid: d71f29816a873e748be7005b51ba49b4, type: 3}
-  - {fileID: 21300000, guid: 32b48ed61e9495e4b90929622b2c7604, type: 3}
+  - {fileID: 21300000, guid: b68a8c009815c804b9870a338f81ee45, type: 3}
+  - {fileID: 21300000, guid: a2c7c4e8fbdcc7d429ee809349e43fda, type: 3}
+  - {fileID: 21300000, guid: 14910a0d9208d194b9e534d19bbd2bdb, type: 3}
 --- !u!1 &871756328
 GameObject:
   m_ObjectHideFlags: 0

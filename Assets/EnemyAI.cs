@@ -14,31 +14,27 @@ public class EnemyAI : MonoBehaviour
    private bool _reachedEndOfPath = false;
    public bool IsTargetActive = false;
 
+    private Enemy _enemy;
    Seeker seeker;
-   Rigidbody2D rb2d;
+   Rigidbody2D _rigidbody;
 
    public void Initialize(Player player)
    {
       _target = player.transform;
+       seeker = GetComponent<Seeker>();
+        _enemy = GetComponent<Enemy>();
+       _rigidbody = GetComponent<Rigidbody2D>();
+        InvokeRepeating("UpdatePath", 0f, 1f);
+    }
 
-   }
 
-   public void Start()
-   {
-      seeker = GetComponent<Seeker>();
-      rb2d = GetComponent<Rigidbody2D>();
-
-      seeker.StartPath(rb2d.position, _target.position, OnPathComplete);
-      InvokeRepeating("UpdatePath", 0f, 2f);
-
-   }
 
    public void UpdatePath()
    {
-      if (seeker.IsDone() && IsTargetActive)
-      {
-         seeker.StartPath(rb2d.position, _target.position, OnPathComplete);
-         IsTargetActive = false;
+      if (seeker.IsDone() && _enemy.IsFindPlayer)
+      { 
+         seeker.StartPath(_rigidbody.position, _target.position, OnPathComplete);
+
       }
    } 
    public void OnPathComplete(Path p)
@@ -50,30 +46,33 @@ public class EnemyAI : MonoBehaviour
       }
    }
 
-    public void Update()
+    public void LateUpdate()
     {
-      if (path == null)
-         return;
+        if (path == null)
+            return;
 
-      if (_currentWaypoint >= path.vectorPath.Count)
-      {
-         _reachedEndOfPath = true;
-         return;
-      } else
-      {
-         _reachedEndOfPath = false;
-      }
+        if (_currentWaypoint >= path.vectorPath.Count)
+        {
+            _reachedEndOfPath = true;
+            return;
+        }
+        else
+        {
+            _reachedEndOfPath = false;
+        }
+        if (_enemy.IsFindPlayer)
+            {
+            Vector2 direction = ((Vector2)path.vectorPath[_currentWaypoint] - _rigidbody.position);
+            direction.Normalize();
+            Vector2 force = direction * Movementspeed * Time.deltaTime;
+            float distance = Vector2.Distance(_rigidbody.position, path.vectorPath[_currentWaypoint]);
+            _rigidbody.velocity = new Vector2(force.x, _rigidbody.velocity.y); ;
 
-      Vector2 direction = ((Vector2)path.vectorPath[_currentWaypoint] - rb2d.position).normalized;
-      Vector2 force = direction * Movementspeed * Time.deltaTime;
-      float distance = Vector2.Distance(rb2d.position, path.vectorPath[_currentWaypoint]);
-      Debug.Log(force);
-      if(IsTargetActive)
-      rb2d.velocity = force;
-
-      if (distance < NextWaypointDistance)
-      {
-         _currentWaypoint++;
-      }
+            if (distance < NextWaypointDistance)
+            {
+                _currentWaypoint++;
+            }
+        }
     }
+    
 }

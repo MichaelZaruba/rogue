@@ -741,7 +741,7 @@ namespace Pathfinding {
 			autoRepath.DrawGizmos((IAstarAI)this);
 		}
 
-		protected override void Reset () {
+		public override void Reset () {
 			ResetShape();
 			base.Reset();
 		}

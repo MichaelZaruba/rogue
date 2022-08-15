@@ -14,13 +14,13 @@ public class BokalAttack : MonoBehaviour
 
     void Attack()
     {
-        playerPoint = _bocal.playerPosition.position;
+        playerPoint = _bocal.PlayerPosition.position;
         CalculatePositionPlayer();
         var bullet = Instantiate(_bullet, transform.position, Quaternion.identity);
         bullet.transform.position = transform.position;
         StartCoroutine(PrepareAnotherAttack());
-
     }
+
     private void CalculatePositionPlayer()
     {
         Vector3 direction = (playerPoint - transform.position).normalized;

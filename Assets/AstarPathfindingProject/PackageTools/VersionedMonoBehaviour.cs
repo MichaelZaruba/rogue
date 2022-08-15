@@ -21,7 +21,7 @@ namespace Pathfinding {
 		}
 
 		/// <summary>Handle serialization backwards compatibility</summary>
-		protected virtual void Reset () {
+		public virtual void Reset () {
 			// Set initial version when adding the component for the first time
 			version = OnUpgradeSerializedData(int.MaxValue, true);
 		}

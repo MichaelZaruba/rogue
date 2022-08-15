@@ -4,17 +4,8 @@ using UnityEngine;
 
 public class Paneta : Enemy
 {
-    [SerializeField] private float _rangeToPatrol;
-    private Vector3 _startPosition;
 
-    private bool _moveRight;
-
-    private void Start()
-    {
-        _startPosition = transform.position;
-    }
-
-    private void Update()
+    private void FixedUpdate()
     {
         CheckMoveRight();
         Patrol();
@@ -24,27 +15,22 @@ public class Paneta : Enemy
         }
     }
 
-    private void CheckMoveRight()
+    protected override bool CheckPlayer()
     {
-        if (transform.position.x > _startPosition.x + _rangeToPatrol)
-        {
-            _moveRight = false;
-        }
-        else if (transform.position.x < _startPosition.x - _rangeToPatrol)
-        {
-            _moveRight = true;
-        }
+        return base.CheckPlayer();
     }
 
-    private void Patrol()
-    {
-        if (_moveRight)
-        {
-            _rigidbody.velocity = Vector2.right * _speed;
-        }
-        if (!_moveRight)
-            _rigidbody.velocity = Vector2.left * _speed;
+    protected override void Patrol()
+    {   
+        base.Patrol();
     }
+
+    protected override void CheckMoveRight()
+    {
+         base.CheckMoveRight();
+    }
+
+  
    
 
 }
