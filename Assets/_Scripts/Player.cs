@@ -132,5 +132,6 @@ public class Player : MonoBehaviour
     private void Die()
     {
         _game.ReclaimPlayer(this);
+        _game.RestartGameAfterDiePlayer();
     }
 }

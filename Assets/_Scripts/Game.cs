@@ -43,6 +43,13 @@ public class Game : MonoBehaviour
         EndGame();
     }
 
+    public void RestartGameAfterDiePlayer()
+    {
+        _numberLevel = 1;
+        PlayerPrefs.DeleteAll();
+        EndGame();
+    }
+
     private void EndGame()
     {
         foreach(var level in _levels)
