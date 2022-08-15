@@ -488,6 +488,7 @@ MonoBehaviour:
   _gen: {fileID: 4758106444361321226, guid: 36be609e6d76b1a48ae814142084a432, type: 3}
   _healthUI: {fileID: 3382683154544708528}
   _healthBar: {fileID: 2286792867564880603}
+  _canvasTransform: {fileID: 5624029886072565290}
   _health: 100
   _amountGens: 0
   _playerLayer:

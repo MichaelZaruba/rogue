@@ -41,6 +41,7 @@ public class Bacteria : Enemy
     {
         base.Patrol();
     }
+
     private void Attack()
     {
         Collider2D player = Physics2D.OverlapBox(_attackPoint.position, new Vector2(attackPointWidth, attackPointHeight), 0, _playerLayer);

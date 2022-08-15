@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Gens _gen;
     [SerializeField] private TextMeshProUGUI _healthUI;
     [SerializeField] private Image _healthBar;
+    [SerializeField] private GameObject _canvas;
 
     [SerializeField] private float _health = 100;
     [SerializeField] private int _amountGens;
@@ -67,18 +68,22 @@ public class Enemy : MonoBehaviour
             _moveRight = true;
         }
     }
+
     protected void CheckMovingDirection()
     {
-        if (_rigidbody.velocity.x > 0 && !_movingRight)
+        if (_rigidbody.velocity.x > 0.01 && !_movingRight)
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
+            _canvas.transform.transform.rotation = Quaternion.Euler(0, 0, 0);
             _movingRight = true;
             return;
         }
-        if (_rigidbody.velocity.x < 0 && _movingRight)
+        if (_rigidbody.velocity.x < 0.01 && _movingRight)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
+            _canvas.transform.transform.rotation = Quaternion.Euler(0, 0, 0);
             _movingRight = false;
+
         }
     }
 
@@ -129,8 +134,12 @@ public class Enemy : MonoBehaviour
         if (collision.gameObject.GetComponent<Player>())
         {
            // collision.gameObject.GetComponent<Player>().GetDamage(_damage);
+
         }
     }
+
+
+
 
     private void Die()
     {
