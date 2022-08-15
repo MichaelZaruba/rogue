@@ -6,6 +6,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(EnemyAI))]
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] private float _rangePatrol;
     [SerializeField] private Gens _gen;
     [SerializeField] private TextMeshProUGUI _healthUI;
     [SerializeField] private Image _healthBar;
@@ -13,15 +14,17 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _health = 100;
     [SerializeField] private int _amountGens;
 
-   [SerializeField] protected float _radiusOfVision;
-   [SerializeField] private LayerMask _playerLayer;
+    [SerializeField] private LayerMask _playerLayer;
 
-   [SerializeField] protected float _speed;
+    [SerializeField] protected float _radiusOfVision;
+    [SerializeField] protected float _speed;
     [SerializeField] protected int _damage;
 
 
     [SerializeField] protected Rigidbody2D _rigidbody;
-   
+
+    private Vector3 _startPosition;
+
     private Game _game;
 
     private List<Gens> _gens = new List<Gens>();
@@ -30,32 +33,69 @@ public class Enemy : MonoBehaviour
 
     private Player _player;
 
-    public Transform playerPosition;
+    protected bool _moveRight;
+    protected EnemyAI _enemyAI;
 
-   public void Initialize(Game game, Player player)
+    public bool IsFindPlayer;
+
+
+    public Transform PlayerPosition;
+
+    public bool TestMode;
+
+    public void Initialize(Game game, Player player)
     {
+        _startPosition = transform.position;
         _startHealth = _health;
         _healthUI.text = _health.ToString();
         _game = game;
-      _player = player;
-      Debug.Log(player);
-      gameObject.GetComponent<EnemyAI>().Initialize(player);
-      
-      
+        _player = player;
+        Debug.Log(player);
+        gameObject.GetComponent<EnemyAI>().Initialize(player);
+        _enemyAI = GetComponent<EnemyAI>();
+    }
+    protected virtual void CheckMoveRight()
+    {
+        if (transform.position.x > _startPosition.x + _rangePatrol)
+        {
+            _moveRight = false;
+        }
+        else if (transform.position.x < _startPosition.x - _rangePatrol)
+        {
+            _moveRight = true;
+        }
     }
 
-   protected bool CheckPlayer()
-   {
+    protected virtual void Patrol()
+    {
+        if (IsFindPlayer)
+            return;
 
-      Collider2D player = Physics2D.OverlapCircle(transform.position, _radiusOfVision, _playerLayer);
+        if (_moveRight)
+        {
+            _rigidbody.velocity = new Vector2(_speed, _rigidbody.velocity.y);
+        }
+        if (!_moveRight)
+        {
+            _rigidbody.velocity = new Vector2(-_speed, _rigidbody.velocity.y);
+        }
 
-      if (player == null)
-         return false;
-      gameObject.GetComponent<EnemyAI>().IsTargetActive = true;
-      //reurn false if there is a wall between player and bokal
-      playerPosition = player.transform;
-      return true;
-   }
+    }
+
+    protected virtual bool CheckPlayer()
+    {
+        Collider2D player = Physics2D.OverlapCircle(transform.position, _radiusOfVision, _playerLayer);
+
+        if (player == null)
+        {
+            IsFindPlayer = false;
+            return false;
+        }
+        IsFindPlayer = true;
+        gameObject.GetComponent<EnemyAI>().IsTargetActive = true;
+        PlayerPosition = player.transform;
+        return true;
+    }
 
    public void GetDamage(int damage)
     {

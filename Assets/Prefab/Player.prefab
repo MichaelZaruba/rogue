@@ -300,8 +300,8 @@ MonoBehaviour:
   _animator: {fileID: 1388008006196040813}
   _spriteRenderer: {fileID: 1388008006196040815}
   _animationChange: {fileID: 7152937503312238008}
-  _staminaPerJump: 5
-  _staminaPerFastMove: 0.15
+  _staminaPerJump: 3
+  _staminaPerFastMove: 0.05
   _powerJump: 9.93
   EffectRight: {fileID: 7611173676747055499}
   EffectLeft: {fileID: 6921484719235723994}
@@ -373,8 +373,8 @@ MonoBehaviour:
   _staminaPerAttack: 3
   _prepareAttackTime: 0.168
   _endAttackTime: 0.35
-  IsThroughAttackActivate: 0
-  IsThroughDownActivate: 0
+  IsThroughAttackActivate: 1
+  IsThroughDownActivate: 1
   IsAttackActivate: 1
 --- !u!114 &7152937503312238008
 MonoBehaviour:
@@ -402,6 +402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bc4685a93904964985b40cb7df3e6f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _speedFillingStamina: 0.5
   Health: 40
   Damage: 23
   RangeAttack: 1.28

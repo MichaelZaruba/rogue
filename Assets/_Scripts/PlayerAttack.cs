@@ -50,15 +50,17 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.LeftShift) && !_player.IsAttacking && IsThroughAttackActivate)
+        if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.S) && IsThroughDownActivate && !_player.IsAttacking && !_player.OnGround)
         {
-            ThroughAttack(Const.WorkAnim.Player_Dash_Attack, _durationAttackThrough, _rangeAttackThrough);
+            AttackDown(Const.WorkAnim.Player_Jump_Attack, _durationAttackDown, _rangeAttackDown);
             return;
         }
 
-        if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.S)&& IsThroughDownActivate && !_player.IsAttacking && !_player.OnGround)
+        if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.LeftShift) &&
+            _playerMovement.Rigidbody.velocity.magnitude > 0.01f &&!_player.IsAttacking && IsThroughAttackActivate)
         {
-            AttackDown(Const.WorkAnim.Player_Jump_Attack, _durationAttackDown, _rangeAttackDown);
+            ThroughAttack(Const.WorkAnim.Player_Dash_Attack, _durationAttackThrough, _rangeAttackThrough);
+            return;
         }
 
         if (Input.GetMouseButtonDown(0) && IsAttackActivate)

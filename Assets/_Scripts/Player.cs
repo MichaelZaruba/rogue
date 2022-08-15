@@ -8,6 +8,8 @@ using UnityEngine.UI;
 [RequireComponent(typeof(PlayerAttackRange))]
 public class Player : MonoBehaviour
 {
+    [SerializeField] private float _speedFillingStamina = 0.25f;
+
     private Game _game;
 
     private Image _staminaImage;
@@ -16,10 +18,15 @@ public class Player : MonoBehaviour
     private float _maxStamina;
     private float _maxHp;
     private Coroutine _coroutine;
-
+    
     [Range(10, 500)] public float Health;
 
     [Range(10, 100)] public int Damage;
+
+    public const string STAMINA = "Stamina";
+    public const string HEALTH = "Health";
+    public const string DAMAGE = "Damage";
+
     public float RangeAttack;
 
     public float Stamina;
@@ -34,6 +41,17 @@ public class Player : MonoBehaviour
     }
     public void Initialize(Image stamina, Image health, Game game)
     {
+       int safeStamina =  PlayerPrefs.GetInt(STAMINA);
+       int safeHealth = PlayerPrefs.GetInt(HEALTH);
+      int safeDamage =  PlayerPrefs.GetInt(DAMAGE);
+
+        if (safeStamina != 0)
+            Stamina = safeStamina;
+        if (safeHealth != 0)
+            Health = safeHealth;
+        if (safeDamage != 0)
+            Damage = safeDamage;
+
         _healthImage = health;
         _staminaImage = stamina;
         _healthImage.fillAmount = Health / _maxHp;
@@ -89,7 +107,7 @@ public class Player : MonoBehaviour
         while (Stamina < _maxStamina)
         {
             yield return new WaitForSeconds(0.05f);
-            Stamina += 0.25f;
+            Stamina += _speedFillingStamina;
         }
         Stamina = _maxStamina;
     }
@@ -114,5 +132,6 @@ public class Player : MonoBehaviour
     private void Die()
     {
         _game.ReclaimPlayer(this);
+        _game.RestartGameAfterDiePlayer();
     }
 }

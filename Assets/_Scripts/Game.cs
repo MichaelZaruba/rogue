@@ -43,6 +43,13 @@ public class Game : MonoBehaviour
         EndGame();
     }
 
+    public void RestartGameAfterDiePlayer()
+    {
+        _numberLevel = 1;
+        PlayerPrefs.DeleteAll();
+        EndGame();
+    }
+
     private void EndGame()
     {
         foreach(var level in _levels)
@@ -98,11 +105,10 @@ public class Game : MonoBehaviour
         foreach (var position in _spawnEnemies)
         {
             enemy = _enemyFactory.Get(position.EnemyType);
-            enemy.Initialize(this, _players[0]);
             enemy.gameObject.transform.position = position.transform.position;
+            enemy.Initialize(this, _players[0]);
             _enemys.Add(enemy);
-        }
-       
+        } 
     }
 
     public void ReclaimEnemy(Enemy enemy)
