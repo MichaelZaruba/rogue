@@ -63,8 +63,10 @@ public class Info : MonoBehaviour
 
     public void NextLevelDamage()
     {
-        if (_levelDamage < _maxLevelDamage && GUIManager._instance.GensGold >= _priceDamage)
+        if (_levelDamage < _maxLevelDamage && GUIManager._instance.Gens >= _priceDamage)
         {
+            GUIManager._instance.Gens -= _priceDamage;
+            GUIManager._instance.ValueInit();
             _levelDamage++;
             _player.Damage += _appDamage;
             _damage.text = _player.Damage.ToString();
@@ -74,10 +76,12 @@ public class Info : MonoBehaviour
 
     public void NextLevelHealth()
     {
-        if (_levelHealth < _maxLevelHealth && GUIManager._instance.GensGold >= _priceHealth)
+        if (_levelHealth < _maxLevelHealth && GUIManager._instance.Gens >= _priceHealth)
         {
+            GUIManager._instance.Gens -= _priceHealth;
+            GUIManager._instance.ValueInit();
             _levelHealth++;
-            _player.Stamina += _appStamina;
+            _player.Health += _appHealth;
             _health.text = _player.Health.ToString();
             _levelHealthUI.text = "Level " + _levelHealth.ToString();
         }
@@ -85,8 +89,10 @@ public class Info : MonoBehaviour
 
     public void NextLevelStamina()
     {
-        if (_levelStamina < _maxLevelStamina && GUIManager._instance.GensGold >= _priceStamina)
+        if (_levelStamina < _maxLevelStamina && GUIManager._instance.Gens >= _priceStamina)
         {
+            GUIManager._instance.Gens -= _priceStamina;
+            GUIManager._instance.ValueInit();
             _levelStamina++;
             _player.Stamina += _appStamina;
             _stamina.text = _player.Stamina.ToString();

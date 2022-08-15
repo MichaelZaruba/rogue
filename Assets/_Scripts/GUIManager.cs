@@ -39,6 +39,13 @@ public class GUIManager : MonoBehaviour
         _gensPurpleUI.text = _gensPurple.ToString();
     }
 
+    public void ValueInit()
+    {
+        _gensUI.text = _gens.ToString();
+        _gensGoldUI.text = _gensGold.ToString();
+        _gensPurpleUI.text = _gensPurple.ToString();
+    }
+
     public int Gens
     {
         get
