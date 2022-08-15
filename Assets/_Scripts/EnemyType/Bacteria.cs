@@ -6,14 +6,12 @@ public class Bacteria : Enemy
 {
     [SerializeField] private float _rangeToPatrol;
     [SerializeField] private float _prepareAttackTime;
-    [HideInInspector] public Transform _attackPoint;
-    [SerializeField] private LayerMask _playerLayerMask;
+    [SerializeField] private float attackPointWidth;
+    [SerializeField] private float attackPointHeight;
     [HideInInspector] public bool isAttacking = false;
     [HideInInspector] public bool prepareToAttack = false;
-    [HideInInspector] public bool movingRight = false;
+    public Transform _attackPoint;
 
-    private Vector3 _startPosition;
-    private bool _moveRight;
     
 
     private void Start()
@@ -24,52 +22,28 @@ public class Bacteria : Enemy
     private void Update()
     {
         CheckMoveRight();
-        CheckMovingDirection();
         Patrol();
+        CheckMovingDirection();
         if (CheckPlayer())
         {
 
         }
     }
 
-    private void CheckMovingDirection()
-    {
-        if (_rigidbody.velocity.x > 0 && !movingRight)
-        {
 
-            movingRight = true;
-            return;
-        }
-        if (_rigidbody.velocity.x < 0 && movingRight)
-        {
-            movingRight = false;
-        }
+
+    protected override void CheckMoveRight()
+    {
+        base.CheckMoveRight();
     }
 
-    private void CheckMoveRight()
+    protected override void Patrol()
     {
-        if (transform.position.x > _startPosition.x + _rangeToPatrol)
-        {
-            _moveRight = false;
-        }
-        else if (transform.position.x < _startPosition.x - _rangeToPatrol)
-        {
-            _moveRight = true;
-        }
-    }
-
-    private void Patrol()
-    {
-        if (_moveRight)
-        {
-            _rigidbody.velocity = Vector2.right * _speed;
-        }
-        if (!_moveRight)
-            _rigidbody.velocity = Vector2.left * _speed;
+        base.Patrol();
     }
     private void Attack()
     {
-        Collider2D player = Physics2D.OverlapBox(_attackPoint.position, new Vector2(1.02f, 0.21f), 0, _playerLayerMask);
+        Collider2D player = Physics2D.OverlapBox(_attackPoint.position, new Vector2(attackPointWidth, attackPointHeight), 0, _playerLayer);
         if (player != null)
         {
             player.gameObject.GetComponent<Player>().GetDamage(_damage);
@@ -82,6 +56,10 @@ public class Bacteria : Enemy
         isAttacking = false;
         StartCoroutine(PrepareToAttack());
     }
+    protected override bool CheckPlayer()
+    {
+        return base.CheckPlayer();
+    }
 
     private IEnumerator PrepareToAttack()
     {
@@ -92,7 +70,7 @@ public class Bacteria : Enemy
     private void OnDrawGizmos()
     {
         Gizmos.color = new Color(1, 1, 1, 0.5f);
-        Gizmos.DrawCube(_attackPoint.position, new Vector2(1.02f, 0.21f));
+        Gizmos.DrawCube(_attackPoint.position, new Vector2(attackPointWidth, attackPointHeight));
     }
 
 }

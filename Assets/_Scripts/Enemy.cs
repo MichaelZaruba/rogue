@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _health = 100;
     [SerializeField] private int _amountGens;
 
-    [SerializeField] private LayerMask _playerLayer;
+    [SerializeField] protected LayerMask _playerLayer;
 
     [SerializeField] protected float _radiusOfVision;
     [SerializeField] protected float _speed;
@@ -23,17 +23,18 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] protected Rigidbody2D _rigidbody;
 
-    private Vector3 _startPosition;
+    protected Vector3 _startPosition;
 
     private Game _game;
 
     private List<Gens> _gens = new List<Gens>();
 
-    private float _startHealth;
+    protected float _startHealth;
 
     private Player _player;
 
     protected bool _moveRight;
+    protected bool _movingRight;
     protected EnemyAI _enemyAI;
 
     public bool IsFindPlayer;
@@ -54,6 +55,7 @@ public class Enemy : MonoBehaviour
         gameObject.GetComponent<EnemyAI>().Initialize(player);
         _enemyAI = GetComponent<EnemyAI>();
     }
+
     protected virtual void CheckMoveRight()
     {
         if (transform.position.x > _startPosition.x + _rangePatrol)
@@ -63,6 +65,20 @@ public class Enemy : MonoBehaviour
         else if (transform.position.x < _startPosition.x - _rangePatrol)
         {
             _moveRight = true;
+        }
+    }
+    protected void CheckMovingDirection()
+    {
+        if (_rigidbody.velocity.x > 0 && !_movingRight)
+        {
+            transform.rotation = Quaternion.Euler(0, 180, 0);
+            _movingRight = true;
+            return;
+        }
+        if (_rigidbody.velocity.x < 0 && _movingRight)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, 0);
+            _movingRight = false;
         }
     }
 
