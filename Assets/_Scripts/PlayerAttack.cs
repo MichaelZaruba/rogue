@@ -136,7 +136,8 @@ public class PlayerAttack : MonoBehaviour
     {
         foreach (Collider2D enemy in _hitEnemies)
         {
-            Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), enemy);
+            if (_player.IsAttackingThrough)
+                Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), enemy);
             _textAttack.gameObject.SetActive(true);
             _textAttack.text = "-" + _characteristic.Damage.ToString();
             enemy.GetComponent<Enemy>().GetDamage(_characteristic.Damage);

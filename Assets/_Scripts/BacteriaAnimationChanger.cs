@@ -29,10 +29,12 @@ public class BacteriaAnimationChanger : MonoBehaviour
         }
         if (readyToMove)
         {
-            if (_rigidbody2.velocity.x > 0.1f)
+            if (Mathf.Abs(_rigidbody2.velocity.x) > 0.1f)
                 _animationChange.ChangeAnimationState(WorkAnim.Bacteria_Moving);
-            if (_rigidbody2.velocity.x < 0.1f)
+            if (Mathf.Abs(_rigidbody2.velocity.x) < 0.1f)
                 _animationChange.ChangeAnimationState(WorkAnim.Bacteria_Idle);
         }
+
+        
     }
 }
