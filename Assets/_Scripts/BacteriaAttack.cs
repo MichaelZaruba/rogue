@@ -20,7 +20,7 @@ public class BacteriaAttack : MonoBehaviour
             return;
         }
 
-        Collider2D player = Physics2D.OverlapBox(_bacteria._attackPoint.position, new Vector2(1.02f, 0.21f), 0, _playerLayerMask);
+        Collider2D player = Physics2D.OverlapBox(_bacteria._attackPoint.position, new Vector2(_bacteria.attackPointWidth, _bacteria.attackPointHeight), 0, _playerLayerMask);
         if (player == null)
             return;
         _bacteria.isAttacking = true;

@@ -140,6 +140,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void ChangeSide()
     {
+        if (IsAttacking)
+        {
+            return;
+        }
         if (_horizontalSpeed < 0 && _isRightSide)
         {
             CorrectEffect = EffectLeft;

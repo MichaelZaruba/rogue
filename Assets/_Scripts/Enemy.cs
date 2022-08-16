@@ -73,13 +73,16 @@ public class Enemy : MonoBehaviour
     {
         if (_rigidbody.velocity.x > 0.01f && !_movingRight)
         {
+
             transform.rotation = Quaternion.Euler(0, 180, 0);
+
             _canvas.transform.transform.rotation = Quaternion.Euler(0, 0, 0);
             _movingRight = true;
             return;
         }
-        if (_rigidbody.velocity.x < 0.01f && _movingRight)
+        if (_rigidbody.velocity.x < -0.01f && _movingRight)
         {
+
             transform.rotation = Quaternion.Euler(0, 0, 0);
             _canvas.transform.transform.rotation = Quaternion.Euler(0, 0, 0);
             _movingRight = false;

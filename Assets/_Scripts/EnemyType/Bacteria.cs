@@ -6,8 +6,8 @@ public class Bacteria : Enemy
 {
     [SerializeField] private float _rangeToPatrol;
     [SerializeField] private float _prepareAttackTime;
-    [SerializeField] private float attackPointWidth;
-    [SerializeField] private float attackPointHeight;
+    public float attackPointWidth;
+    public float attackPointHeight;
     [HideInInspector] public bool isAttacking = false;
     [HideInInspector] public bool prepareToAttack = false;
     public Transform _attackPoint;

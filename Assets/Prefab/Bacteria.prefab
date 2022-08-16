@@ -376,7 +376,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1000000
-  m_LinearDrag: 0
+  m_LinearDrag: 0.2
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -427,7 +427,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   _radiusOfVision: 10.55
-  _speed: 2.8
+  _speed: 2.9
   _damage: 3
   _rigidbody: {fileID: 1280557462287742909}
   IsFindPlayer: 0
