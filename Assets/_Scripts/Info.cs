@@ -120,7 +120,8 @@ public class Info : MonoBehaviour
             _player.Stamina += _appStamina;
             PlayerPrefs.SetInt(LEVEL_STAMINA, _levelStamina);
             PlayerPrefs.SetInt(Player.STAMINA, (int)_player.Stamina);
-            _stamina.text = _player.Stamina.ToString();
+            var stamina = (int)_player.Stamina;
+            _stamina.text = stamina.ToString();
             _levelStaminaUI.text = "Level " + _levelStamina.ToString();
         }
     }

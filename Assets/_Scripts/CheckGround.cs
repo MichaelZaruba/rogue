@@ -12,6 +12,7 @@ public class CheckGround : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Ground>() && _player.Rigidbody.velocity.y < 0.01f)
         {
+            _player.CountJump = 0;
             _player.OnGround = true;
         }
     }

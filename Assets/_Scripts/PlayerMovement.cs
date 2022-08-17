@@ -25,6 +25,10 @@ public class PlayerMovement : MonoBehaviour
 
     private bool _isRightSide = true;
 
+    private int _countJump = 0;
+
+    public int MaxJump;
+
     public GameObject EffectRight;
     public GameObject EffectLeft;
 
@@ -37,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
     public bool IsAttackingThrough;
     public bool IsAttackingDown;
 
+    public int CountJump { get => _countJump; set => _countJump = value; }
 
     private void Awake()
     {
@@ -131,8 +136,10 @@ public class PlayerMovement : MonoBehaviour
 
     private bool IsClickSpace()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && OnGround)
+        if (Input.GetKeyDown(KeyCode.Space) && (OnGround || _countJump < MaxJump))
         {
+            Debug.Log(MaxJump);  
+            _countJump++;
             return true;
         }
         return false;

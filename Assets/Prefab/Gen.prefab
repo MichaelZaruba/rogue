@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1938065099729356844}
   - component: {fileID: 6014196242279830966}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   - component: {fileID: 4758106444361321226}
   - component: {fileID: 5966574064474920945}
   - component: {fileID: 3189088157627632913}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Gen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -287,7 +287,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.01
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
