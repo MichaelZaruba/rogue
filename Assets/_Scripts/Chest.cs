@@ -1,32 +1,32 @@
 ﻿using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Chest : MonoBehaviour
 {
 
-    [SerializeField] private AttackType attackType;
-    [SerializeField] private GameObject _attackPrefab;
-    private bool _playerIsNear;
-    private bool _isOpenedChest = false;
-    public Animator animator;
+    [SerializeField] private AttackType _attackType;
+    [SerializeField] private Sprite _emptySprite;
+    [SerializeField] private Light2D _light;
 
-    public const string EMPTY = "Empty";
-    public const string TRIGGER = "Trigger";
+     private bool _playerIsNear;
+
+    public Animator Animator;
+
+    public const string CLOSE = "Close";
+    public const string OPEN = "Open";
 
     private void Update()
     {
-        if (_isOpenedChest)
-        {
-            animator.Play(EMPTY);
-            return;
-        }
+
         if (!_playerIsNear)
             return;
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            _isOpenedChest = true;
-            
-            animator.Play(EMPTY);
+            gameObject.GetComponent<Animator>().enabled = false;
+            _light.gameObject.SetActive(false);
+            var sprite = gameObject.GetComponent<SpriteRenderer>();
+            sprite.sprite = _emptySprite;
         }
     }
 
@@ -34,8 +34,18 @@ public class Chest : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Player>())
         {
-            animator.Play(TRIGGER);
+            _light.gameObject.SetActive(true);
+            Animator.Play(OPEN);
             _playerIsNear = true;
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<Player>())
+            {
+            _light.gameObject.SetActive(false);
+            Animator.Play(CLOSE);
+            }
     }
 }
