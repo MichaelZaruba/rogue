@@ -16,9 +16,7 @@ public abstract class TypeEnemyAttack : MonoBehaviour, IAttacker
 
     protected LayerMask _playerLayerMask;
     protected Enemy _enemy;
-
-    [SerializeField] protected EnemyAttackType _type;
-
+    protected EnemyAttackType _type;
 
     public virtual void MeleeAttack()
     {
