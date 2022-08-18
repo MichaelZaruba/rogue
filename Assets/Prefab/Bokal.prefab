@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 1449824418491714332}
   - component: {fileID: -6789050548903423634}
   - component: {fileID: -7121157541637975733}
+  - component: {fileID: 348642360843720803}
   m_Layer: 10
   m_Name: Bokal
   m_TagString: Untagged
@@ -69,6 +70,7 @@ Transform:
   m_Children:
   - {fileID: 7031691143554849026}
   - {fileID: 8275568013119067283}
+  - {fileID: 1130030414825161762}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -207,7 +209,7 @@ MonoBehaviour:
   _gen: {fileID: 4758106444361321226, guid: 36be609e6d76b1a48ae814142084a432, type: 3}
   _healthUI: {fileID: 1929102425249040137}
   _healthBar: {fileID: 2456461549074470153}
-  _canvasTransform: {fileID: 7031691143554849026}
+  _canvas: {fileID: 0}
   _health: 150
   _amountGens: 0
   _playerLayer:
@@ -218,6 +220,7 @@ MonoBehaviour:
   _damage: 10
   _rigidbody: {fileID: 3140415031687131912}
   IsFindPlayer: 0
+  _attackPoint: {fileID: 1130030414825161762}
   PlayerPosition: {fileID: 0}
   TestMode: 0
   _animator: {fileID: 2551522386792540492}
@@ -281,6 +284,29 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
+--- !u!114 &348642360843720803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2850644086380809682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a0556b3d03537c4992971aa3de4207a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 0
+  _rangeToPatrol: 0
+  _prepareAttackTime: 0
+  _attackPoint: {fileID: 1130030414825161762}
+  attackPointWidth: 0
+  attackPointHeight: 0
+  isAttacking: 0
+  prepareToAttack: 0
+  _playerLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &3506813230221797672
 GameObject:
   m_ObjectHideFlags: 0
@@ -612,6 +638,50 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &4815191488846502179
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1130030414825161762}
+  - component: {fileID: 3724531534253341828}
+  m_Layer: 0
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1130030414825161762
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4815191488846502179}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.0024263577, y: 0.036258917, z: 0}
+  m_LocalScale: {x: 0.48527202, y: 0.48527202, z: 0.48527202}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2717653229512337707}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3724531534253341828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4815191488846502179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e6ce113fb3c44d449aff2a9d63593fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6853596430605340519
 GameObject:
   m_ObjectHideFlags: 0

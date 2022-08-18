@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Const;
 
-public class BacteriaAnimationChanger : MonoBehaviour
+public class EnemyAnimationChanger : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _rigidbody2;
-    [SerializeField] private Bacteria _bacteria;
+    [SerializeField] private EnemyAttack _enemyAttack;
     [SerializeField] private AnimationChange _animationChange;
     private bool readyToMove = true;
 
@@ -17,11 +17,11 @@ public class BacteriaAnimationChanger : MonoBehaviour
 
     void ChangeAnimation()
     {
-        if (_bacteria.isAttacking && !readyToMove)
+        if (_enemyAttack.isAttacking && !readyToMove)
             return;
-        if (_bacteria.prepareToAttack)
+        if (_enemyAttack.prepareToAttack)
             readyToMove = true;
-        if (_bacteria.isAttacking)
+        if (_enemyAttack.isAttacking)
         {
             _animationChange.ChangeAnimationState(WorkAnim.Bacteria_Attack);
             readyToMove = false;

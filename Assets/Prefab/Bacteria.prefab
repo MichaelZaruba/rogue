@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3892189013177092310}
+  - component: {fileID: 8574012741531479160}
   m_Layer: 10
   m_Name: AttackPoint
   m_TagString: Untagged
@@ -31,6 +32,18 @@ Transform:
   m_Father: {fileID: 8319514212391408329}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8574012741531479160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1181443570370294827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e6ce113fb3c44d449aff2a9d63593fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3749731432504054850
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,9 +271,9 @@ GameObject:
   - component: {fileID: 7640162598489528260}
   - component: {fileID: 8843103252247864371}
   - component: {fileID: 1608721184810099091}
-  - component: {fileID: 7880673021811313912}
   - component: {fileID: 7254451008615628421}
   - component: {fileID: 4548057115914133931}
+  - component: {fileID: 9178966148224112251}
   m_Layer: 10
   m_Name: Bacteria
   m_TagString: Untagged
@@ -431,15 +444,9 @@ MonoBehaviour:
   _damage: 3
   _rigidbody: {fileID: 1280557462287742909}
   IsFindPlayer: 0
+  _attackPoint: {fileID: 8319514212391408329}
   PlayerPosition: {fileID: 0}
   TestMode: 0
-  _rangeToPatrol: 6
-  _prepareAttackTime: 2.82
-  attackPointWidth: 1.55
-  attackPointHeight: 0.33
-  isAttacking: 0
-  prepareToAttack: 0
-  _attackPoint: {fileID: 3892189013177092310}
 --- !u!114 &8843103252247864371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -453,7 +460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody2: {fileID: 1280557462287742909}
-  _bacteria: {fileID: 7640162598489528260}
+  _enemyAttack: {fileID: 9178966148224112251}
   _animationChange: {fileID: 1608721184810099091}
 --- !u!114 &1608721184810099091
 MonoBehaviour:
@@ -469,22 +476,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 
   animator: {fileID: 7816295332004665099}
---- !u!114 &7880673021811313912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6003049518838595198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f733d9c948c81040a98e44ae8ec2b2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _bacteria: {fileID: 7640162598489528260}
-  _playerLayerMask:
-    serializedVersion: 2
-    m_Bits: 512
 --- !u!114 &7254451008615628421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -528,6 +519,29 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
+--- !u!114 &9178966148224112251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6003049518838595198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a0556b3d03537c4992971aa3de4207a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _type: 0
+  _rangeToPatrol: 3
+  _prepareAttackTime: 0.2
+  _attackPoint: {fileID: 8319514212391408329}
+  attackPointWidth: 1
+  attackPointHeight: 2
+  isAttacking: 0
+  prepareToAttack: 0
+  _playerLayerMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &7734771039592413726
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Pathfinding;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,7 +8,9 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
-public class Enemy : MonoBehaviour
+[RequireComponent(typeof(Seeker))]
+[RequireComponent (typeof(EnemyAttack))]
+public abstract class Enemy : MonoBehaviour
 {
     [SerializeField] private float _rangePatrol;
     [SerializeField] private Gens _gen;
@@ -22,13 +25,13 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] protected float _radiusOfVision;
     [SerializeField] protected float _speed;
-    [SerializeField] protected int _damage;
-
+    [SerializeField] public int _damage;
 
     [SerializeField] protected Rigidbody2D _rigidbody;
 
     protected Vector3 _startPosition;
 
+    private EnemyAttack _enemyAttack;
     private Game _game;
 
     private List<Gens> _gens = new List<Gens>();
@@ -42,7 +45,7 @@ public class Enemy : MonoBehaviour
     protected EnemyAI _enemyAI;
 
     public bool IsFindPlayer;
-
+    public Transform _attackPoint;
 
     public Transform PlayerPosition;
 
@@ -50,12 +53,14 @@ public class Enemy : MonoBehaviour
 
     public void Initialize(Game game, Player player)
     {
-        _startPosition = transform.position;
+        
+           _startPosition = transform.position;
         _startHealth = _health;
         _healthUI.text = _health.ToString();
         _game = game;
         _player = player;
         Debug.Log(player);
+        gameObject.GetComponent<EnemyAttack>().Initialize(this);
         gameObject.GetComponent<EnemyAI>().Initialize(player);
         _enemyAI = GetComponent<EnemyAI>();
     }
@@ -144,9 +149,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-
-
-
     private void Die()
     {
         int countGens = Random.Range(3, 10);
@@ -164,5 +166,4 @@ public class Enemy : MonoBehaviour
       Gizmos.color = new Color(1, 1, 1, 0.5f);
       Gizmos.DrawSphere(transform.position, _radiusOfVision);
    }
-
 }
