@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6170549012681994126}
   - component: {fileID: 476278655865517551}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Healthimage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -244,23 +244,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bc583dd171122441905f021513bf0fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rangePatrol: 3
-  _gen: {fileID: 4758106444361321226, guid: 36be609e6d76b1a48ae814142084a432, type: 3}
-  _healthUI: {fileID: 2882243321884909122}
-  _healthBar: {fileID: 476278655865517551}
-  _canvas: {fileID: 3699430890777809470}
   _health: 200
-  _amountGens: 0
+  _rangePatrol: 3
+  _radiusOfVision: 3
+  _speed: 5
   _playerLayer:
     serializedVersion: 2
     m_Bits: 512
-  _radiusOfVision: 3
-  _speed: 5
-  _damage: 15
-  _rigidbody: {fileID: 3922771129107417795}
+  Damage: 10
   IsFindPlayer: 0
-  _attackPoint: {fileID: 3922771129107417853}
-  PlayerPosition: {fileID: 3922771129107417853}
   TestMode: 0
 --- !u!61 &3922771129107417796
 BoxCollider2D:
@@ -321,7 +313,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a0556b3d03537c4992971aa3de4207a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 0
   _rangeToPatrol: 0
   _prepareAttackTime: 0
   _attackPoint: {fileID: 8288722141296529634}
@@ -332,6 +323,7 @@ MonoBehaviour:
   _playerLayerMask:
     serializedVersion: 2
     m_Bits: 0
+  _type: 0
 --- !u!1 &3338236949937660458
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,7 +336,7 @@ GameObject:
   - component: {fileID: 8106776283841649042}
   - component: {fileID: 3629743239566001641}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: HealthWithoutHp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

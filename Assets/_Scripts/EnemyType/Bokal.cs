@@ -6,7 +6,6 @@ using Const;
 
 public class Bokal : Enemy
 {
-    [SerializeField] private Animator _animator;
 
     public bool justShot;
     

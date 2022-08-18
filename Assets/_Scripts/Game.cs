@@ -6,22 +6,35 @@ using UnityEngine.UI;
 public class Game : MonoBehaviour
 {
     [SerializeField] private Talants _talants;
+
     [SerializeField] private Info _info;
+
     [SerializeField] private AttackInventory _attackInventory;
+
     [SerializeField] private Player _player;
+
     [SerializeField] private LookAtTargetCamera _lookAtTargetCamera;
+
     [SerializeField] private Image _staminaImage;
     [SerializeField] private Image _healthImage;
-    [SerializeField] private List<Level> _levelsSafe;
+
+    [SerializeField] private Gens _gensPrefab;
+
+    [SerializeField] 
+    private List<Level> _levelsSafe;
+
     [SerializeField, Range(1,10)] private int _numberLevel;
+
     [SerializeField] private EnemyFactory _enemyFactory;
  
     private SpawnPlayer _spawnPlayer;
 
     private List<Level> _levels = new List<Level>();   
+
     private List<SpawnEnemy> _spawnEnemies = new List<SpawnEnemy>();
 
     private List<Player> _players = new List<Player>();
+
     private List<Enemy> _enemys = new List<Enemy>();
 
     private void Start()
@@ -108,7 +121,7 @@ public class Game : MonoBehaviour
         {
             enemy = _enemyFactory.Get(position.EnemyType);
             enemy.gameObject.transform.position = position.transform.position;
-            enemy.Initialize(this, _players[0]);
+            enemy.Initialize(this, _players[0], _gensPrefab);
             _enemys.Add(enemy);
         } 
     }

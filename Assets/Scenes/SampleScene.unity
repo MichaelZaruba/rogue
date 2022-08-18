@@ -7389,6 +7389,7 @@ MonoBehaviour:
   _lookAtTargetCamera: {fileID: 519420033}
   _staminaImage: {fileID: 1018194924}
   _healthImage: {fileID: 1116189273}
+  _gensPrefab: {fileID: 4758106444361321226, guid: 36be609e6d76b1a48ae814142084a432, type: 3}
   _levelsSafe:
   - {fileID: 5241138065333622459, guid: 9b3f4145856f8234893a0076ebf03f7b, type: 3}
   - {fileID: 5241138065333622459, guid: d789c52602c0e8546acab7a877ea493a, type: 3}

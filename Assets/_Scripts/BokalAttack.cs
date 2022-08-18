@@ -10,11 +10,18 @@ public class BokalAttack : MonoBehaviour
     [SerializeField] private Bokal _bocal;
     [SerializeField] private Animator _animator;
 
+    private Player _player;
+
     private Vector3 playerPoint;
+
+    public void Initialize(Player player)
+    {
+        _player = player;
+    }
 
     void Attack()
     {
-        playerPoint = _bocal.PlayerPosition.position;
+        playerPoint = _player.transform.position;
         CalculatePositionPlayer();
         var bullet = Instantiate(_bullet, transform.position, Quaternion.identity);
         bullet.transform.position = transform.position;

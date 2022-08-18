@@ -296,7 +296,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a0556b3d03537c4992971aa3de4207a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 0
   _rangeToPatrol: 0
   _prepareAttackTime: 0
   _attackPoint: {fileID: 1130030414825161762}
@@ -306,7 +305,8 @@ MonoBehaviour:
   prepareToAttack: 0
   _playerLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
+  _type: 0
 --- !u!1 &3506813230221797672
 GameObject:
   m_ObjectHideFlags: 0

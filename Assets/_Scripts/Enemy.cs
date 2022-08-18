@@ -12,66 +12,87 @@ using UnityEngine.UI;
 [RequireComponent (typeof(EnemyAttack))]
 public abstract class Enemy : MonoBehaviour
 {
-    [SerializeField] private float _rangePatrol;
-    [SerializeField] private Gens _gen;
-    [SerializeField] private TextMeshProUGUI _healthUI;
-    [SerializeField] private Image _healthBar;
-    [SerializeField] private GameObject _canvas;
+    [SerializeField, Range(20f, 1000f)] private float _health = 100;
+    [SerializeField, Range(3f, 10f)] private float _rangePatrol;
 
-    [SerializeField] private float _health = 100;
-    [SerializeField] private int _amountGens;
+    [SerializeField,Range(1f,5f)] protected float _radiusOfVision;
+    [SerializeField,Range(1f,5f)] protected float _speed;
+    [SerializeField, Range(5f, 15f)] private int _damage;
 
-    [SerializeField] protected LayerMask _playerLayer;
+[SerializeField] protected LayerMask _playerLayer;
 
-    [SerializeField] protected float _radiusOfVision;
-    [SerializeField] protected float _speed;
-    [SerializeField] public int _damage;
-
-    [SerializeField] protected Rigidbody2D _rigidbody;
-
-    protected Vector3 _startPosition;
-
-    private EnemyAttack _enemyAttack;
+    protected Rigidbody2D _rigidbody;
+    private Gens _gen;
+    private Canvas _canvas;
+    private Image[] _healthBar;
+    private TextMeshProUGUI _healthUI;
     private Game _game;
 
     private List<Gens> _gens = new List<Gens>();
 
-    protected float _startHealth;
-
     private Player _player;
+    private AttackPoint _attackPoint;
+
+    protected Animator _animator;
+    protected EnemyAI _enemyAI;
+
+    protected Vector3 _spawnPosition;
+
+    protected float _startHealth;
 
     protected bool _moveRight;
     protected bool _movingRight;
-    protected EnemyAI _enemyAI;
 
     public bool IsFindPlayer;
-    public Transform _attackPoint;
 
-    public Transform PlayerPosition;
 
     public bool TestMode;
 
-    public void Initialize(Game game, Player player)
+    public int Damage => _damage;
+
+    public AttackPoint AttackPoint => _attackPoint;
+
+    public void Initialize(Game game, Player player, Gens gen)
     {
-        
-           _startPosition = transform.position;
+        InitializeComponent();
+        InitializeEnemyAttack();
+        _gen = gen;
+        _spawnPosition = transform.position;
         _startHealth = _health;
         _healthUI.text = _health.ToString();
         _game = game;
         _player = player;
-        Debug.Log(player);
-        gameObject.GetComponent<EnemyAttack>().Initialize(this);
-        gameObject.GetComponent<EnemyAI>().Initialize(player);
+        InitializeEnemyAI();
+    }
+
+    private void InitializeComponent()
+    {
+        _rigidbody = GetComponent<Rigidbody2D>();
+        _attackPoint = GetComponentInChildren<AttackPoint>();
+        _animator = GetComponent<Animator>();
+       _canvas = GetComponentInChildren<Canvas>();
+        _healthBar = GetComponentsInChildren<Image>();
+        _healthUI = GetComponentInChildren<TextMeshProUGUI>();
         _enemyAI = GetComponent<EnemyAI>();
+    }
+
+    private void InitializeEnemyAttack()
+    {
+        gameObject.GetComponent<EnemyAttack>().Initialize(this);
+    }
+
+    private void InitializeEnemyAI()
+    {
+        gameObject.GetComponent<EnemyAI>().Initialize(_player); 
     }
 
     protected virtual void CheckMoveRight()
     {
-        if (transform.position.x > _startPosition.x + _rangePatrol)
+        if (transform.position.x > _spawnPosition.x + _rangePatrol)
         {
             _moveRight = false;
         }
-        else if (transform.position.x < _startPosition.x - _rangePatrol)
+        else if (transform.position.x < _spawnPosition.x - _rangePatrol)
         {
             _moveRight = true;
         }
@@ -84,7 +105,7 @@ public abstract class Enemy : MonoBehaviour
 
             transform.rotation = Quaternion.Euler(0, 180, 0);
 
-            _canvas.transform.transform.rotation = Quaternion.Euler(0, 0, 0);
+            _canvas.transform.rotation = Quaternion.Euler(0, 0, 0);
             _movingRight = true;
             return;
         }
@@ -92,7 +113,7 @@ public abstract class Enemy : MonoBehaviour
         {
 
             transform.rotation = Quaternion.Euler(0, 0, 0);
-            _canvas.transform.transform.rotation = Quaternion.Euler(0, 0, 0);
+            _canvas.transform.rotation = Quaternion.Euler(0, 0, 0);
             _movingRight = false;
 
         }
@@ -125,14 +146,15 @@ public abstract class Enemy : MonoBehaviour
         }
         IsFindPlayer = true;
         gameObject.GetComponent<EnemyAI>().IsTargetActive = true;
-        PlayerPosition = player.transform;
+        if (gameObject.GetComponent<BokalAttack>() != null)
+            gameObject.GetComponent<BokalAttack>().Initialize(player.GetComponent<Player>());
         return true;
     }
 
    public void GetDamage(int damage)
     {
         _health -= damage;
-        _healthBar.fillAmount = _health / _startHealth;
+        _healthBar[1].fillAmount = _health / _startHealth;
         _healthUI.text = _health.ToString();
         if (_health <= 0)
         {
