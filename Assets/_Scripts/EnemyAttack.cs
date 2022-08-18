@@ -4,23 +4,11 @@ using UnityEngine;
 
 public class EnemyAttack : TypeEnemyAttack, IAttacker
 {
-    [SerializeField] private float _rangeToPatrol;
-    [SerializeField] private float _prepareAttackTime;
-
-    public Transform _attackPoint;
-
-    public float attackPointWidth;
-    public float attackPointHeight;
-
-    [HideInInspector] public bool isAttacking = false;
-    [HideInInspector] public bool prepareToAttack = false;
-
-    [SerializeField] private LayerMask _playerLayerMask;
-    private Enemy _enemy;
-
-    public void Initialize(Enemy enemy)
+    public void Initialize(Enemy enemy, EnemyAttackType type, LayerMask player)
     {
+        _playerLayerMask = player;
         _enemy = enemy;
+        _type = type;
     }
 
     void Update()
@@ -33,44 +21,13 @@ public class EnemyAttack : TypeEnemyAttack, IAttacker
 
     public override void MeleeAttack()
     {
-        if (prepareToAttack || isAttacking)
-            return;
-
-        Collider2D player = Physics2D.OverlapBox(_enemy._attackPoint.position,
-            new Vector2(attackPointWidth, attackPointHeight), 0, _playerLayerMask);
-        if (player == null)
-            return;
-        isAttacking = true;
+        base.MeleeAttack();
     }
 
-    public void RangeAttack()
+    public override void RangeAttack()
     {
         throw new System.NotImplementedException();
     }
-
-    private void Attack()
-    {
-        Collider2D player = Physics2D.OverlapBox(_enemy._attackPoint.position,
-            new Vector2(attackPointWidth, attackPointHeight), 0, _playerLayerMask);
-        if (player != null)
-        {
-            player.gameObject.GetComponent<Player>().GetDamage(_enemy._damage);
-        }
-    }
-
-    private void EndAttack()
-    {
-        prepareToAttack = true;
-        isAttacking = false;
-        StartCoroutine(PrepareToAttack());
-    }
-
-    private IEnumerator PrepareToAttack()
-    {
-        yield return new WaitForSeconds(_prepareAttackTime);
-        prepareToAttack = false;
-    }
-
 
     private void OnDrawGizmos()
     {

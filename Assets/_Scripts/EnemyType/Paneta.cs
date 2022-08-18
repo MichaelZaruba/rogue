@@ -29,8 +29,4 @@ public class Paneta : Enemy
     {
          base.CheckMoveRight();
     }
-
-  
-   
-
 }

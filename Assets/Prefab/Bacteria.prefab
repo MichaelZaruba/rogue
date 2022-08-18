@@ -429,23 +429,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7b95cdfbc1012e46ace14fa15a94ead, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rangePatrol: 0
-  _gen: {fileID: 4758106444361321226, guid: 36be609e6d76b1a48ae814142084a432, type: 3}
-  _healthUI: {fileID: 7132409410572076662}
-  _healthBar: {fileID: 4870842541450898907}
-  _canvas: {fileID: 8526340340055493130}
-  _health: 100
-  _amountGens: 2
+  _prepareAttackTime: 0
   _playerLayer:
     serializedVersion: 2
     m_Bits: 512
+  _attackPoint: {fileID: 0}
+  attackPointWidth: 0
+  attackPointHeight: 0
+  isAttacking: 0
+  prepareToAttack: 0
+  _type: 0
+  _health: 100
+  _rangePatrol: 4.1
   _radiusOfVision: 10.55
   _speed: 2.9
   _damage: 3
-  _rigidbody: {fileID: 1280557462287742909}
+  _type: 0
   IsFindPlayer: 0
-  _attackPoint: {fileID: 8319514212391408329}
-  PlayerPosition: {fileID: 0}
   TestMode: 0
 --- !u!114 &8843103252247864371
 MonoBehaviour:
@@ -459,9 +459,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a1684871516d147a0c08010b0b7dc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rigidbody2: {fileID: 1280557462287742909}
-  _enemyAttack: {fileID: 9178966148224112251}
-  _animationChange: {fileID: 1608721184810099091}
 --- !u!114 &1608721184810099091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -475,7 +472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 
-  animator: {fileID: 7816295332004665099}
+  Animator: {fileID: 0}
 --- !u!114 &7254451008615628421
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -531,17 +528,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a0556b3d03537c4992971aa3de4207a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 0
-  _rangeToPatrol: 3
   _prepareAttackTime: 0.2
+  _playerLayer:
+    serializedVersion: 2
+    m_Bits: 512
   _attackPoint: {fileID: 8319514212391408329}
   attackPointWidth: 1
   attackPointHeight: 2
   isAttacking: 0
   prepareToAttack: 0
-  _playerLayerMask:
-    serializedVersion: 2
-    m_Bits: 512
+  _type: 0
 --- !u!1 &7734771039592413726
 GameObject:
   m_ObjectHideFlags: 0

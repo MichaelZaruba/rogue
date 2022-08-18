@@ -7,7 +7,7 @@ public class Bacteria : Enemy
 
     private void Start()
     {
-        _startPosition = transform.position;
+        _spawnPosition = transform.position;
     }
 
     private void Update()
@@ -19,8 +19,9 @@ public class Bacteria : Enemy
         {
 
         }
-    }
 
+
+    }
 
 
     protected override void CheckMoveRight()

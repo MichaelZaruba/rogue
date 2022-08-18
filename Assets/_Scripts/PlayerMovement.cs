@@ -47,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
     {
         CorrectEffect = EffectRight;
        _characteristic = GetComponent<Player>();
+        _animationChange.Animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -130,7 +131,7 @@ public class PlayerMovement : MonoBehaviour
     private void Jump()
     {
         _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _powerJump);
-        _animationChange.ChangeAnimationState(Const.WorkAnim.Player_Jump);
+        _animationChange.ChangeAnimationState(Const.PlayerAnim.Player_Jump);
         OnGround = false;
     }
 
@@ -177,17 +178,17 @@ public class PlayerMovement : MonoBehaviour
         if (OnGround)
         {
             if (Mathf.Abs(Rigidbody.velocity.x) > 0.01f && Mathf.Abs(Rigidbody.velocity.x) <= _characteristic.Speed)
-                _animationChange.ChangeAnimationState(Const.WorkAnim.Player_Run);
+                _animationChange.ChangeAnimationState(Const.PlayerAnim.Player_Run);
             if(Mathf.Abs(Rigidbody.velocity.x) <= 0.01f)
-                _animationChange.ChangeAnimationState(Const.WorkAnim.Player_Idle);
+                _animationChange.ChangeAnimationState(Const.PlayerAnim.Player_Idle);
             if (Mathf.Abs(Rigidbody.velocity.x) > _characteristic.Speed + 0.01f)
-                _animationChange.ChangeAnimationState(Const.WorkAnim.Player_Sprint);
+                _animationChange.ChangeAnimationState(Const.PlayerAnim.Player_Sprint);
         }
         else
         {
             if (_verticalSpeed > 0)
-                _animationChange.ChangeAnimationState(Const.WorkAnim.Player_Jump);
-            else _animationChange.ChangeAnimationState(Const.WorkAnim.Player_Fall);
+                _animationChange.ChangeAnimationState(Const.PlayerAnim.Player_Jump);
+            else _animationChange.ChangeAnimationState(Const.PlayerAnim.Player_Fall);
         }
     }
 }

@@ -6,7 +6,6 @@ using Const;
 
 public class Bokal : Enemy
 {
-    [SerializeField] private Animator _animator;
 
     public bool justShot;
     
@@ -34,7 +33,7 @@ public class Bokal : Enemy
     {
         if (justShot)
             return;
-        _animator.SetBool(WorkAnim.Bokal_Attack, true);
+        _animator.SetBool(EnemyAnim.IS_ATTACK, true);
         justShot = true;
     }
    
