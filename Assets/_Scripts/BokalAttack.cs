@@ -37,7 +37,7 @@ public class BokalAttack : MonoBehaviour
 
     public IEnumerator PrepareAnotherAttack()
     {
-        _animator.SetBool(WorkAnim.Bokal_Attack, false);
+        _animator.SetBool(EnemyAnim.IS_ATTACK, false);
         yield return new WaitForSeconds(_reloadAttackTime);
         _bocal.justShot = false;
     }

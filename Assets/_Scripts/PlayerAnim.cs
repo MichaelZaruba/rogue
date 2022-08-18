@@ -1,10 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace Const
 {
-    public class WorkAnim : MonoBehaviour
+    public class PlayerAnim 
     {
         public const string Player_Idle = "Idle";
         public const string Player_Run = "run";
@@ -15,9 +11,14 @@ namespace Const
         public const string Player_Dash_Attack = "dashAttack";
         public const string Player_Jump_Attack = "jumping_attack_v2";
         public const string Player_Sprint = "sprint";
-        public const string Bokal_Attack = "IsAggred";
-        public const string Bacteria_Idle = "bacteria_idle";
-        public const string Bacteria_Moving = "bacteria_moving";
-        public const string Bacteria_Attack = "bacteria_attack";
+ 
+    }
+
+    public class EnemyAnim
+    {
+        public const string IS_ATTACK = "IsAttack";
+        public const string IDLE = "Idle";
+        public const string MOVING = "Moving";
+        public const string ATTACK = "Attack";
     }
 }

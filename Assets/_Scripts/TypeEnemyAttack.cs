@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TypeEnemyAttack : MonoBehaviour, IAttacker
+public abstract class TypeEnemyAttack : MonoBehaviour, IAttacker
 {
     [SerializeField] private float _prepareAttackTime;
 
@@ -14,7 +14,7 @@ public class TypeEnemyAttack : MonoBehaviour, IAttacker
     [HideInInspector] public bool isAttacking = false;
     [HideInInspector] public bool prepareToAttack = false;
 
-    [SerializeField] private LayerMask _playerLayerMask;
+    protected LayerMask _playerLayerMask;
     protected Enemy _enemy;
 
     [SerializeField] protected EnemyAttackType _type;

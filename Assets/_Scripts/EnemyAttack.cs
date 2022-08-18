@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class EnemyAttack : TypeEnemyAttack, IAttacker
 {
-    
-
-    public void Initialize(Enemy enemy)
+    public void Initialize(Enemy enemy, EnemyAttackType type, LayerMask player)
     {
+        _playerLayerMask = player;
         _enemy = enemy;
+        _type = type;
     }
 
     void Update()

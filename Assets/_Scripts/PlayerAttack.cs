@@ -52,20 +52,20 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.S) && IsThroughDownActivate && !_player.IsAttacking && !_player.OnGround)
         {
-            AttackDown(Const.WorkAnim.Player_Jump_Attack, _durationAttackDown, _rangeAttackDown);
+            AttackDown(Const.PlayerAnim.Player_Jump_Attack, _durationAttackDown, _rangeAttackDown);
             return;
         }
 
         if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.LeftShift) &&
             _playerMovement.Rigidbody.velocity.magnitude > 0.01f &&!_player.IsAttacking && IsThroughAttackActivate)
         {
-            ThroughAttack(Const.WorkAnim.Player_Dash_Attack, _durationAttackThrough, _rangeAttackThrough);
+            ThroughAttack(Const.PlayerAnim.Player_Dash_Attack, _durationAttackThrough, _rangeAttackThrough);
             return;
         }
 
         if (Input.GetMouseButtonDown(0) && IsAttackActivate)
         {
-            Attack(Const.WorkAnim.Player_Attack, _durationAttack, _rangeAttack);
+            Attack(Const.PlayerAnim.Player_Attack, _durationAttack, _rangeAttack);
         }
     }
 

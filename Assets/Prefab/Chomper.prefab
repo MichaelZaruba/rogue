@@ -93,6 +93,8 @@ GameObject:
   - component: {fileID: 3922771129107417796}
   - component: {fileID: 3922771129107417795}
   - component: {fileID: 8187242773678973067}
+  - component: {fileID: 6148938786840083259}
+  - component: {fileID: 3073041342595867246}
   m_Layer: 10
   m_Name: Chomper
   m_TagString: Untagged
@@ -244,14 +246,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bc583dd171122441905f021513bf0fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _prepareAttackTime: 0
+  _playerLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  _attackPoint: {fileID: 0}
+  attackPointWidth: 0
+  attackPointHeight: 0
+  isAttacking: 0
+  prepareToAttack: 0
+  _type: 0
   _health: 200
   _rangePatrol: 3
   _radiusOfVision: 3
   _speed: 5
-  _playerLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  Damage: 10
+  _damage: 0
+  _type: 0
   IsFindPlayer: 0
   TestMode: 0
 --- !u!61 &3922771129107417796
@@ -313,17 +323,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a0556b3d03537c4992971aa3de4207a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rangeToPatrol: 0
   _prepareAttackTime: 0
+  _playerLayer:
+    serializedVersion: 2
+    m_Bits: 512
   _attackPoint: {fileID: 8288722141296529634}
   attackPointWidth: 0
   attackPointHeight: 0
   isAttacking: 0
   prepareToAttack: 0
-  _playerLayerMask:
-    serializedVersion: 2
-    m_Bits: 0
   _type: 0
+--- !u!114 &6148938786840083259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606584594814494282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09a1684871516d147a0c08010b0b7dc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3073041342595867246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606584594814494282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1aec009fdff2db4b8f49cd26c3eabc7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 
+  Animator: {fileID: 0}
 --- !u!1 &3338236949937660458
 GameObject:
   m_ObjectHideFlags: 0

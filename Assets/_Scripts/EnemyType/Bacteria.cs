@@ -19,8 +19,9 @@ public class Bacteria : Enemy
         {
 
         }
-    }
 
+
+    }
 
 
     protected override void CheckMoveRight()

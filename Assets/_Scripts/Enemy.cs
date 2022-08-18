@@ -10,6 +10,8 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Seeker))]
 [RequireComponent (typeof(EnemyAttack))]
+[RequireComponent(typeof(EnemyAnimationChanger))]
+[RequireComponent(typeof(AnimationChange))]
 public abstract class Enemy : MonoBehaviour
 {
     [SerializeField, Range(20f, 1000f)] private float _health = 100;
@@ -19,9 +21,11 @@ public abstract class Enemy : MonoBehaviour
     [SerializeField,Range(1f,5f)] protected float _speed;
     [SerializeField, Range(5f, 15f)] private int _damage;
 
-[SerializeField] protected LayerMask _playerLayer;
+    [SerializeField] protected LayerMask _playerLayer;
+    [SerializeField] protected EnemyAttackType _type;
 
-    protected Rigidbody2D _rigidbody;
+    private EnemyAttack _enemyAttack;
+    private EnemyAnimationChanger _animationChanger;
     private Gens _gen;
     private Canvas _canvas;
     private Image[] _healthBar;
@@ -30,9 +34,11 @@ public abstract class Enemy : MonoBehaviour
 
     private List<Gens> _gens = new List<Gens>();
 
+    private AnimationChange _animationChange;
     private Player _player;
     private AttackPoint _attackPoint;
 
+    protected Rigidbody2D _rigidbody;
     protected Animator _animator;
     protected EnemyAI _enemyAI;
 
@@ -56,6 +62,7 @@ public abstract class Enemy : MonoBehaviour
     {
         InitializeComponent();
         InitializeEnemyAttack();
+        InitializeEnemyAnimationChanger();
         _gen = gen;
         _spawnPosition = transform.position;
         _startHealth = _health;
@@ -64,9 +71,18 @@ public abstract class Enemy : MonoBehaviour
         _player = player;
         InitializeEnemyAI();
     }
+    
+    private void InitializeEnemyAnimationChanger()
+    {
+        _animationChange.Animator = GetComponent<Animator>();
+        _animationChanger.Initialize(_rigidbody,_enemyAttack, _animationChange);
+    }
 
     private void InitializeComponent()
     {
+        _animationChange = GetComponent<AnimationChange>();
+       _enemyAttack = GetComponent<EnemyAttack>();
+        _animationChanger = GetComponent<EnemyAnimationChanger>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _attackPoint = GetComponentInChildren<AttackPoint>();
         _animator = GetComponent<Animator>();
@@ -78,7 +94,7 @@ public abstract class Enemy : MonoBehaviour
 
     private void InitializeEnemyAttack()
     {
-        gameObject.GetComponent<EnemyAttack>().Initialize(this);
+        _enemyAttack.Initialize(this, _type, _playerLayer);
     }
 
     private void InitializeEnemyAI()
