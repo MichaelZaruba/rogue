@@ -8,7 +8,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(PlayerAttackRange))]
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float _speedFillingStamina = 0.25f;
+    public float _speedFillingStamina = 0.25f;
 
     private Game _game;
 

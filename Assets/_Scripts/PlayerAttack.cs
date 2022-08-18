@@ -37,6 +37,8 @@ public class PlayerAttack : MonoBehaviour
     private Player _characteristic;
     private Collider2D[] _hitEnemies;
 
+    [HideInInspector]public float chanceOfCrit;
+
     [Header("ActivateInInventory")]
     public bool IsThroughAttackActivate;
     public bool IsThroughDownActivate;
@@ -134,13 +136,18 @@ public class PlayerAttack : MonoBehaviour
 
     private void TakeDamage()
     {
+        System.Random random = new System.Random();
+        int damage = _characteristic.Damage;
+        if (random.Next(100) < (int)chanceOfCrit)
+            damage *= 2;
+
         foreach (Collider2D enemy in _hitEnemies)
         {
             if (_player.IsAttackingThrough)
                 Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), enemy);
             _textAttack.gameObject.SetActive(true);
             _textAttack.text = "-" + _characteristic.Damage.ToString();
-            enemy.GetComponent<Enemy>().GetDamage(_characteristic.Damage);
+            enemy.GetComponent<Enemy>().GetDamage(damage);
             _enemyCollider.Add(enemy);
         }
     }
