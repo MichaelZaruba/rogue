@@ -8,10 +8,16 @@ public class Chomper : Enemy
     {
         CheckMoveRight();
         Patrol();
+        CheckMovingDirection();
         if (CheckPlayer())
         {
 
         }
+    }
+
+    protected override void CheckMovingDirection()
+    {
+        base.CheckMovingDirection();
     }
 
     protected override bool CheckPlayer()

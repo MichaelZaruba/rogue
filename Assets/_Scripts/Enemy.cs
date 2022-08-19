@@ -114,7 +114,7 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
-    protected void CheckMovingDirection()
+    protected virtual void CheckMovingDirection()
     {
         if (_rigidbody.velocity.x > 0.01f && !_movingRight)
         {

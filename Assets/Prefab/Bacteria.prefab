@@ -429,21 +429,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7b95cdfbc1012e46ace14fa15a94ead, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prepareAttackTime: 0
-  _playerLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  _attackPoint: {fileID: 0}
-  attackPointWidth: 0
-  attackPointHeight: 0
-  isAttacking: 0
-  prepareToAttack: 0
-  _type: 0
   _health: 100
   _rangePatrol: 4.1
   _radiusOfVision: 10.55
   _speed: 2.9
   _damage: 3
+  _playerLayer:
+    serializedVersion: 2
+    m_Bits: 512
   _type: 0
   IsFindPlayer: 0
   TestMode: 0
@@ -529,15 +522,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prepareAttackTime: 0.2
-  _playerLayer:
-    serializedVersion: 2
-    m_Bits: 512
-  _attackPoint: {fileID: 8319514212391408329}
+  _attackPoint: {fileID: 3892189013177092310}
   attackPointWidth: 1
   attackPointHeight: 2
   isAttacking: 0
   prepareToAttack: 0
-  _type: 0
 --- !u!1 &7734771039592413726
 GameObject:
   m_ObjectHideFlags: 0

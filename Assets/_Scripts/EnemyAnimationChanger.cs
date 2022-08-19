@@ -24,11 +24,11 @@ public class EnemyAnimationChanger : MonoBehaviour
 
     void ChangeAnimation()
     {
-        if (_enemyAttack.isAttacking && !readyToMove)
+        if (_enemyAttack.IsAttacking && !readyToMove)
             return;
-        if (_enemyAttack.prepareToAttack)
+        if (_enemyAttack.PrepareAttack)
             readyToMove = true;
-        if (_enemyAttack.isAttacking)
+        if (_enemyAttack.IsAttacking)
         {
             _animationChange.ChangeAnimationState(EnemyAnim.ATTACK);
             readyToMove = false;
