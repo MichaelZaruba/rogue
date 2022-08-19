@@ -8,8 +8,8 @@ using UnityEngine.UI;
 [RequireComponent(typeof(PlayerAttackRange))]
 public class Player : MonoBehaviour
 {
-    public float _speedFillingStamina = 0.25f;
-
+    private PlayerAttack _playerAttack;
+    private AttackInventory _attackInventory;
     private Game _game;
 
     private Image _staminaImage;
@@ -33,6 +33,8 @@ public class Player : MonoBehaviour
     public float Stamina;
     public float Speed;
 
+    public float _speedFillingStamina = 0.25f;
+
     public bool StaminaActive;
 
     public void Awake()
@@ -40,11 +42,12 @@ public class Player : MonoBehaviour
         _maxStamina = Stamina;
         _maxHp = Health;
     }
-    public void Initialize(Image stamina, Image health, Game game)
+
+    public void Initialize(Image stamina, Image health, Game game, AttackInventory attackInventory)
     {
-       int safeStamina =  PlayerPrefs.GetInt(STAMINA);
-       int safeHealth = PlayerPrefs.GetInt(HEALTH);
-      int safeDamage =  PlayerPrefs.GetInt(DAMAGE);
+        int safeStamina = PlayerPrefs.GetInt(STAMINA);
+        int safeHealth = PlayerPrefs.GetInt(HEALTH);
+        int safeDamage = PlayerPrefs.GetInt(DAMAGE);
 
         if (safeStamina != 0)
             Stamina = safeStamina;
@@ -53,11 +56,14 @@ public class Player : MonoBehaviour
         if (safeDamage != 0)
             Damage = safeDamage;
 
+        _attackInventory = attackInventory;
         _healthImage = health;
         _staminaImage = stamina;
         _healthImage.fillAmount = Health / _maxHp;
         _staminaImage.fillAmount = Stamina / _maxStamina;
         _game = game;
+        _playerAttack = GetComponent<PlayerAttack>();
+        _playerAttack.Initialize(_attackInventory);
     }
 
 
@@ -129,9 +135,28 @@ public class Player : MonoBehaviour
         }
     }
 
-
     private void Die()
     {
         _game.RestartGameAfterDiePlayer();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.GetComponent<NewAttack>())
+        {
+            var newAttack = collision.GetComponent<NewAttack>();
+            newAttack.Initialize(this, _attackInventory);
+            newAttack.InRange = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.GetComponent<NewAttack>())
+        {
+            var newAttack = collision.GetComponent<NewAttack>();
+            newAttack.Initialize(this, _attackInventory);
+             newAttack.InRange = false;
+        }
     }
 }

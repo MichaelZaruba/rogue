@@ -149,6 +149,8 @@ MonoBehaviour:
   _attackType: 0
   _emptySprite: {fileID: 21300000, guid: 7b30b6b805bb22a40bb255e645f7652a, type: 3}
   _light: {fileID: 1835269509900344886}
+  _newAttackThrough: {fileID: 6221980743066836423, guid: a0e9590e48aa9914381ac69e0f6268b8, type: 3}
+  _newAttackDown: {fileID: 630743167991814516, guid: b106c40fd59a1ff49a77e8f5e4f9c9f2, type: 3}
   Animator: {fileID: 8478141143122631500}
 --- !u!1 &4584023151436906588
 GameObject:

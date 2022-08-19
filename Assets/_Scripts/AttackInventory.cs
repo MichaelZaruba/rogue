@@ -14,4 +14,15 @@ public class AttackInventory : MonoBehaviour
             item.Initialize(game);
         }
     }
+
+    public void ActivateItem(AttackType type)
+    {
+        foreach(var item in _itemsAttack)
+        {
+            if(type == item.Type)
+            {
+                item.BuyAttack();
+            }
+        }
+    }
 }

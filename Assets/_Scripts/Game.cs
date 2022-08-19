@@ -39,6 +39,7 @@ public class Game : MonoBehaviour
         _attackInventory.Initialize(_players[0].GetComponent<PlayerAttack>());
         _info.Initialize(_players[0].GetComponent<Player>());
         _talants.Initialize(this, _players[0].GetComponent<Player>(), _gameSettings);
+        InitializeAttack();    
     }
 
     private void StartNewGame()
@@ -82,6 +83,23 @@ public class Game : MonoBehaviour
         StartNewGame();
     }
 
+    private void InitializeAttack()
+    {
+        var through = PlayerPrefs.GetInt(PlayerAttack.THROUGH_ATTACK);
+        if (through != 0)
+        {
+            _attackInventory.ActivateItem(AttackType.Through);
+            _players[0].GetComponent<PlayerAttack>().IsThroughAttackActivate = true;
+        }
+
+        var down = PlayerPrefs.GetInt(PlayerAttack.DOWN_ATTACK);
+        if (through != 0)
+        {
+            _attackInventory.ActivateItem(AttackType.Down);
+            _players[0].GetComponent<PlayerAttack>().IsThroughDownActivate = true;
+        }
+    }
+
     private void CreateLevel()
     {
         try
@@ -101,7 +119,7 @@ public class Game : MonoBehaviour
         CameraTarget(player);
         player.transform.localPosition = _spawnPlayer.transform.position;
         player.gameObject.GetComponent<TargetFinish>().Initialize(this);
-        player.GetComponent<Player>().Initialize(_staminaImage, _healthImage, this);
+        player.GetComponent<Player>().Initialize(_staminaImage, _healthImage, this, _attackInventory);
         _players.Add(player);
     }
 

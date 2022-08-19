@@ -8,6 +8,7 @@ public class ItemAttack : MonoBehaviour
     [SerializeField] private GameObject[] _offWhenActivate;
     [SerializeField] private RawImage _imageInfo;
     [SerializeField] private TextMeshProUGUI _textPrice;
+    [SerializeField] private GameObject _newAttackInfo;
 
     private PlayerAttack _playerAttack;
 
@@ -22,9 +23,10 @@ public class ItemAttack : MonoBehaviour
 
     public void BuyAttack()
     {
-       /* if (countPurpleGens <= GUIManager._instance.Gens)*/
+        gameObject.SetActive(true);
         for(int i = 0; i < _offWhenActivate.Length; i++)
         {
+            _newAttackInfo.SetActive(true);
             _offWhenActivate[i].SetActive(false);
         }
         ActivateAttack(Type);

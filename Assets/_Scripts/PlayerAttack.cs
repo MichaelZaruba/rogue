@@ -32,6 +32,8 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float _staminaPerAttack;
     [SerializeField, Range(0f, 1f)] private float _prepareAttackTime;
     [SerializeField, Range(0f, 1f)] private float _endAttackTime;
+
+    private AttackInventory _attackInventory;
     private List<Collider2D> _enemyCollider = new List<Collider2D>();
     private PlayerMovement _playerMovement;
     private Player _player;
@@ -39,15 +41,20 @@ public class PlayerAttack : MonoBehaviour
 
     [HideInInspector]public float chanceOfCrit;
 
+    [Header("SaveAtackAfterExitGame")]
+    public const string THROUGH_ATTACK = "Through";
+    public const string DOWN_ATTACK = "Down";
+
     [Header("ActivateInInventory")]
     public bool IsThroughAttackActivate;
     public bool IsThroughDownActivate;
     public bool IsAttackActivate;
 
-    private void Awake()
+    public void Initialize(AttackInventory inventory)
     {
+        _attackInventory = inventory;
         _playerMovement = GetComponent<PlayerMovement>();
-        _player = GetComponent<Player>();
+        _player = GetComponent<Player>();          
     }
 
     private void Update()
