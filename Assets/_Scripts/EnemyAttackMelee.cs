@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAttackMelee : MonoBehaviour, IAttacker
+public class EnemyAttackMelee : MonoBehaviour
 {
     [SerializeField,Range(0.1f,1f)] private float _prepareAttackTime;
 
@@ -34,11 +34,11 @@ public class EnemyAttackMelee : MonoBehaviour, IAttacker
     void Update()
     {
         if (_type == EnemyAttackType.Melee)
-            MeleeAttack();
+            AttackMelee();
        
     }
 
-    public virtual void MeleeAttack()
+    public virtual void AttackMelee()
     {
         if (PrepareAttack || IsAttacking)
             return;
@@ -48,11 +48,6 @@ public class EnemyAttackMelee : MonoBehaviour, IAttacker
         if (player == null)
             return;
         IsAttacking = true;
-    }
-
-    public virtual void RangeAttack()
-    {
-        throw new System.NotImplementedException();
     }
 
     private void Attack()
