@@ -41,6 +41,7 @@ public abstract class Enemy : MonoBehaviour
     private AnimationChange _animationChange;
     private Player _player;
     private AttackPoint _attackPoint;
+    private GameSettings _gameSettings;
 
     protected Rigidbody2D _rigidbody;
     protected Animator _animator;
@@ -66,13 +67,13 @@ public abstract class Enemy : MonoBehaviour
 
     public AttackPoint AttackPoint => _attackPoint;
 
-    public void Initialize(Game game, Player player, GamePrefab gamePrefab)
+    public void Initialize(Game game, Player player, GamePrefab gamePrefab, GameSettings gameSettings)
     {
         InitializeComponent();
         InitializeComponentInChildren();
         InitializeEnemyAttack();
         InitializeEnemyAnimationChanger();
-        InitializeSettings(game, player, gamePrefab);
+        InitializeSettings(game, player, gamePrefab, gameSettings);
         InitializeEnemyAI();
     }
 
@@ -82,8 +83,9 @@ public abstract class Enemy : MonoBehaviour
         _animationChanger.Initialize(_rigidbody, _enemyAttackMelee, _animationChange);
     }
 
-    private void InitializeSettings(Game game, Player player, GamePrefab gamePrefab)
+    private void InitializeSettings(Game game, Player player, GamePrefab gamePrefab, GameSettings gameSettings)
     {
+        _gameSettings = gameSettings;
         _gamePrefab = gamePrefab;
         _gen = _gamePrefab.GensPrefab;
         _bullet = _gamePrefab.BulletPrefab;
@@ -201,7 +203,7 @@ public abstract class Enemy : MonoBehaviour
 
     private void Die()
     {
-        int countGens = Random.Range(3, 10);
+        int countGens = (int)(Random.Range(3, 10) * _gameSettings.MoreGens);
         for (int i = 0; i < countGens; i++)
         {
             Gens gen = Instantiate(_gen);

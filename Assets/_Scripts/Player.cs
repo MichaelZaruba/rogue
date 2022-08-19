@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     public const string HEALTH = "Health";
     public const string DAMAGE = "Damage";
 
+    public float DamageRatio = 1f;
     public float RangeAttack;
 
     public float Stamina;

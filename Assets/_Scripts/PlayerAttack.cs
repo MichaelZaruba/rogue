@@ -18,7 +18,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float _rangeAttackDown;
 
     [Header("Other")]
-    [SerializeField] private PlayerMovement _player;
+
 
     [SerializeField] private Transform _attackPoint;
 
@@ -34,7 +34,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float _endAttackTime;
     private List<Collider2D> _enemyCollider = new List<Collider2D>();
     private PlayerMovement _playerMovement;
-    private Player _characteristic;
+    private Player _player;
     private Collider2D[] _hitEnemies;
 
     [HideInInspector]public float chanceOfCrit;
@@ -47,19 +47,19 @@ public class PlayerAttack : MonoBehaviour
     private void Awake()
     {
         _playerMovement = GetComponent<PlayerMovement>();
-        _characteristic = GetComponent<Player>();
+        _player = GetComponent<Player>();
     }
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.S) && IsThroughDownActivate && !_player.IsAttacking && !_player.OnGround)
+        if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.S) && IsThroughDownActivate && !_playerMovement.IsAttacking && !_playerMovement.OnGround)
         {
             AttackDown(Const.PlayerAnim.Player_Jump_Attack, _durationAttackDown, _rangeAttackDown);
             return;
         }
 
         if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.LeftShift) &&
-            _playerMovement.Rigidbody.velocity.magnitude > 0.01f &&!_player.IsAttacking && IsThroughAttackActivate)
+            _playerMovement.Rigidbody.velocity.magnitude > 0.01f &&!_playerMovement.IsAttacking && IsThroughAttackActivate)
         {
             ThroughAttack(Const.PlayerAnim.Player_Dash_Attack, _durationAttackThrough, _rangeAttackThrough);
             return;
@@ -73,32 +73,32 @@ public class PlayerAttack : MonoBehaviour
 
     private void ThroughAttack(string correctAnimationAttack, float endAttackTime, float rangeAttack)
     {
-        if (_player.IsAttacking)
+        if (_playerMovement.IsAttacking)
             return;
 
-        if (_characteristic.Stamina >= _staminaPerAttack)
+        if (_player.Stamina >= _staminaPerAttack)
         {
 
             _playerMovement.CorrectEffect.SetActive(true);
             _ghostSprites.trailSize = 15;
 
-            _player.IsAttackingThrough = true;
-            _player.IsAttacking = true;
-            _characteristic.MinusStamina(_staminaPerAttack, true);
+            _playerMovement.IsAttackingThrough = true;
+            _playerMovement.IsAttacking = true;
+            _player.MinusStamina(_staminaPerAttack, true);
             StartCoroutine(PrerareAttack(correctAnimationAttack, endAttackTime, rangeAttack));
         }
     }
 
     private void Attack(string correctAnimationAttack, float endAttackTime, float rangeAttack)
     {
-        if (_player.IsAttacking)
+        if (_playerMovement.IsAttacking)
             return;
 
-        if (_characteristic.Stamina >= _staminaPerAttack)
+        if (_player.Stamina >= _staminaPerAttack)
         {
             _ghostSprites.trailSize = 0;
-            _player.IsAttacking = true;
-            _characteristic.MinusStamina(_staminaPerAttack, true);
+            _playerMovement.IsAttacking = true;
+            _player.MinusStamina(_staminaPerAttack, true);
             StartCoroutine(PrerareAttack(correctAnimationAttack, endAttackTime, rangeAttack));
         }
 
@@ -106,16 +106,16 @@ public class PlayerAttack : MonoBehaviour
 
     private void AttackDown(string correctAnimationAttack, float endAttackTime, float rangeAttack)
     {
-        if (_player.IsAttacking)
+        if (_playerMovement.IsAttacking)
             return;
 
-        if (_characteristic.Stamina >= _staminaPerAttack)
+        if (_player.Stamina >= _staminaPerAttack)
         {
             _ghostSprites.trailSize = 0;
-            _player.IsAttackingDown = true;
+            _playerMovement.IsAttackingDown = true;
 
-            _player.IsAttacking = true;
-            _characteristic.MinusStamina(_staminaPerAttack, true);
+            _playerMovement.IsAttacking = true;
+            _player.MinusStamina(_staminaPerAttack, true);
             StartCoroutine(PrerareAttack(correctAnimationAttack, endAttackTime, rangeAttack));
         }
     }
@@ -137,16 +137,18 @@ public class PlayerAttack : MonoBehaviour
     private void TakeDamage()
     {
         System.Random random = new System.Random();
-        int damage = _characteristic.Damage;
+        
+        int damage = (int)(_player.Damage * _player.DamageRatio);
         if (random.Next(100) < (int)chanceOfCrit)
             damage *= 2;
+        Debug.Log(damage);
 
         foreach (Collider2D enemy in _hitEnemies)
         {
-            if (_player.IsAttackingThrough)
+            if (_playerMovement.IsAttackingThrough)
                 Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), enemy);
             _textAttack.gameObject.SetActive(true);
-            _textAttack.text = "-" + _characteristic.Damage.ToString();
+            _textAttack.text = "-" + damage.ToString();
             enemy.GetComponent<Enemy>().GetDamage(damage);
             _enemyCollider.Add(enemy);
         }
@@ -157,7 +159,7 @@ public class PlayerAttack : MonoBehaviour
         ActivateCollision();
         OffEffectTroughAttack();
         AttackOff();
-        _characteristic.MinusStamina(0, false);
+        _player.MinusStamina(0, false);
         _textAttack.gameObject.SetActive(false);
         _ghostSprites.trailSize = 5;
     }
@@ -182,14 +184,14 @@ public class PlayerAttack : MonoBehaviour
 
     private void AttackOff()
     {
-        _player.IsAttackingDown = false;
-        _player.IsAttackingThrough = false;
-        _player.IsAttacking = false;
+        _playerMovement.IsAttackingDown = false;
+        _playerMovement.IsAttackingThrough = false;
+        _playerMovement.IsAttacking = false;
     }
 
     private void AnimationAttack(string correctAttack)
     {
-        if (_player.IsAttacking)
+        if (_playerMovement.IsAttacking)
         {
             _animationChange.ChangeAnimationState(correctAttack);
         }

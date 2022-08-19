@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
+    [SerializeField] private GameSettings _gameSettings;
     [SerializeField] private GamePrefab _gamePrefab;
 
     [SerializeField] private Talants _talants;
@@ -37,7 +38,7 @@ public class Game : MonoBehaviour
         StartNewGame();
         _attackInventory.Initialize(_players[0].GetComponent<PlayerAttack>());
         _info.Initialize(_players[0].GetComponent<Player>());
-        _talants.Initialize(this, _players[0].GetComponent<Player>());
+        _talants.Initialize(this, _players[0].GetComponent<Player>(), _gameSettings);
     }
 
     private void StartNewGame()
@@ -116,7 +117,7 @@ public class Game : MonoBehaviour
         {
             enemy = _enemyFactory.Get(position.EnemyType);
             enemy.gameObject.transform.position = position.transform.position;
-            enemy.Initialize(this, _players[0], _gamePrefab);
+            enemy.Initialize(this, _players[0], _gamePrefab, _gameSettings);
             _enemys.Add(enemy);
         } 
     }

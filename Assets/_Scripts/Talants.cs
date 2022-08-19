@@ -6,15 +6,18 @@ public class Talants : MonoBehaviour
 {
     [SerializeField] private ItemTalant[] _talants;
 
+    private Enemy _enemy;
     private Player _player;
     private PlayerMovement _playerMovement;
     private PlayerAttack _playerAttack;
+    private GameSettings _gameSettings;
 
     private Game _game;
     private float plusChanceOfCrit = 0.1f;
 
-    public void Initialize(Game game, Player player)
+    public void Initialize(Game game, Player player,GameSettings gameSettings)
     {
+        _gameSettings = gameSettings;
         _player = player;
         _playerMovement = _player.GetComponent<PlayerMovement>();
         _playerAttack = _player.GetComponent<PlayerAttack>();
@@ -34,8 +37,10 @@ public class Talants : MonoBehaviour
                 _playerMovement.MaxJump++;
                 break;
             case TypeTalant.MoreGens:
+                _gameSettings.MoreGens++;
                 break;
             case TypeTalant.DamageRatio:
+                _player.DamageRatio = 1.25f;
                 break;
             case TypeTalant.MoreRangeAttack:
                 _player.RangeAttack += 0.12f;

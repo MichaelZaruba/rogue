@@ -1419,7 +1419,7 @@ GameObject:
   - component: {fileID: 102730884}
   - component: {fileID: 102730883}
   m_Layer: 5
-  m_Name: talant3
+  m_Name: DamageRatio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2259,7 +2259,7 @@ GameObject:
   - component: {fileID: 149434960}
   - component: {fileID: 149434959}
   m_Layer: 5
-  m_Name: talant12
+  m_Name: MoreLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2359,7 +2359,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &155382250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3318,13 +3318,13 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 211589029}
+  m_TargetGraphic: {fileID: 1001847266}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ItemAttack, Assembly-CSharp
-        m_MethodName: ShowInfo
+      - m_Target: {fileID: 1001847265}
+        m_TargetAssemblyTypeName: ItemTalant, Assembly-CSharp
+        m_MethodName: TalantsBuy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3604,13 +3604,13 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 236051570}
+  m_TargetGraphic: {fileID: 507443056}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ItemAttack, Assembly-CSharp
-        m_MethodName: ShowInfo
+      - m_Target: {fileID: 507443055}
+        m_TargetAssemblyTypeName: ItemTalant, Assembly-CSharp
+        m_MethodName: TalantsBuy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6342,7 +6342,7 @@ GameObject:
   - component: {fileID: 389021588}
   - component: {fileID: 389021587}
   m_Layer: 5
-  m_Name: talant9
+  m_Name: Vampirism
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7382,6 +7382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1339e284b919bc46bddeb157f8aa3e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameSettings: {fileID: 1836689320}
   _gamePrefab: {fileID: 710653428}
   _talants: {fileID: 2124103020}
   _info: {fileID: 1142426831}
@@ -7404,6 +7405,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 710653427}
+  - {fileID: 1836689319}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7784,7 +7786,7 @@ GameObject:
   - component: {fileID: 507443056}
   - component: {fileID: 507443055}
   m_Layer: 5
-  m_Name: talant11
+  m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8038,13 +8040,13 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 515288676}
+  m_TargetGraphic: {fileID: 389021588}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ItemAttack, Assembly-CSharp
-        m_MethodName: ShowInfo
+      - m_Target: {fileID: 389021587}
+        m_TargetAssemblyTypeName: ItemTalant, Assembly-CSharp
+        m_MethodName: TalantsBuy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10650,13 +10652,13 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 672633602}
+  m_TargetGraphic: {fileID: 1435012778}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ItemAttack, Assembly-CSharp
-        m_MethodName: ShowInfo
+      - m_Target: {fileID: 1435012777}
+        m_TargetAssemblyTypeName: ItemTalant, Assembly-CSharp
+        m_MethodName: TalantsBuy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11477,7 +11479,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &747784695
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11649,13 +11651,13 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 753188907}
+  m_TargetGraphic: {fileID: 102730884}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ItemAttack, Assembly-CSharp
-        m_MethodName: ShowInfo
+      - m_Target: {fileID: 102730883}
+        m_TargetAssemblyTypeName: ItemTalant, Assembly-CSharp
+        m_MethodName: TalantsBuy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11961,7 +11963,7 @@ GameObject:
   - component: {fileID: 778554997}
   - component: {fileID: 778554996}
   m_Layer: 5
-  m_Name: talant6
+  m_Name: DoubleDamage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12141,13 +12143,13 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 782172956}
+  m_TargetGraphic: {fileID: 1470663231}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ItemAttack, Assembly-CSharp
-        m_MethodName: ShowInfo
+      - m_Target: {fileID: 1470663230}
+        m_TargetAssemblyTypeName: ItemTalant, Assembly-CSharp
+        m_MethodName: TalantsBuy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13496,13 +13498,13 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 888810181}
+  m_TargetGraphic: {fileID: 778554997}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ItemAttack, Assembly-CSharp
-        m_MethodName: ShowInfo
+      - m_Target: {fileID: 778554996}
+        m_TargetAssemblyTypeName: ItemTalant, Assembly-CSharp
+        m_MethodName: TalantsBuy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13782,13 +13784,13 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 949739535}
+  m_TargetGraphic: {fileID: 1428926686}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ItemAttack, Assembly-CSharp
-        m_MethodName: ShowInfo
+      - m_Target: {fileID: 1428926685}
+        m_TargetAssemblyTypeName: ItemTalant, Assembly-CSharp
+        m_MethodName: TalantsBuy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -14437,7 +14439,7 @@ GameObject:
   - component: {fileID: 1001847266}
   - component: {fileID: 1001847265}
   m_Layer: 5
-  m_Name: talant10
+  m_Name: SecondChance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15106,7 +15108,7 @@ GameObject:
   - component: {fileID: 1027520582}
   - component: {fileID: 1027520581}
   m_Layer: 5
-  m_Name: talant13
+  m_Name: LightingEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17309,7 +17311,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -1286, y: 868}
+  m_AnchoredPosition: {x: -1286, y: 868.00006}
   m_SizeDelta: {x: 300, y: 200}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1217397128
@@ -19616,13 +19618,13 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1340778648}
+  m_TargetGraphic: {fileID: 149434960}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ItemAttack, Assembly-CSharp
-        m_MethodName: ShowInfo
+      - m_Target: {fileID: 149434959}
+        m_TargetAssemblyTypeName: ItemTalant, Assembly-CSharp
+        m_MethodName: TalantsBuy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19979,13 +19981,13 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1350737375}
+  m_TargetGraphic: {fileID: 1916419373}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ItemAttack, Assembly-CSharp
-        m_MethodName: ShowInfo
+      - m_Target: {fileID: 1916419372}
+        m_TargetAssemblyTypeName: ItemTalant, Assembly-CSharp
+        m_MethodName: TalantsBuy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20669,7 +20671,7 @@ GameObject:
   - component: {fileID: 1428926686}
   - component: {fileID: 1428926685}
   m_Layer: 5
-  m_Name: talant7
+  m_Name: FastStamina
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21032,7 +21034,7 @@ GameObject:
   - component: {fileID: 1435012778}
   - component: {fileID: 1435012777}
   m_Layer: 5
-  m_Name: talant5
+  m_Name: MoreExperience
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21363,13 +21365,13 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1445339240}
+  m_TargetGraphic: {fileID: 2063624396}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ItemAttack, Assembly-CSharp
-        m_MethodName: ShowInfo
+      - m_Target: {fileID: 2063624395}
+        m_TargetAssemblyTypeName: ItemTalant, Assembly-CSharp
+        m_MethodName: TalantsBuy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -21565,7 +21567,7 @@ GameObject:
   - component: {fileID: 1448561682}
   - component: {fileID: 1448561684}
   m_Layer: 5
-  m_Name: talant1
+  m_Name: DoubleJump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22172,7 +22174,7 @@ GameObject:
   - component: {fileID: 1470663231}
   - component: {fileID: 1470663230}
   m_Layer: 5
-  m_Name: talant4
+  m_Name: MoreRangeAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28117,13 +28119,13 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 1811470304}
+  m_TargetGraphic: {fileID: 1027520582}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ItemAttack, Assembly-CSharp
-        m_MethodName: ShowInfo
+      - m_Target: {fileID: 1027520581}
+        m_TargetAssemblyTypeName: ItemTalant, Assembly-CSharp
+        m_MethodName: TalantsBuy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -28456,6 +28458,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1833304034}
   m_CullTransparentMesh: 1
+--- !u!1 &1836689318
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1836689319}
+  - component: {fileID: 1836689320}
+  m_Layer: 0
+  m_Name: GameSettings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1836689319
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836689318}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 446148897}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1836689320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836689318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70324657ac6934d4ca0adcb461dae6d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1842498066
 GameObject:
   m_ObjectHideFlags: 0
@@ -29340,7 +29386,7 @@ GameObject:
   - component: {fileID: 1916419373}
   - component: {fileID: 1916419372}
   m_Layer: 5
-  m_Name: talant8
+  m_Name: Bleeding
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30980,7 +31026,7 @@ GameObject:
   - component: {fileID: 2063624396}
   - component: {fileID: 2063624395}
   m_Layer: 5
-  m_Name: talant2
+  m_Name: MoreGens
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32297,7 +32343,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2124103016
 RectTransform:
   m_ObjectHideFlags: 0

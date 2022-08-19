@@ -23,7 +23,6 @@ public class Bacteria : Enemy
 
     }
 
-
     protected override void CheckMoveRight()
     {
         base.CheckMoveRight();
