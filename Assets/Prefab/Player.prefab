@@ -350,7 +350,7 @@ MonoBehaviour:
   _endAttackTime: 0.35
   chanceOfCrit: 0
   IsThroughAttackActivate: 0
-  IsThroughDownActivate: 1
+  IsThroughDownActivate: 0
   IsAttackActivate: 1
 --- !u!114 &7152937503312238008
 MonoBehaviour:
@@ -378,13 +378,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bc4685a93904964985b40cb7df3e6f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speedFillingStamina: 0.5
   Health: 40
   Damage: 23
   DamageRatio: 1
   RangeAttack: 1.28
   Stamina: 40
   Speed: 5
+  _speedFillingStamina: 0.5
   StaminaActive: 0
 --- !u!114 &4192631616970833221
 MonoBehaviour:
