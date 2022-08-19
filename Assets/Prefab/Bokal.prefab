@@ -48,9 +48,9 @@ GameObject:
   - component: {fileID: 1449824418491714332}
   - component: {fileID: -6789050548903423634}
   - component: {fileID: -7121157541637975733}
-  - component: {fileID: 348642360843720803}
   - component: {fileID: 7548557085047649324}
   - component: {fileID: 9148589173523009005}
+  - component: {fileID: 5191425915813387240}
   m_Layer: 10
   m_Name: Bokal
   m_TagString: Untagged
@@ -215,10 +215,9 @@ MonoBehaviour:
   _playerLayer:
     serializedVersion: 2
     m_Bits: 512
-  _type: 0
+  _type: 1
   IsFindPlayer: 0
   TestMode: 0
-  justShot: 0
 --- !u!114 &1449824418491714332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,9 +231,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reloadAttackTime: 3.01
-  _bullet: {fileID: 583039322674414514, guid: 956efd95e67a68844a519a3e184ff0c4, type: 3}
-  _bocal: {fileID: 3422527672630338333}
-  _animator: {fileID: 2551522386792540492}
 --- !u!114 &-6789050548903423634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,24 +274,6 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
---- !u!114 &348642360843720803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2850644086380809682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a0556b3d03537c4992971aa3de4207a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prepareAttackTime: 0
-  _attackPoint: {fileID: 1130030414825161762}
-  _attackWidth: 0
-  _attackHeight: 0
-  IsAttacking: 0
-  PrepareAttack: 0
 --- !u!114 &7548557085047649324
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,6 +300,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 
   Animator: {fileID: 0}
+--- !u!114 &5191425915813387240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2850644086380809682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16d82afb0ad966a40beb70c93550989f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prepareAttackTime: 0
+  _attackWidth: 0
+  _attackHeight: 0
+  IsAttacking: 0
+  PrepareAttack: 0
 --- !u!1 &3506813230221797672
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,9 +510,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _reloadAttackTime: 0
-  _bullet: {fileID: 0}
-  _bocal: {fileID: 0}
-  _animator: {fileID: 0}
 --- !u!1 &4798896922865230420
 GameObject:
   m_ObjectHideFlags: 0

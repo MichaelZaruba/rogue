@@ -2,18 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAttack : MonoBehaviour, IAttacker
+public class EnemyAttackMelee : MonoBehaviour, IAttacker
 {
-    [SerializeField] private float _prepareAttackTime;
+    [SerializeField,Range(0.1f,1f)] private float _prepareAttackTime;
 
-    [SerializeField] private Transform _attackPoint;
-
-    [SerializeField] private float _attackWidth;
-    [SerializeField] private float _attackHeight;
+    [SerializeField, Range(0.2f, 2f)] private float _attackWidth;
+    [SerializeField,Range(0.2f,2f)] private float _attackHeight;
 
     [HideInInspector] public bool IsAttacking;
     [HideInInspector] public bool PrepareAttack;
 
+    protected AttackPoint _attackPoint;
     protected Enemy _enemy;
 
     protected LayerMask _playerLayerMask;
@@ -23,8 +22,10 @@ public class EnemyAttack : MonoBehaviour, IAttacker
     public float AttackWight => _attackWidth;
     public float AttackHeight => _attackHeight;
 
+
     public void Initialize(Enemy enemy, EnemyAttackType type, LayerMask player)
     {
+        _attackPoint = GetComponentInChildren<AttackPoint>();
         _playerLayerMask = player;
         _enemy = enemy;
         _type = type;
@@ -34,8 +35,7 @@ public class EnemyAttack : MonoBehaviour, IAttacker
     {
         if (_type == EnemyAttackType.Melee)
             MeleeAttack();
-        else
-            RangeAttack();
+       
     }
 
     public virtual void MeleeAttack()
@@ -80,7 +80,8 @@ public class EnemyAttack : MonoBehaviour, IAttacker
 
     private void OnDrawGizmos()
     {
+        _attackPoint = GetComponentInChildren<AttackPoint>();
         Gizmos.color = new Color(1, 1, 1, 0.5f);
-        Gizmos.DrawCube(_attackPoint.position, new Vector2(_attackWidth, _attackHeight));
+        Gizmos.DrawCube(_attackPoint.transform.position, new Vector2(_attackWidth, _attackHeight));
     }
 }

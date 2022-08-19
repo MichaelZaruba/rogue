@@ -92,9 +92,10 @@ GameObject:
   - component: {fileID: 3922771129107417854}
   - component: {fileID: 3922771129107417796}
   - component: {fileID: 3922771129107417795}
-  - component: {fileID: 8187242773678973067}
   - component: {fileID: 6148938786840083259}
   - component: {fileID: 3073041342595867246}
+  - component: {fileID: 147698965048674080}
+  - component: {fileID: 3609184208881378938}
   m_Layer: 10
   m_Name: Chomper
   m_TagString: Untagged
@@ -304,24 +305,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &8187242773678973067
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1606584594814494282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a0556b3d03537c4992971aa3de4207a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prepareAttackTime: 0.3
-  _attackPoint: {fileID: 8288722141296529634}
-  attackPointWidth: 1
-  attackPointHeight: 1
-  isAttacking: 0
-  prepareToAttack: 0
 --- !u!114 &6148938786840083259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,6 +331,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 
   Animator: {fileID: 0}
+--- !u!114 &147698965048674080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606584594814494282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16d82afb0ad966a40beb70c93550989f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prepareAttackTime: 0.5
+  _attackWidth: 1
+  _attackHeight: 1
+  IsAttacking: 0
+  PrepareAttack: 0
+--- !u!114 &3609184208881378938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1606584594814494282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ffd520d573fc83408de01df12ce21c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _reloadAttackTime: 3
 --- !u!1 &3338236949937660458
 GameObject:
   m_ObjectHideFlags: 0

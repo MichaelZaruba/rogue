@@ -5,23 +5,18 @@ using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
+    [SerializeField] private GamePrefab _gamePrefab;
+
     [SerializeField] private Talants _talants;
 
     [SerializeField] private Info _info;
 
     [SerializeField] private AttackInventory _attackInventory;
 
-    [SerializeField] private Player _player;
-
     [SerializeField] private LookAtTargetCamera _lookAtTargetCamera;
 
     [SerializeField] private Image _staminaImage;
     [SerializeField] private Image _healthImage;
-
-    [SerializeField] private Gens _gensPrefab;
-
-    [SerializeField] 
-    private List<Level> _levelsSafe;
 
     [SerializeField, Range(1,10)] private int _numberLevel;
 
@@ -90,7 +85,7 @@ public class Game : MonoBehaviour
     {
         try
         {
-            Level level = Instantiate(_levelsSafe[_numberLevel - 1]);
+            Level level = Instantiate(_gamePrefab.LevelsSafe[_numberLevel - 1]);
             level.Initialize();
             _spawnEnemies = level.SpawnsEnemies;
             _spawnPlayer = level.SpawnPlayer;
@@ -101,7 +96,7 @@ public class Game : MonoBehaviour
 
     private void CreatePlayer()
     {
-        Player player =  Instantiate(_player);
+        Player player =  Instantiate(_gamePrefab.PlayerPrefab);
         CameraTarget(player);
         player.transform.localPosition = _spawnPlayer.transform.position;
         player.gameObject.GetComponent<TargetFinish>().Initialize(this);
@@ -121,7 +116,7 @@ public class Game : MonoBehaviour
         {
             enemy = _enemyFactory.Get(position.EnemyType);
             enemy.gameObject.transform.position = position.transform.position;
-            enemy.Initialize(this, _players[0], _gensPrefab);
+            enemy.Initialize(this, _players[0], _gamePrefab);
             _enemys.Add(enemy);
         } 
     }

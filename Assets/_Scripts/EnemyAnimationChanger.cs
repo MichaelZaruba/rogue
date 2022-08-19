@@ -6,11 +6,11 @@ using Const;
 public class EnemyAnimationChanger : MonoBehaviour
 {
      private Rigidbody2D _rigidbody;
-     private EnemyAttack _enemyAttack;
+     private EnemyAttackMelee _enemyAttack;
      private AnimationChange _animationChange;
     private bool readyToMove = true;
 
-    public void Initialize(Rigidbody2D rigidbody, EnemyAttack enemyAttack, AnimationChange animationChange)
+    public void Initialize(Rigidbody2D rigidbody, EnemyAttackMelee enemyAttack, AnimationChange animationChange)
     {
         _rigidbody = rigidbody;
         _enemyAttack = enemyAttack;

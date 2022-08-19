@@ -3,24 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using Const;
 
-public class BokalAttack : MonoBehaviour
+public class EnemyAttackRange : MonoBehaviour
 {
-    [SerializeField] private float _reloadAttackTime;
-    [SerializeField] private Bullet _bullet;
-    [SerializeField] private Bokal _bocal;
-    [SerializeField] private Animator _animator;
+    [SerializeField, Range(3f,5f)] private float _reloadAttackTime;
+     private Bullet _bullet;
+     private Enemy _enemy;
+     private Animator _animator;
 
     private Player _player;
 
     private Vector3 playerPoint;
 
-    public void Initialize(Player player)
+    public void Initialize(Player player, Bullet bullet, Enemy enemy)
     {
+        _animator = GetComponent<Animator>();
+        _enemy = enemy;
+        _bullet = bullet;
         _player = player;
     }
 
     void Attack()
     {
+        if (_enemy.Type == EnemyAttackType.Melee)
+            return;
         playerPoint = _player.transform.position;
         CalculatePositionPlayer();
         var bullet = Instantiate(_bullet, transform.position, Quaternion.identity);
@@ -39,7 +44,7 @@ public class BokalAttack : MonoBehaviour
     {
         _animator.SetBool(EnemyAnim.IS_ATTACK, false);
         yield return new WaitForSeconds(_reloadAttackTime);
-        _bocal.justShot = false;
+        _enemy.JustShot = false;
     }
 
 }

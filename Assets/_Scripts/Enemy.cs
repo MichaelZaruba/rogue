@@ -9,23 +9,27 @@ using UnityEngine.UI;
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Seeker))]
-[RequireComponent (typeof(EnemyAttack))]
+[RequireComponent(typeof(EnemyAttackMelee))]
 [RequireComponent(typeof(EnemyAnimationChanger))]
+[RequireComponent(typeof(EnemyAttackRange))]
 [RequireComponent(typeof(AnimationChange))]
 public abstract class Enemy : MonoBehaviour
 {
     [SerializeField, Range(20f, 1000f)] private float _health = 100;
     [SerializeField, Range(3f, 10f)] private float _rangePatrol;
 
-    [SerializeField,Range(1f,5f)] protected float _radiusOfVision;
-    [SerializeField,Range(1f,5f)] protected float _speed;
+    [SerializeField, Range(1f, 5f)] protected float _radiusOfVision;
+    [SerializeField, Range(1f, 5f)] protected float _speed;
     [SerializeField, Range(5f, 15f)] private int _damage;
 
     [SerializeField] protected LayerMask _playerLayer;
     [SerializeField] protected EnemyAttackType _type;
 
-    private EnemyAttack _enemyAttack;
+    private EnemyAttackRange _enemyAttackRange;
+    private EnemyAttackMelee _enemyAttackMelee;
     private EnemyAnimationChanger _animationChanger;
+    private GamePrefab _gamePrefab;
+    private Bullet _bullet;
     private Gens _gen;
     private Canvas _canvas;
     private Image[] _healthBar;
@@ -51,55 +55,73 @@ public abstract class Enemy : MonoBehaviour
 
     public bool IsFindPlayer;
 
-
+    protected bool _justShot;
     public bool TestMode;
 
     public int Damage => _damage;
 
+    public EnemyAttackType Type => _type;
+
+    public bool JustShot { get => _justShot; set => _justShot = value; }
+
     public AttackPoint AttackPoint => _attackPoint;
 
-    public void Initialize(Game game, Player player, Gens gen)
+    public void Initialize(Game game, Player player, GamePrefab gamePrefab)
     {
         InitializeComponent();
+        InitializeComponentInChildren();
         InitializeEnemyAttack();
         InitializeEnemyAnimationChanger();
-        _gen = gen;
+        InitializeSettings(game, player, gamePrefab);
+        InitializeEnemyAI();
+    }
+
+    private void InitializeEnemyAnimationChanger()
+    {
+        _animationChange.Animator = GetComponent<Animator>();
+        _animationChanger.Initialize(_rigidbody, _enemyAttackMelee, _animationChange);
+    }
+
+    private void InitializeSettings(Game game, Player player, GamePrefab gamePrefab)
+    {
+        _gamePrefab = gamePrefab;
+        _gen = _gamePrefab.GensPrefab;
+        _bullet = _gamePrefab.BulletPrefab;
         _spawnPosition = transform.position;
         _startHealth = _health;
         _healthUI.text = _health.ToString();
         _game = game;
         _player = player;
-        InitializeEnemyAI();
-    }
-    
-    private void InitializeEnemyAnimationChanger()
-    {
-        _animationChange.Animator = GetComponent<Animator>();
-        _animationChanger.Initialize(_rigidbody,_enemyAttack, _animationChange);
     }
 
     private void InitializeComponent()
     {
+        _enemyAttackRange = GetComponent<EnemyAttackRange>();
         _animationChange = GetComponent<AnimationChange>();
-       _enemyAttack = GetComponent<EnemyAttack>();
+        _enemyAttackMelee = GetComponent<EnemyAttackMelee>();
         _animationChanger = GetComponent<EnemyAnimationChanger>();
         _rigidbody = GetComponent<Rigidbody2D>();
-        _attackPoint = GetComponentInChildren<AttackPoint>();
         _animator = GetComponent<Animator>();
-       _canvas = GetComponentInChildren<Canvas>();
-        _healthBar = GetComponentsInChildren<Image>();
-        _healthUI = GetComponentInChildren<TextMeshProUGUI>();
         _enemyAI = GetComponent<EnemyAI>();
+    }
+
+    private void InitializeComponentInChildren()
+    {
+        _attackPoint = GetComponentInChildren<AttackPoint>();
+        _canvas = GetComponentInChildren<Canvas>();
+        _healthUI = GetComponentInChildren<TextMeshProUGUI>();
+        _healthBar = GetComponentsInChildren<Image>();
     }
 
     private void InitializeEnemyAttack()
     {
-        _enemyAttack.Initialize(this, _type, _playerLayer);
+        _enemyAttackRange.Initialize(_player, _bullet, this);
+        _enemyAttackMelee.Initialize(this, _type, _playerLayer);
     }
 
     private void InitializeEnemyAI()
     {
-        gameObject.GetComponent<EnemyAI>().Initialize(_player); 
+        gameObject.GetComponent<EnemyAI>().Initialize(_player);
     }
 
     protected virtual void CheckMoveRight()
@@ -161,13 +183,12 @@ public abstract class Enemy : MonoBehaviour
             return false;
         }
         IsFindPlayer = true;
-        gameObject.GetComponent<EnemyAI>().IsTargetActive = true;
-        if (gameObject.GetComponent<BokalAttack>() != null)
-            gameObject.GetComponent<BokalAttack>().Initialize(player.GetComponent<Player>());
+        _enemyAI.IsTargetActive = true;
+        _enemyAttackRange.Initialize(_player, _bullet, this);
         return true;
     }
 
-   public void GetDamage(int damage)
+    public void GetDamage(int damage)
     {
         _health -= damage;
         _healthBar[1].fillAmount = _health / _startHealth;
@@ -175,15 +196,6 @@ public abstract class Enemy : MonoBehaviour
         if (_health <= 0)
         {
             Die();
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.GetComponent<Player>())
-        {
-           // collision.gameObject.GetComponent<Player>().GetDamage(_damage);
-
         }
     }
 
@@ -199,9 +211,10 @@ public abstract class Enemy : MonoBehaviour
         _game.ReclaimEnemy(this);
 
     }
-   private void OnDrawGizmos()
-   {
-      Gizmos.color = new Color(1, 1, 1, 0.5f);
-      Gizmos.DrawSphere(transform.position, _radiusOfVision);
-   }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = new Color(1, 1, 1, 0.5f);
+        Gizmos.DrawSphere(transform.position, _radiusOfVision);
+    }
 }

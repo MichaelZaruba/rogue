@@ -6,8 +6,6 @@ using Const;
 
 public class Bokal : Enemy
 {
-
-    public bool justShot;
     
     private void FixedUpdate()
     {
@@ -31,10 +29,10 @@ public class Bokal : Enemy
 
     private void ChrgeAttack()
     {
-        if (justShot)
+        if (_justShot)
             return;
         _animator.SetBool(EnemyAnim.IS_ATTACK, true);
-        justShot = true;
+        _justShot = true;
     }
    
 
