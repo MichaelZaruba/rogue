@@ -12002,6 +12002,7 @@ MonoBehaviour:
   - {fileID: 5241138065333622459, guid: d789c52602c0e8546acab7a877ea493a, type: 3}
   - {fileID: 5241138065333622459, guid: 7d7940f783db8fe498bdeff34b7cdb8d, type: 3}
   - {fileID: 5241138065333622459, guid: af9e3f3bfee75ed4697b155c86041f75, type: 3}
+  - {fileID: 5241138065333622459, guid: 79badbafaa7e16e49abfd734d6ac584a, type: 3}
   GensPrefab: {fileID: 4758106444361321226, guid: 36be609e6d76b1a48ae814142084a432, type: 3}
   PlayerPrefab: {fileID: 6656437928768031474, guid: ab5ab3d00baa07c4ab0befe32ebbc9a2, type: 3}
   BulletPrefab: {fileID: 583039322674414514, guid: 956efd95e67a68844a519a3e184ff0c4, type: 3}
