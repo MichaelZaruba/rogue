@@ -258,6 +258,7 @@ MonoBehaviour:
   _type: 0
   IsFindPlayer: 0
   TestMode: 0
+  Experience: {fileID: 0}
 --- !u!61 &3922771129107417796
 BoxCollider2D:
   m_ObjectHideFlags: 0
