@@ -6,6 +6,7 @@ public class Talants : MonoBehaviour
 {
     [SerializeField] private ItemTalant[] _talants;
 
+    private DisplayTalant _displayTalant;
     private Enemy _enemy;
     private Player _player;
     private PlayerMovement _playerMovement;
@@ -15,8 +16,9 @@ public class Talants : MonoBehaviour
     private Game _game;
     private float plusChanceOfCrit = 0.1f;
 
-    public void Initialize(Game game, Player player,GameSettings gameSettings)
+    public void Initialize(DisplayTalant displayTalant,Game game, Player player,GameSettings gameSettings)
     {
+        _displayTalant = displayTalant;
         _gameSettings = gameSettings;
         _player = player;
         _playerMovement = _player.GetComponent<PlayerMovement>();
@@ -25,7 +27,7 @@ public class Talants : MonoBehaviour
         _talants = GetComponentsInChildren<ItemTalant>();
         foreach(var talant in _talants)
         {
-            talant.Initialize(_game, this);
+            talant.Initialize(_game, this, displayTalant);
         }
     }
 

@@ -1,18 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DisplayTalant : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+   [SerializeField] private DisplayTalantItem[] _itemTalant;
 
-    // Update is called once per frame
-    void Update()
+
+
+    public void Initialize(TypeTalant type, Image spriteRenderer)
     {
-        
+        foreach(var item in _itemTalant)
+        {
+            if (item.Activate)
+                continue;
+            item.GetComponent<Image>().sprite = spriteRenderer.sprite;
+            item.gameObject.SetActive(true);
+            item.Activate = true;
+            return;
+        }
     }
 }

@@ -8,6 +8,7 @@ public class Game : MonoBehaviour
     [SerializeField] private GameSettings _gameSettings;
     [SerializeField] private GamePrefab _gamePrefab;
 
+    [SerializeField] private DisplayTalant _displayTalant;
     [SerializeField] private Talants _talants;
 
     [SerializeField] private Info _info;
@@ -38,7 +39,7 @@ public class Game : MonoBehaviour
         StartNewGame();
         _attackInventory.Initialize(_players[0].GetComponent<PlayerAttack>());
         _info.Initialize(_players[0].GetComponent<Player>());
-        _talants.Initialize(this, _players[0].GetComponent<Player>(), _gameSettings);
+        _talants.Initialize(_displayTalant, this, _players[0].GetComponent<Player>(), _gameSettings);
         InitializeAttack();    
     }
 
@@ -88,14 +89,14 @@ public class Game : MonoBehaviour
         var through = PlayerPrefs.GetInt(PlayerAttack.THROUGH_ATTACK);
         if (through != 0)
         {
-            _attackInventory.ActivateItem(AttackType.Through);
+            _attackInventory.ActivateItem(AttackType.Through, true);
             _players[0].GetComponent<PlayerAttack>().IsThroughAttackActivate = true;
         }
 
         var down = PlayerPrefs.GetInt(PlayerAttack.DOWN_ATTACK);
         if (through != 0)
         {
-            _attackInventory.ActivateItem(AttackType.Down);
+            _attackInventory.ActivateItem(AttackType.Down, true);
             _players[0].GetComponent<PlayerAttack>().IsThroughDownActivate = true;
         }
     }

@@ -21,16 +21,20 @@ public class ItemAttack : MonoBehaviour
         _textPrice.text = countPurpleGens.ToString();
     }
 
-    public void BuyAttack()
+    public void ActivateItemAttack(bool isInitialize)
     {
         gameObject.SetActive(true);
         for(int i = 0; i < _offWhenActivate.Length; i++)
         {
-            _newAttackInfo.SetActive(true);
-            _offWhenActivate[i].SetActive(false);
+            if (!isInitialize)
+            {
+                _newAttackInfo.SetActive(true);
+                ShowInfo();
+            }
+                _offWhenActivate[i].SetActive(false);
+               
         }
         ActivateAttack(Type);
-        ShowInfo();
     }
 
     public void ShowInfo()

@@ -27,7 +27,7 @@ public class NewAttack : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            _inventory.ActivateItem(_type);
+            _inventory.ActivateItem(_type, false) ;
             if (_type == AttackType.Through)
             {
                 PlayerPrefs.SetInt(PlayerAttack.THROUGH_ATTACK, 1);

@@ -15,13 +15,13 @@ public class AttackInventory : MonoBehaviour
         }
     }
 
-    public void ActivateItem(AttackType type)
+    public void ActivateItem(AttackType type, bool isInitialize)
     {
         foreach(var item in _itemsAttack)
         {
             if(type == item.Type)
             {
-                item.BuyAttack();
+                item.ActivateItemAttack(isInitialize);
             }
         }
     }
