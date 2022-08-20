@@ -103,7 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 12.28
   _damage: 3
-  direction: {x: -0.96356606, y: -0.26747057, z: 0.0000000015340015}
+  direction: {x: 0.6344574, y: 0.77295786, z: 0.000000005076686}
 --- !u!58 &-5663897327859104432
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -135,7 +135,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

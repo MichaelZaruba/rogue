@@ -50,7 +50,7 @@ public class Talants : MonoBehaviour
             case TypeTalant.MoreExperience:
                 break;
             case TypeTalant.DoubleDamage:
-                _playerAttack.chanceOfCrit = _playerAttack.chanceOfCrit + plusChanceOfCrit;
+                _playerAttack.chanceOfCrit = _playerAttack.chanceOfCrit + 100 * plusChanceOfCrit;
                 plusChanceOfCrit *= 0.9f;
                 break;
             case TypeTalant.FastStamina:

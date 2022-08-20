@@ -7,7 +7,6 @@ public class CheckGround : MonoBehaviour
 {
     [SerializeField] private PlayerMovement _player;
 
-
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<Ground>() && _player.Rigidbody.velocity.y < 0.01f)
@@ -21,6 +20,8 @@ public class CheckGround : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Ground>())
         {
+            if (_player.CountJump == 0)
+            _player.CountJump++;
             _player.OnGround = false;
         }
     }
