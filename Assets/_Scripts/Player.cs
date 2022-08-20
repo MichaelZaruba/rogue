@@ -8,6 +8,8 @@ using UnityEngine.UI;
 [RequireComponent(typeof(PlayerAttackRange))]
 public class Player : MonoBehaviour
 {
+    private Experience _experience;
+
     private PlayerAttack _playerAttack;
     private AttackInventory _attackInventory;
     private Game _game;
