@@ -273,7 +273,8 @@ GameObject:
   - component: {fileID: 1608721184810099091}
   - component: {fileID: 7254451008615628421}
   - component: {fileID: 4548057115914133931}
-  - component: {fileID: 9178966148224112251}
+  - component: {fileID: 2895103292077309980}
+  - component: {fileID: 6376846694347818721}
   m_Layer: 10
   m_Name: Bacteria
   m_TagString: Untagged
@@ -440,6 +441,7 @@ MonoBehaviour:
   _type: 0
   IsFindPlayer: 0
   TestMode: 0
+  Experience: {fileID: 0}
 --- !u!114 &8843103252247864371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -509,7 +511,7 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
---- !u!114 &9178966148224112251
+--- !u!114 &2895103292077309980
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -518,15 +520,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 6003049518838595198}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a0556b3d03537c4992971aa3de4207a, type: 3}
+  m_Script: {fileID: 11500000, guid: 16d82afb0ad966a40beb70c93550989f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prepareAttackTime: 0.2
-  _attackPoint: {fileID: 3892189013177092310}
-  attackPointWidth: 1
-  attackPointHeight: 2
-  isAttacking: 0
-  prepareToAttack: 0
+  _prepareAttackTime: 0.317
+  _attackWidth: 0.939
+  _attackHeight: 1.161
+  IsAttacking: 0
+  PrepareAttack: 0
+--- !u!114 &6376846694347818721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6003049518838595198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ffd520d573fc83408de01df12ce21c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _reloadAttackTime: 3
 --- !u!1 &7734771039592413726
 GameObject:
   m_ObjectHideFlags: 0

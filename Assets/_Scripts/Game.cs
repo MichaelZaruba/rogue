@@ -37,10 +37,6 @@ public class Game : MonoBehaviour
     private void Start()
     {  
         StartNewGame();
-        _attackInventory.Initialize(_players[0].GetComponent<PlayerAttack>());
-        _info.Initialize(_players[0].GetComponent<Player>());
-        _talants.Initialize(_displayTalant, this, _players[0].GetComponent<Player>(), _gameSettings);
-        InitializeAttack();    
     }
 
     private void StartNewGame()
@@ -48,6 +44,10 @@ public class Game : MonoBehaviour
         CreateLevel();
         CreatePlayer();
         CreateEnemy();
+        _attackInventory.Initialize(_players[0].GetComponent<PlayerAttack>());
+        _info.Initialize(_players[0].GetComponent<Player>());
+        _talants.Initialize(_displayTalant, this, _players[0].GetComponent<Player>(), _gameSettings);
+        InitializeAttack();
     }
 
     public void NextLevel()
