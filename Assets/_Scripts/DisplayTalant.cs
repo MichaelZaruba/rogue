@@ -15,6 +15,7 @@ public class DisplayTalant : MonoBehaviour
         {
             if (item.Activate)
                 continue;
+            Debug.Log(spriteRenderer);
             item.GetComponent<Image>().sprite = spriteRenderer.sprite;
             item.gameObject.SetActive(true);
             item.Activate = true;

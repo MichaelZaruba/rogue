@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public  class ItemTalant : MonoBehaviour
 {
+    [SerializeField] private Image _image;
     private DisplayTalant _displayTalant;
     private TextMeshProUGUI[] _priceUI;
     private Game _game;
@@ -30,14 +31,19 @@ public  class ItemTalant : MonoBehaviour
 
     public void TalantActivate()
     {
-        _displayTalant.Initialize(Type, gameObject.GetComponentInChildren<Image>());
+        _displayTalant.Initialize(Type, _image);
+        Debug.Log(gameObject.GetComponent<SpriteRenderer>());  
         _talants.ActivateTalant(Type);
         _priceUI[1].text = Type.ToString() + " ACTIVE";
     }
 
     public void TalantsBuy()
     {
-        PlayerPrefs.SetInt(TalantName, 1);
-        TalantActivate();
+        if(PlayerPrefs.GetInt(TalantName) == 0)
+        {
+            PlayerPrefs.SetInt(TalantName, 1);
+            TalantActivate();
+        }
+        
     }
 }
