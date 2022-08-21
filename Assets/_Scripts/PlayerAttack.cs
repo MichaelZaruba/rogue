@@ -8,14 +8,16 @@ public class PlayerAttack : MonoBehaviour
     [Header("AttackThrough")]
     [SerializeField] private float _durationAttackThrough;
     [SerializeField] private float _rangeAttackThrough;
-
-    [Header("Attack")]
+    [SerializeField] private float _delayAttackThrough;
+   [Header("Attack")]
     [SerializeField] private float _durationAttack;
     [SerializeField] private float _rangeAttack;
+    [SerializeField] private float _delayAttack;
 
     [Header("AttackDown")]
     [SerializeField] private float _durationAttackDown;
     [SerializeField] private float _rangeAttackDown;
+    [SerializeField] private float _delayAttackDown;
 
     [Header("Other")]
 
@@ -61,24 +63,24 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.S) && IsThroughDownActivate && !_playerMovement.IsAttacking && !_playerMovement.OnGround)
         {
-            AttackDown(Const.PlayerAnim.Player_Jump_Attack, _durationAttackDown, _rangeAttackDown);
+            AttackDown(Const.PlayerAnim.Player_Jump_Attack, _durationAttackDown, _rangeAttackDown, _delayAttackDown);
             return;
         }
 
         if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.LeftShift) &&
             _playerMovement.Rigidbody.velocity.magnitude > 0.01f &&!_playerMovement.IsAttacking && IsThroughAttackActivate)
         {
-            ThroughAttack(Const.PlayerAnim.Player_Dash_Attack, _durationAttackThrough, _rangeAttackThrough);
+            ThroughAttack(Const.PlayerAnim.Player_Dash_Attack, _durationAttackThrough, _rangeAttackThrough, _delayAttackThrough);
             return;
         }
 
         if (Input.GetMouseButtonDown(0) && IsAttackActivate)
         {
-            Attack(Const.PlayerAnim.Player_Attack, _durationAttack, _rangeAttack);
+            Attack(Const.PlayerAnim.Player_Attack, _durationAttack, _rangeAttack, _delayAttack);
         }
     }
 
-    private void ThroughAttack(string correctAnimationAttack, float endAttackTime, float rangeAttack)
+    private void ThroughAttack(string correctAnimationAttack, float endAttackTime, float rangeAttack, float delayAttack)
     {
         if (_playerMovement.IsAttacking)
             return;
@@ -92,11 +94,11 @@ public class PlayerAttack : MonoBehaviour
             _playerMovement.IsAttackingThrough = true;
             _playerMovement.IsAttacking = true;
             _player.MinusStamina(_staminaPerAttack, true);
-            StartCoroutine(PrerareAttack(correctAnimationAttack, endAttackTime, rangeAttack));
+            StartCoroutine(PrerareAttack(correctAnimationAttack, endAttackTime, rangeAttack, delayAttack));
         }
     }
 
-    private void Attack(string correctAnimationAttack, float endAttackTime, float rangeAttack)
+    private void Attack(string correctAnimationAttack, float endAttackTime, float rangeAttack, float delayAttack)
     {
         if (_playerMovement.IsAttacking)
             return;
@@ -106,12 +108,12 @@ public class PlayerAttack : MonoBehaviour
             _ghostSprites.trailSize = 0;
             _playerMovement.IsAttacking = true;
             _player.MinusStamina(_staminaPerAttack, true);
-            StartCoroutine(PrerareAttack(correctAnimationAttack, endAttackTime, rangeAttack));
+            StartCoroutine(PrerareAttack(correctAnimationAttack, endAttackTime, rangeAttack,  delayAttack));
         }
 
     }
 
-    private void AttackDown(string correctAnimationAttack, float endAttackTime, float rangeAttack)
+    private void AttackDown(string correctAnimationAttack, float endAttackTime, float rangeAttack, float delayAttack)
     {
         if (_playerMovement.IsAttacking)
             return;
@@ -123,15 +125,16 @@ public class PlayerAttack : MonoBehaviour
 
             _playerMovement.IsAttacking = true;
             _player.MinusStamina(_staminaPerAttack, true);
-            StartCoroutine(PrerareAttack(correctAnimationAttack, endAttackTime, rangeAttack));
+            StartCoroutine(PrerareAttack(correctAnimationAttack, endAttackTime, rangeAttack, delayAttack));
         }
     }
 
-    private IEnumerator PrerareAttack(string correctAnimationAttack, float endAttackTime, float rangeAttack)
+    private IEnumerator PrerareAttack(string correctAnimationAttack, float endAttackTime, float rangeAttack, float attackDelay)
     {
+        AnimationAttack(correctAnimationAttack);
+        yield return new WaitForSeconds(attackDelay);
         SearchInRange(rangeAttack);
         TakeDamage();
-        AnimationAttack(correctAnimationAttack);
         yield return new WaitForSeconds(endAttackTime);
         EndAttack();
     }

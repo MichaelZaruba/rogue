@@ -333,10 +333,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _durationAttackThrough: 0.15
   _rangeAttackThrough: 2
+  _delayAttackThrough: 0
   _durationAttack: 0.5
   _rangeAttack: 1
+  _delayAttack: 0.19
   _durationAttackDown: 0.5
   _rangeAttackDown: 2
+  _delayAttackDown: 0
   _attackPoint: {fileID: 2970215902959491422}
   _ghostSprites: {fileID: 4192631616970833221}
   _enemyLayers:
