@@ -131,7 +131,6 @@ public class PlayerMovement : MonoBehaviour
     private void Jump()
     {
         _rigidbody.velocity = new Vector2(_rigidbody.velocity.x, _powerJump);
-        _animationChange.ChangeAnimationState(Const.PlayerAnim.Player_Jump);
         OnGround = false;
     }
 

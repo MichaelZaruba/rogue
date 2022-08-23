@@ -6,7 +6,7 @@ public class EnemyAttackMelee : MonoBehaviour
 {
     [SerializeField,Range(0.1f,1f)] private float _prepareAttackTime;
 
-    [SerializeField, Range(0.2f, 2f)] private float _attackWidth;
+    [SerializeField, Range(0.2f, 4f)] private float _attackWidth;
     [SerializeField,Range(0.2f,2f)] private float _attackHeight;
 
     [HideInInspector] public bool IsAttacking;

@@ -10,14 +10,14 @@ AnimatorStateMachine:
   m_Name: Base Layer
   m_ChildStates:
   - serializedVersion: 1
-    m_State: {fileID: -4419161989843388837}
-    m_Position: {x: 390, y: 40, z: 0}
+    m_State: {fileID: -4976083747889133988}
+    m_Position: {x: 380, y: -50, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 5960567541146988863}
-    m_Position: {x: 390, y: -20, z: 0}
+    m_State: {fileID: -4829119460385306614}
+    m_Position: {x: 370, y: 20, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: -1972688980298024613}
-    m_Position: {x: 390, y: 100, z: 0}
+    m_State: {fileID: 5824789360636500838}
+    m_Position: {x: 370, y: 90, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -27,15 +27,15 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: -4419161989843388837}
---- !u!1102 &-4419161989843388837
+  m_DefaultState: {fileID: -4976083747889133988}
+--- !u!1102 &-4976083747889133988
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Idle
+  m_Name: Idle 0
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -48,20 +48,20 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: c0ac755aed3a6f44886c276108e48ef8, type: 2}
+  m_Motion: {fileID: 7400000, guid: 69e1b12de642f1946916664b49d89a22, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &-1972688980298024613
+--- !u!1102 &-4829119460385306614
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Attack
+  m_Name: Run
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -74,7 +74,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: ea9348a796298134fab8a4c9a07f8d11, type: 2}
+  m_Motion: {fileID: 7400000, guid: c630eb826194c784a91d562c96f43387, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -102,14 +102,14 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!1102 &5960567541146988863
+--- !u!1102 &5824789360636500838
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Moving
+  m_Name: Dash
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -122,7 +122,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 3582c2e99227754428764cdbe7edcc3e, type: 2}
+  m_Motion: {fileID: 7400000, guid: 1fce8d4d08b96e048b43b54bd57d00d7, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

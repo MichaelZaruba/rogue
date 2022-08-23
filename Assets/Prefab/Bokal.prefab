@@ -169,7 +169,7 @@ Rigidbody2D:
   m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 1
-  m_GravityScale: 0
+  m_GravityScale: 0.000001
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -218,6 +218,7 @@ MonoBehaviour:
   _type: 1
   IsFindPlayer: 0
   TestMode: 0
+  Experience: {fileID: 0}
 --- !u!114 &1449824418491714332
 MonoBehaviour:
   m_ObjectHideFlags: 0
