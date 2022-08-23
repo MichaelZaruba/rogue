@@ -20,11 +20,17 @@ public class GUIManager : MonoBehaviour
     private const string GensGoldSafe = "GensGold";
 
     [Header("Experience")]
-    [SerializeField] 
-    private TextMeshProUGUI _experienceUI;
-    private TextMeshProUGUI _experienceInfoUI;
+   
     private int _experinece;
     private const string EXPERIENCE = "Exp";
+
+    [Header("Experience")]
+    [SerializeField]
+    private TextMeshProUGUI _experienceUI;
+    [SerializeField]
+    private TextMeshProUGUI _allExperienceInfoUI;
+    private int _allExperinece;
+    private const string ALL_EXPERIENCE = "AllExp";
 
     public static GUIManager _instance;
 
@@ -35,10 +41,12 @@ public class GUIManager : MonoBehaviour
         _gens = PlayerPrefs.GetInt(GensSafe);
         _gensGold = PlayerPrefs.GetInt(GensGoldSafe);
         _experinece = PlayerPrefs.GetInt(EXPERIENCE);
+        _allExperinece = PlayerPrefs.GetInt(ALL_EXPERIENCE);
 
         _gensUI.text = _gens.ToString();
         _gensGoldUI.text = _gensGold.ToString();
-        _experienceUI.text = _experinece.ToString();
+        _experienceUI.text = _allExperinece.ToString();
+        _allExperienceInfoUI.text = _allExperinece.ToString();
     }
 
     public void ValueInit()
@@ -90,7 +98,22 @@ public class GUIManager : MonoBehaviour
             _experinece = value;
             PlayerPrefs.SetInt(EXPERIENCE, _experinece);
             _playerLevel.NextLevelPlayer();
-            _experienceUI.text = _experinece.ToString();
+        }
+    }
+
+    public int Experience
+    {
+        get
+        {
+            return _allExperinece;
+        }
+
+        set
+        {
+            _allExperinece = value;
+            PlayerPrefs.SetInt(ALL_EXPERIENCE, _allExperinece);
+            _experienceUI.text = _allExperinece.ToString();
+            _allExperienceInfoUI.text = _allExperinece.ToString();
         }
     }
 }

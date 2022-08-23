@@ -36,10 +36,11 @@ public  class PlayerLevel : MonoBehaviour
 
         if (GUIManager._instance.LocalExperience > _nextLevelExp)
         {
+           
             GUIManager._instance.LocalExperience = 0;
             _nextLevelExp *= 1.5f;
             LevelValue++;
-
+            GUIManager._instance.GensGold += (int)(LevelValue * 2.5f);
             PlayerPrefs.SetInt(LEVEL_PLAYER, LevelValue);
             _expNextLevelUI.text = _nextLevelExp.ToString();
             _levelUI.text = (LevelValue+1).ToString();

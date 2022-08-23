@@ -132,6 +132,7 @@ public class Player : MonoBehaviour
         {
             GUIManager._instance.Gens += 1;
             GUIManager._instance.LocalExperience += 1;
+            GUIManager._instance.Experience += 1;
             Destroy(collision.gameObject);
         }
     }
