@@ -3518,8 +3518,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 75, y: 26}
-  m_SizeDelta: {x: 124.12671, y: 50}
+  m_AnchoredPosition: {x: 185.93304, y: 0.5}
+  m_SizeDelta: {x: 235.0598, y: 101}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &186173889
 MonoBehaviour:
@@ -3541,7 +3541,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 15
+  m_text: 15000
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -21873,6 +21873,7 @@ MonoBehaviour:
   _levelUI: {fileID: 1177604077}
   _ExperienceUI: {fileID: 2077885942}
   _expNextLevelUI: {fileID: 674735581}
+  _goldGensPerLevel: 050000000a0000000c0000000f0000001200000016000000190000001e0000002100000023000000
   _image: {fileID: 24368589}
   _nextLevelExp: 50
   LevelValue: 0

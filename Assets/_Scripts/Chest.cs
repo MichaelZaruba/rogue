@@ -52,7 +52,7 @@ public class Chest : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<Player>())
+        if (collision.gameObject.GetComponent<Player>() && !_isChestUse)
         {
             _light.gameObject.SetActive(true);
             Animator.Play(OPEN);
@@ -63,9 +63,9 @@ public class Chest : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.GetComponent<Player>())
-            {
+        {
             _light.gameObject.SetActive(false);
             Animator.Play(CLOSE);
-            }
+        }
     }
 }
