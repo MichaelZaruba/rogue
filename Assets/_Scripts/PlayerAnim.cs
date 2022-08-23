@@ -18,7 +18,7 @@ namespace Const
     {
         public const string IS_ATTACK = "IsAttack";
         public const string IDLE = "Idle";
-        public const string MOVING = "Run";
-        public const string ATTACK = "Dash";
+        public const string MOVING = "Moving";
+        public const string ATTACK = "Attack";
     }
 }

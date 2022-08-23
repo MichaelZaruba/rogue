@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyAttackMelee : MonoBehaviour
 {
-    [SerializeField,Range(0.1f,1f)] private float _prepareAttackTime;
+    [SerializeField,Range(0.1f,1f)] protected float _prepareAttackTime;
 
     [SerializeField, Range(0.2f, 4f)] private float _attackWidth;
     [SerializeField,Range(0.2f,2f)] private float _attackHeight;
@@ -23,7 +23,7 @@ public class EnemyAttackMelee : MonoBehaviour
     public float AttackHeight => _attackHeight;
 
 
-    public void Initialize(Enemy enemy, EnemyAttackType type, LayerMask player)
+    public virtual void Initialize(Enemy enemy, EnemyAttackType type, LayerMask player)
     {
         _attackPoint = GetComponentInChildren<AttackPoint>();
         _playerLayerMask = player;
@@ -50,7 +50,7 @@ public class EnemyAttackMelee : MonoBehaviour
         IsAttacking = true;
     }
 
-    private void Attack()
+    protected virtual void Attack()
     {
         Collider2D player = Physics2D.OverlapBox(_enemy.AttackPoint.transform.position,
             new Vector2(_attackWidth, _attackHeight), 0, _playerLayerMask);
@@ -60,20 +60,20 @@ public class EnemyAttackMelee : MonoBehaviour
         }
     }
 
-    private void EndAttack()
+    protected virtual void EndAttack()
     {
         PrepareAttack = true;
         IsAttacking = false;
         StartCoroutine(PrepareToAttack());
     }
 
-    private IEnumerator PrepareToAttack()
+    protected virtual IEnumerator PrepareToAttack()
     {
         yield return new WaitForSeconds(_prepareAttackTime);
         PrepareAttack = false;
     }
 
-    private void OnDrawGizmos()
+    protected virtual void OnDrawGizmos()
     {
         _attackPoint = GetComponentInChildren<AttackPoint>();
         Gizmos.color = new Color(1, 1, 1, 0.5f);
