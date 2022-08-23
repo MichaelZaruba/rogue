@@ -13,10 +13,13 @@ public class DisplayTalant : MonoBehaviour
     {
         foreach(var item in _itemTalant)
         {
+            if (item.Type == type)
+                return;
             if (item.Activate)
                 continue;
             Debug.Log(spriteRenderer);
             item.GetComponent<Image>().sprite = spriteRenderer.sprite;
+            item.Type = type;
             item.gameObject.SetActive(true);
             item.Activate = true;
             return;

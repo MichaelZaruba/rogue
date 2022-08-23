@@ -12,5 +12,6 @@ public enum TypeTalant
     SecondChance, // if we are has small hp, get immortal on 2-3 second 
     Shield,
     MoreLight,
-    LightingEnemy
+    LightingEnemy,
+    Default
 }

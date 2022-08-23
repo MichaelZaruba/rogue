@@ -36,7 +36,7 @@ public class Game : MonoBehaviour
 
     private void Start()
     {  
-        if (PlayerPrefs.GetInt(Menu.SAFE_LEVEL ) != 0)
+        if (PlayerPrefs.GetInt(Menu.SAFE_LEVEL ) != 0 && _numberLevel == 1)
         {
             _numberLevel = PlayerPrefs.GetInt(Menu.SAFE_LEVEL);
         }
