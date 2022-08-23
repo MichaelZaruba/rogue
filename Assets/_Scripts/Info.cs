@@ -74,9 +74,9 @@ public class Info : MonoBehaviour
         _priceHealthUI.text = _priceHealth.ToString();
         _priceStaminaUI.text = _priceStamina.ToString();
 
-        _levelDamageUI.text = "Level " + _levelDamage.ToString();
-        _levelHealthUI.text = "Level " + _levelHealth.ToString();
-        _levelStaminaUI.text = "Level " + _levelStamina.ToString();
+        _levelDamageUI.text = "Level " + (_levelDamage+1).ToString();
+        _levelHealthUI.text = "Level " + (_levelHealth + 1).ToString();
+        _levelStaminaUI.text = "Level " + (_levelStamina + 1).ToString();
     }
 
     public void NextLevelDamage()
@@ -91,7 +91,7 @@ public class Info : MonoBehaviour
             PlayerPrefs.SetInt(LEVEL_DAMAGE, _levelDamage);
             PlayerPrefs.SetInt(Player.DAMAGE, _player.Damage);
             _damage.text = _player.Damage.ToString();
-            _levelDamageUI.text = "Level " + _levelDamage.ToString();
+            _levelDamageUI.text = "Level " + (_levelDamage+1).ToString();
         }
     }
 
@@ -106,7 +106,7 @@ public class Info : MonoBehaviour
             PlayerPrefs.SetInt(LEVEL_HEALTH, _levelHealth);
             PlayerPrefs.SetInt(Player.HEALTH, (int)_player.Health);
             _health.text = _player.Health.ToString();
-            _levelHealthUI.text = "Level " + _levelHealth.ToString();
+            _levelHealthUI.text = "Level " + (_levelHealth+1).ToString();
         }
     }
 
@@ -122,7 +122,7 @@ public class Info : MonoBehaviour
             PlayerPrefs.SetInt(Player.STAMINA, (int)_player.Stamina);
             var stamina = (int)_player.Stamina;
             _stamina.text = stamina.ToString();
-            _levelStaminaUI.text = "Level " + _levelStamina.ToString();
+            _levelStaminaUI.text = "Level " + (_levelStamina+1).ToString();
         }
     }
 }
