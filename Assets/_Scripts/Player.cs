@@ -8,8 +8,6 @@ using UnityEngine.UI;
 [RequireComponent(typeof(PlayerAttackRange))]
 public class Player : MonoBehaviour
 {
-    private Experience _experience;
-
     private PlayerAttack _playerAttack;
     private AttackInventory _attackInventory;
     private Game _game;
@@ -133,6 +131,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.GetComponent<Gens>())
         {
             GUIManager._instance.Gens += 1;
+            GUIManager._instance.LocalExperience += 1;
             Destroy(collision.gameObject);
         }
     }

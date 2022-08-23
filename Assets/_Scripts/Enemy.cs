@@ -67,8 +67,6 @@ public abstract class Enemy : MonoBehaviour
 
     public AttackPoint AttackPoint => _attackPoint;
 
-    public Experience Experience;
-
     public void Initialize(Game game, Player player, GamePrefab gamePrefab, GameSettings gameSettings)
     {
         InitializeComponent();

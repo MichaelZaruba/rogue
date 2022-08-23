@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GUIManager : MonoBehaviour
 {
+    [SerializeField] private PlayerLevel _playerLevel;
 
     [Header("default Gens")]
     [SerializeField]
@@ -18,11 +19,12 @@ public class GUIManager : MonoBehaviour
     private int _gensGold;
     private const string GensGoldSafe = "GensGold";
 
-    [Header("Purple  Gens")]
+    [Header("Experience")]
     [SerializeField] 
-    private TextMeshProUGUI _gensPurpleUI;
-    private int _gensPurple;
-    private const string GensPurpleSafe = "GensPurple";
+    private TextMeshProUGUI _experienceUI;
+    private TextMeshProUGUI _experienceInfoUI;
+    private int _experinece;
+    private const string EXPERIENCE = "Exp";
 
     public static GUIManager _instance;
 
@@ -32,18 +34,18 @@ public class GUIManager : MonoBehaviour
 
         _gens = PlayerPrefs.GetInt(GensSafe);
         _gensGold = PlayerPrefs.GetInt(GensGoldSafe);
-        _gensPurple = PlayerPrefs.GetInt(GensPurpleSafe);
+        _experinece = PlayerPrefs.GetInt(EXPERIENCE);
 
         _gensUI.text = _gens.ToString();
         _gensGoldUI.text = _gensGold.ToString();
-        _gensPurpleUI.text = _gensPurple.ToString();
+        _experienceUI.text = _experinece.ToString();
     }
 
     public void ValueInit()
     {
         _gensUI.text = _gens.ToString();
         _gensGoldUI.text = _gensGold.ToString();
-        _gensPurpleUI.text = _gensPurple.ToString();
+        _experienceUI.text = _experinece.ToString();
     }
 
     public int Gens
@@ -76,18 +78,19 @@ public class GUIManager : MonoBehaviour
         }
     }
 
-    public int GensPurple
+    public int LocalExperience
     {
         get
         {
-            return _gensPurple;
+            return _experinece;
         }
 
         set
-        {
-            _gensPurple = value;
-            PlayerPrefs.SetInt(GensPurpleSafe, _gens);
-            _gensPurpleUI.text = _gensPurple.ToString();
+        { 
+            _experinece = value;
+            PlayerPrefs.SetInt(EXPERIENCE, _experinece);
+            _playerLevel.NextLevelPlayer();
+            _experienceUI.text = _experinece.ToString();
         }
     }
 }
