@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _type: 0
-  _speedRotation: 1.5
+  _speedRotation: 1
   InRange: 0
 --- !u!61 &1551058072332088874
 BoxCollider2D:

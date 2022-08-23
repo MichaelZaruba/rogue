@@ -8,7 +8,7 @@ public  class PlayerLevel : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _ExperienceUI;
     [SerializeField] private TextMeshProUGUI _expNextLevelUI;
     [SerializeField] private Image _image;
-    [SerializeField] private float _nextLevelExp;
+    [SerializeField] private int _nextLevelExp;
 
     public const string LEVEL_PLAYER = "LevelPlayer";
     public int LevelValue;
@@ -20,7 +20,7 @@ public  class PlayerLevel : MonoBehaviour
         {
             if (LevelValue == 0)
                 break;
-            _nextLevelExp *= 1.5f;
+            _nextLevelExp = (int)(1.5f * _nextLevelExp);
         }
         NextLevelPlayer();    
     }
@@ -28,7 +28,8 @@ public  class PlayerLevel : MonoBehaviour
     public void NextLevelPlayer()
     {
         var experience = GUIManager._instance.LocalExperience;
-        _image.fillAmount = experience / _nextLevelExp;
+        Debug.Log(experience);
+        _image.fillAmount = experience / (float)_nextLevelExp;
 
         _ExperienceUI.text = experience.ToString() + " /";
         _expNextLevelUI.text = _nextLevelExp.ToString();
@@ -38,7 +39,7 @@ public  class PlayerLevel : MonoBehaviour
         {
            
             GUIManager._instance.LocalExperience = 0;
-            _nextLevelExp *= 1.5f;
+            _nextLevelExp = (int)(1.5f * _nextLevelExp);
             LevelValue++;
             GUIManager._instance.GensGold += (int)(LevelValue * 2.5f);
             PlayerPrefs.SetInt(LEVEL_PLAYER, LevelValue);
