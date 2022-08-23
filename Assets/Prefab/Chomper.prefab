@@ -249,7 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 200
   _rangePatrol: 3
-  _radiusOfVision: 3
+  _radiusOfVision: 4.3
   _speed: 5
   _damage: 5
   _playerLayer:

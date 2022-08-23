@@ -36,6 +36,11 @@ public class Game : MonoBehaviour
 
     private void Start()
     {  
+        if (PlayerPrefs.GetInt(Menu.SAFE_LEVEL ) != 0)
+        {
+            _numberLevel = PlayerPrefs.GetInt(Menu.SAFE_LEVEL);
+        }
+
         StartNewGame();
     }
 
@@ -61,6 +66,7 @@ public class Game : MonoBehaviour
         _numberLevel = 1;
         PlayerPrefs.DeleteAll();
         EndGame();
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Menu");
     }
 
     private void EndGame()
@@ -107,6 +113,7 @@ public class Game : MonoBehaviour
         {
             Level level = Instantiate(_gamePrefab.LevelsSafe[_numberLevel - 1]);
             level.Initialize();
+            PlayerPrefs.SetInt(Menu.SAFE_LEVEL, _numberLevel);
             _spawnEnemies = level.SpawnsEnemies;
             _spawnPlayer = level.SpawnPlayer;
             _levels.Add(level);
