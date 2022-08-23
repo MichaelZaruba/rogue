@@ -31,7 +31,7 @@ public class EnemyAttackMelee : MonoBehaviour
         _type = type;
     }
 
-    void Update()
+    private void Update()
     {
         if (_type == EnemyAttackType.Melee)
             AttackMelee();
