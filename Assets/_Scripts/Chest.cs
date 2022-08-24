@@ -9,7 +9,8 @@ public class Chest : MonoBehaviour
     [SerializeField] private Light2D _light;
     [SerializeField] private NewAttack _newAttackThrough;
     [SerializeField] private NewAttack _newAttackDown;
-     private bool _playerIsNear;
+    [SerializeField] private Gens _genPrefab;
+    private bool _playerIsNear;
 
     private bool _isChestUse;
     public Animator Animator;
@@ -17,14 +18,9 @@ public class Chest : MonoBehaviour
     public const string CLOSE = "Close";
     public const string OPEN = "Open";
 
-    public void Initialize()
-    {
-
-    }
 
     private void Update()
     {
-
         if (!_playerIsNear)
             return;
 
@@ -32,10 +28,13 @@ public class Chest : MonoBehaviour
         {
             _isChestUse = true;
             if (_attackType == AttackType.Down)
-               GenerateAttack(_newAttackDown);
+                GenerateAttack(_newAttackDown);
 
             if (_attackType == AttackType.Through)
                 GenerateAttack(_newAttackThrough);
+
+            if (_attackType == AttackType.Default)
+                GenerateGens();
 
             gameObject.GetComponent<Animator>().enabled = false;
             _light.gameObject.SetActive(false);
@@ -44,9 +43,19 @@ public class Chest : MonoBehaviour
         }
     }
 
+    private void GenerateGens()
+    {
+        int countGens = (int)(Random.Range(10, 25));
+        for (int i = 0; i < countGens; i++)
+        {
+            Gens gen = Instantiate(_genPrefab);
+            gen.transform.position = new Vector3(transform.position.x + Random.Range(-1f, 1f), transform.position.y + Random.Range(-1f, 1f), transform.position.z);
+        }
+    }
+
     private void GenerateAttack(NewAttack attackItem)
     {
-       var instance =  Instantiate(attackItem);
+        var instance = Instantiate(attackItem);
         instance.transform.position = transform.position;
     }
 

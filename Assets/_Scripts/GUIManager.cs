@@ -81,7 +81,7 @@ public class GUIManager : MonoBehaviour
         set
         {
             _gensGold = value;
-            PlayerPrefs.SetInt(GensGoldSafe, _gens);
+            PlayerPrefs.SetInt(GensGoldSafe, _gensGold);
             _gensGoldUI.text = _gensGold.ToString();
         }
     }

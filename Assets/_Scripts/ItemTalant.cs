@@ -39,11 +39,16 @@ public  class ItemTalant : MonoBehaviour
 
     public void TalantsBuy()
     {
-        if(PlayerPrefs.GetInt(TalantName) == 0)
+        if (GUIManager._instance.GensGold >= PriceGens)
         {
-            PlayerPrefs.SetInt(TalantName, 1);
-            TalantActivate();
+            if (PlayerPrefs.GetInt(TalantName) == 0)
+            {
+                PlayerPrefs.SetInt(TalantName, 1);
+                TalantActivate();
+                GUIManager._instance.GensGold -= PriceGens;
+            }
         }
+       
         
     }
 }

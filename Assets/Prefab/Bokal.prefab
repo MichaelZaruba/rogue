@@ -211,14 +211,13 @@ MonoBehaviour:
   _rangePatrol: 5
   _radiusOfVision: 6
   _speed: 2
-  _damage: 10
+  _damage: 5
   _playerLayer:
     serializedVersion: 2
     m_Bits: 512
   _type: 1
   IsFindPlayer: 0
   TestMode: 0
-  Experience: {fileID: 0}
 --- !u!114 &1449824418491714332
 MonoBehaviour:
   m_ObjectHideFlags: 0

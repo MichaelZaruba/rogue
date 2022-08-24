@@ -70,4 +70,18 @@ public class Talants : MonoBehaviour
                 break;
         }
     }
+
+    public void TalantsUIButton()
+    {
+        if (gameObject.activeSelf)
+        {
+            Game._instance.IsPause = false;
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            Game._instance.IsPause = true;
+            gameObject.SetActive(true);
+        }
+    }
 }

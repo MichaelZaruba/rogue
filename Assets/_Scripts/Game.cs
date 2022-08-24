@@ -33,6 +33,15 @@ public class Game : MonoBehaviour
     private List<Player> _players = new List<Player>();
 
     private List<Enemy> _enemys = new List<Enemy>();
+    private bool _isPause;
+    
+    public bool IsPause { get => _isPause; set => _isPause = value; }
+    public static Game _instance;
+
+    private void Awake()
+    {
+        _instance = this;
+    }
 
     private void Start()
     {  
@@ -142,6 +151,9 @@ public class Game : MonoBehaviour
         foreach (var position in _spawnEnemies)
         {
             enemy = _enemyFactory.Get(position.EnemyType);
+            enemy.transform.localScale += new Vector3(position.ScaleBuff, position.ScaleBuff, position.ScaleBuff);;
+            enemy.Damage += (int)position.DamageBuff;
+            enemy.Health += position.HealthBuff;
             enemy.gameObject.transform.position = position.transform.position;
             enemy.Initialize(this, _players[0], _gamePrefab, _gameSettings);
             _enemys.Add(enemy);

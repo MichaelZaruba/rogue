@@ -34,6 +34,4 @@ public class Bokal : Enemy
         _animator.SetBool(EnemyAnim.IS_ATTACK, true);
         _justShot = true;
     }
-   
-
 }

@@ -9,6 +9,8 @@ public class Bullet : MonoBehaviour
 
     public Vector3 direction;
 
+    public float Damage { get => _damage; set => _damage = value; }
+
     void Update()
     {
         transform.Translate(_speed * direction * Time.deltaTime);
@@ -26,6 +28,4 @@ public class Bullet : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-
-
 }

@@ -16,8 +16,6 @@ public class NewAttack : MonoBehaviour
            _player = player; 
     }
 
-
-
     private void Update()
     {
         transform.rotation *= Quaternion.Euler(0, _speedRotation, 0);

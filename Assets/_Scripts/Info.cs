@@ -83,7 +83,6 @@ public class Info : MonoBehaviour
     {
         if (_levelDamage < _maxLevelDamage && GUIManager._instance.Gens >= _priceDamage)
         {
-
             GUIManager._instance.Gens -= _priceDamage;
             GUIManager._instance.ValueInit();
             _levelDamage++;
@@ -92,6 +91,7 @@ public class Info : MonoBehaviour
             PlayerPrefs.SetInt(Player.DAMAGE, _player.Damage);
             _damage.text = _player.Damage.ToString();
             _levelDamageUI.text = "Level " + (_levelDamage+1).ToString();
+            _priceDamage = (int)(_priceDamage * 1.25f);
         }
     }
 
@@ -107,6 +107,7 @@ public class Info : MonoBehaviour
             PlayerPrefs.SetInt(Player.HEALTH, (int)_player.Health);
             _health.text = _player.Health.ToString();
             _levelHealthUI.text = "Level " + (_levelHealth+1).ToString();
+            _priceHealth = (int)(_priceHealth * 1.25f);
         }
     }
 
@@ -123,6 +124,21 @@ public class Info : MonoBehaviour
             var stamina = (int)_player.Stamina;
             _stamina.text = stamina.ToString();
             _levelStaminaUI.text = "Level " + (_levelStamina+1).ToString();
+            _priceStamina = (int)(_priceStamina * 1.25f);
+        }
+    }
+
+    public void InfoUIButton()
+    {
+        if (gameObject.activeSelf)
+        {
+            Game._instance.IsPause = false;
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            Game._instance.IsPause = true;
+            gameObject.SetActive(true);
         }
     }
 }

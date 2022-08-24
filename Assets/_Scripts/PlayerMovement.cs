@@ -52,6 +52,9 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (Game._instance.IsPause)
+            return;
+
         if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             _characteristic.StaminaActive = false;
@@ -72,6 +75,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (Game._instance.IsPause)
+        {
+            _rigidbody.velocity = new Vector2 (0, _rigidbody.velocity.y);
+            return;
+        }
+
         if (IsAttackingThrough)
         {
             CalculateTroughSpeed();

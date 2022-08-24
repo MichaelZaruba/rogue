@@ -8,6 +8,7 @@ public  class PlayerLevel : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _ExperienceUI;
     [SerializeField] private TextMeshProUGUI _expNextLevelUI;
     [SerializeField] private int[] _goldGensPerLevel;
+    [SerializeField] private int[] _experiencePerLevel;
     [SerializeField] private Image _image;
     [SerializeField] private int _nextLevelExp;
 
@@ -16,14 +17,9 @@ public  class PlayerLevel : MonoBehaviour
 
     private void Start()
     {
-        LevelValue = PlayerPrefs.GetInt(LEVEL_PLAYER);
-        for( int i = 0; i < LevelValue; i++ )
-        {
-            if (LevelValue == 0)
-                break;
-            _nextLevelExp = (int)(1.5f * _nextLevelExp);
-        }
-        NextLevelPlayer();    
+        LevelValue = PlayerPrefs.GetInt(LEVEL_PLAYER);    
+        _nextLevelExp = _experiencePerLevel[LevelValue];
+        NextLevelPlayer();
     }
 
     public void NextLevelPlayer()
@@ -40,12 +36,13 @@ public  class PlayerLevel : MonoBehaviour
         {
            
             GUIManager._instance.LocalExperience = 0;
-            _nextLevelExp = (int)(1.5f * _nextLevelExp);
             LevelValue++;
+            _nextLevelExp = _experiencePerLevel[LevelValue];
             GUIManager._instance.GensGold += _goldGensPerLevel[LevelValue];
+            Debug.Log("tut");
             PlayerPrefs.SetInt(LEVEL_PLAYER, LevelValue);
             _expNextLevelUI.text = _nextLevelExp.ToString();
-            _levelUI.text = (LevelValue+1).ToString();
+            _levelUI.text = (LevelValue + 1).ToString();
         }
     }
 
