@@ -125,4 +125,18 @@ public class Info : MonoBehaviour
             _levelStaminaUI.text = "Level " + (_levelStamina+1).ToString();
         }
     }
+
+    public void InfoUIButton()
+    {
+        if (gameObject.activeSelf)
+        {
+            Game._instance.IsPause = false;
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            Game._instance.IsPause = true;
+            gameObject.SetActive(true);
+        }
+    }
 }

@@ -61,6 +61,9 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
+        if (Game._instance.IsPause)
+            return;
+
         if (Input.GetMouseButtonDown(0) && Input.GetKey(KeyCode.S) && IsThroughDownActivate && !_playerMovement.IsAttacking && !_playerMovement.OnGround)
         {
             AttackDown(Const.PlayerAnim.Player_Jump_Attack, _durationAttackDown, _rangeAttackDown, _delayAttackDown);

@@ -25,4 +25,18 @@ public class AttackInventory : MonoBehaviour
             }
         }
     }
+
+    public void AttacksUIButton()
+    {
+        if (gameObject.activeSelf)
+        {
+            Game._instance.IsPause = false;
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            Game._instance.IsPause = true;
+            gameObject.SetActive(true);
+        }
+    }
 }
