@@ -13,7 +13,7 @@ public class EnemyAttackMelee : MonoBehaviour
     [HideInInspector] public bool PrepareAttack;
 
     protected AttackPoint _attackPoint;
-    protected Enemy _enemy;
+    private Enemy _enemy;
 
     protected LayerMask _playerLayerMask;
 

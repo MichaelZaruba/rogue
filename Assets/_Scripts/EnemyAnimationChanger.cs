@@ -5,10 +5,10 @@ using Const;
 
 public class EnemyAnimationChanger : MonoBehaviour
 {
-     private Rigidbody2D _rigidbody;
-     private EnemyAttackMelee _enemyAttack;
-     private AnimationChange _animationChange;
-    private bool readyToMove = true;
+     protected Rigidbody2D _rigidbody;
+     protected EnemyAttackMelee _enemyAttack;
+     protected AnimationChange _animationChange;
+     protected bool readyToMove = true;
 
     public void Initialize(Rigidbody2D rigidbody, EnemyAttackMelee enemyAttack, AnimationChange animationChange)
     {
@@ -22,7 +22,7 @@ public class EnemyAnimationChanger : MonoBehaviour
         ChangeAnimation();
     }
 
-    void ChangeAnimation()
+    protected void ChangeAnimation()
     {
         if (_enemyAttack.IsAttacking && !readyToMove)
             return;

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Chomper : Enemy
 {
+
     private void FixedUpdate()
     {
         CheckMoveRight();

@@ -9,7 +9,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float _durationAttackThrough;
     [SerializeField] private float _rangeAttackThrough;
     [SerializeField] private float _delayAttackThrough;
-   [Header("Attack")]
+    [Header("Attack")]
     [SerializeField] private float _durationAttack;
     [SerializeField] private float _rangeAttack;
     [SerializeField] private float _delayAttack;
