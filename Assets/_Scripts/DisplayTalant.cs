@@ -7,8 +7,6 @@ public class DisplayTalant : MonoBehaviour
 {
    [SerializeField] private DisplayTalantItem[] _itemTalant;
 
-
-
     public void Initialize(TypeTalant type, Image spriteRenderer)
     {
         foreach(var item in _itemTalant)

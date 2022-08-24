@@ -83,7 +83,7 @@ public class Info : MonoBehaviour
     {
         if (_levelDamage < _maxLevelDamage && GUIManager._instance.Gens >= _priceDamage)
         {
-
+            _priceDamage = (int)(_priceDamage  *1.25f);
             GUIManager._instance.Gens -= _priceDamage;
             GUIManager._instance.ValueInit();
             _levelDamage++;
@@ -99,6 +99,7 @@ public class Info : MonoBehaviour
     {
         if (_levelHealth < _maxLevelHealth && GUIManager._instance.Gens >= _priceHealth)
         {
+            _priceHealth = (int)(_priceHealth * 1.25f);
             GUIManager._instance.Gens -= _priceHealth;
             GUIManager._instance.ValueInit();
             _levelHealth++;
@@ -114,6 +115,7 @@ public class Info : MonoBehaviour
     {
         if (_levelStamina < _maxLevelStamina && GUIManager._instance.Gens >= _priceStamina)
         {
+            _priceStamina = (int)(_priceStamina * 1.25f);
             GUIManager._instance.Gens -= _priceStamina;
             GUIManager._instance.ValueInit();
             _levelStamina++;

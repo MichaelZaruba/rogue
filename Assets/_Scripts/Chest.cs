@@ -9,7 +9,7 @@ public class Chest : MonoBehaviour
     [SerializeField] private Light2D _light;
     [SerializeField] private NewAttack _newAttackThrough;
     [SerializeField] private NewAttack _newAttackDown;
-     private bool _playerIsNear;
+    private bool _playerIsNear;
 
     private bool _isChestUse;
     public Animator Animator;
@@ -17,14 +17,9 @@ public class Chest : MonoBehaviour
     public const string CLOSE = "Close";
     public const string OPEN = "Open";
 
-    public void Initialize()
-    {
-
-    }
 
     private void Update()
     {
-
         if (!_playerIsNear)
             return;
 
@@ -32,7 +27,7 @@ public class Chest : MonoBehaviour
         {
             _isChestUse = true;
             if (_attackType == AttackType.Down)
-               GenerateAttack(_newAttackDown);
+                GenerateAttack(_newAttackDown);
 
             if (_attackType == AttackType.Through)
                 GenerateAttack(_newAttackThrough);
@@ -46,7 +41,7 @@ public class Chest : MonoBehaviour
 
     private void GenerateAttack(NewAttack attackItem)
     {
-       var instance =  Instantiate(attackItem);
+        var instance = Instantiate(attackItem);
         instance.transform.position = transform.position;
     }
 

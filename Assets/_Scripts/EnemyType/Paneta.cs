@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Paneta : Enemy
 {
-
     private void FixedUpdate()
     {
         CheckMoveRight();

@@ -77,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Game._instance.IsPause)
         {
-            _rigidbody.velocity = Vector2.zero;
+            _rigidbody.velocity = new Vector2 (0, _rigidbody.velocity.y);
             return;
         }
 
