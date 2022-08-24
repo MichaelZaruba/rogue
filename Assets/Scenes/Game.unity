@@ -1901,7 +1901,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _image: {fileID: 753188907}
   Type: 2
-  PriceGens: 0
+  PriceGens: 8
 --- !u!114 &102730884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2835,7 +2835,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _image: {fileID: 1340778648}
   Type: 11
-  PriceGens: 0
+  PriceGens: 4
 --- !u!114 &149434960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7029,7 +7029,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _image: {fileID: 515288676}
   Type: 8
-  PriceGens: 0
+  PriceGens: 5
 --- !u!114 &389021588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8607,7 +8607,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _image: {fileID: 236051570}
   Type: 10
-  PriceGens: 0
+  PriceGens: 12
 --- !u!114 &507443056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12431,7 +12431,9 @@ MonoBehaviour:
   - {fileID: 5241138065333622459, guid: d789c52602c0e8546acab7a877ea493a, type: 3}
   - {fileID: 5241138065333622459, guid: 7d7940f783db8fe498bdeff34b7cdb8d, type: 3}
   - {fileID: 5241138065333622459, guid: af9e3f3bfee75ed4697b155c86041f75, type: 3}
-  - {fileID: 5241138065333622459, guid: 79badbafaa7e16e49abfd734d6ac584a, type: 3}
+  - {fileID: 5241138065333622459, guid: f3150cb7ee2e5474ca559af21d48195a, type: 3}
+  - {fileID: 5241138065333622459, guid: 8d51e5adba1bcb94386c16ac28b3a926, type: 3}
+  - {fileID: 6471299921596026342, guid: 5eb807bc719b82b4c80bf43a195ead35, type: 3}
   GensPrefab: {fileID: 4758106444361321226, guid: 36be609e6d76b1a48ae814142084a432, type: 3}
   PlayerPrefab: {fileID: 6656437928768031474, guid: ab5ab3d00baa07c4ab0befe32ebbc9a2, type: 3}
   BulletPrefab: {fileID: 583039322674414514, guid: 956efd95e67a68844a519a3e184ff0c4, type: 3}
@@ -12658,7 +12660,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &747784695
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13304,7 +13306,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _image: {fileID: 888810181}
   Type: 5
-  PriceGens: 0
+  PriceGens: 15
 --- !u!114 &778554997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16257,7 +16259,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _image: {fileID: 211589029}
   Type: 9
-  PriceGens: 0
+  PriceGens: 8
 --- !u!114 &1001847266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16926,7 +16928,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _image: {fileID: 1811470304}
   Type: 12
-  PriceGens: 0
+  PriceGens: 4
 --- !u!114 &1027520582
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22691,7 +22693,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _image: {fileID: 949739535}
   Type: 6
-  PriceGens: 0
+  PriceGens: 7
 --- !u!114 &1428926686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23055,7 +23057,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _image: {fileID: 672633602}
   Type: 4
-  PriceGens: 0
+  PriceGens: 6
 --- !u!114 &1435012778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23609,7 +23611,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _image: {fileID: 1507173036}
   Type: 0
-  PriceGens: 0
+  PriceGens: 10
 --- !u!1 &1451662940
 GameObject:
   m_ObjectHideFlags: 0
@@ -32056,7 +32058,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _image: {fileID: 1350737375}
   Type: 7
-  PriceGens: 0
+  PriceGens: 15
 --- !u!114 &1916419373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34572,7 +34574,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _image: {fileID: 1445339240}
   Type: 1
-  PriceGens: 0
+  PriceGens: 10
 --- !u!114 &2063624396
 MonoBehaviour:
   m_ObjectHideFlags: 0

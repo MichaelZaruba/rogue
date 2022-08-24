@@ -142,6 +142,9 @@ public class Game : MonoBehaviour
         foreach (var position in _spawnEnemies)
         {
             enemy = _enemyFactory.Get(position.EnemyType);
+            enemy.transform.localScale += new Vector3(position.ScaleBuff, position.ScaleBuff, position.ScaleBuff);;
+            enemy.Damage += (int)position.DamageBuff;
+            enemy.Health += position.HealthBuff;
             enemy.gameObject.transform.position = position.transform.position;
             enemy.Initialize(this, _players[0], _gamePrefab, _gameSettings);
             _enemys.Add(enemy);

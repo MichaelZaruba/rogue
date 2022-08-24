@@ -59,7 +59,8 @@ public abstract class Enemy : MonoBehaviour
     protected bool _justShot;
     public bool TestMode;
 
-    public int Damage => _damage;
+    public float Health { get => _health; set => _health = value; }
+    public int Damage {get => _damage; set => _damage = value; }
 
     public EnemyAttackType Type => _type;
 
@@ -117,7 +118,7 @@ public abstract class Enemy : MonoBehaviour
 
     private void InitializeEnemyAttack()
     {
-        _enemyAttackRange.Initialize(_player, _bullet, this);
+        _enemyAttackRange.Initialize(_player, _bullet, this, _damage);
         _enemyAttackMelee.Initialize(this, _type, _playerLayer);
     }
 
@@ -186,7 +187,7 @@ public abstract class Enemy : MonoBehaviour
         }
         IsFindPlayer = true;
         _enemyAI.IsTargetActive = true;
-        _enemyAttackRange.Initialize(_player, _bullet, this);
+        _enemyAttackRange.Initialize(_player, _bullet, this, _damage);
         return true;
     }
 

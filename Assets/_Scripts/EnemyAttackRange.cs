@@ -9,16 +9,18 @@ public class EnemyAttackRange : MonoBehaviour
      private Bullet _bullet;
      private Enemy _enemy;
      private Animator _animator;
+    private float _damage;
 
     private Player _player;
 
     private Vector3 playerPoint;
 
-    public void Initialize(Player player, Bullet bullet, Enemy enemy)
+    public void Initialize(Player player, Bullet bullet, Enemy enemy, float damage)
     {
         _animator = GetComponent<Animator>();
         _enemy = enemy;
         _bullet = bullet;
+        _damage = damage;
         _player = player;
     }
 
@@ -29,6 +31,7 @@ public class EnemyAttackRange : MonoBehaviour
         playerPoint = _player.transform.position;
         CalculatePositionPlayer();
         var bullet = Instantiate(_bullet, transform.position, Quaternion.identity);
+        bullet.Damage = _damage;
         bullet.transform.position = transform.position;
         StartCoroutine(PrepareAnotherAttack());
     }
