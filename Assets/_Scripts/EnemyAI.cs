@@ -67,7 +67,7 @@ public class EnemyAI : MonoBehaviour
             direction.Normalize();
             Vector2 force = direction * Movementspeed * Time.deltaTime;
             float distance = Vector2.Distance(_rigidbody.position, path.vectorPath[_currentWaypoint]);
-            _rigidbody.velocity = new Vector2(force.x, _rigidbody.velocity.y); ;
+            _rigidbody.velocity = new Vector2(force.x, _rigidbody.velocity.y);
 
             if (distance < NextWaypointDistance)
             {

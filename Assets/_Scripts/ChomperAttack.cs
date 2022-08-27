@@ -7,13 +7,16 @@ public class ChomperAttack : EnemyAttackMelee
     [SerializeField] private float _radiusOfAttack;
     [SerializeField] private float _bonusJumpYSpeed;
     [SerializeField] private float _jumpPower;
+    [SerializeField] private Collider2D _thisCollider;
     private Collider2D _player;
     private Vector3 _playerLastPosition;
     private Chomper _chomper;
+    private bool _alreadyDamaged;
+    private bool _readyToDamage;
+    private bool _canStopAttacking;
 
     public override void Initialize(Enemy chomper, EnemyAttackType type, LayerMask player)
     {
-        _attackPoint = GetComponentInChildren<AttackPoint>();
         _playerLayerMask = player;
         _chomper = (Chomper)chomper;
         _type = type;
@@ -29,9 +32,10 @@ public class ChomperAttack : EnemyAttackMelee
         if (PrepareAttack || IsAttacking)
             return;
 
-        Collider2D _player = Physics2D.OverlapCircle(transform.position, _radiusOfAttack);
-        if (_player == null)
+        Collider2D player = Physics2D.OverlapCircle(transform.position, _radiusOfAttack, _playerLayerMask);
+        if (player == null)
             return;
+        _player = player;
         _playerLastPosition = _player.transform.position;
         _chomper.ChangeSpeed(new Vector2(0, 0));
         IsAttacking = true;
@@ -42,36 +46,49 @@ public class ChomperAttack : EnemyAttackMelee
         Vector2 direction = (_playerLastPosition - transform.position).normalized;
         _chomper.ChangeSpeed(_jumpPower * direction + new Vector2(0, _bonusJumpYSpeed));
         if (_player != null)
-            Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), _player);
-        
+            Physics2D.IgnoreCollision(_thisCollider, _player, true);
+        _canStopAttacking = false;
+        _readyToDamage = true;
+        StartCoroutine(GetReadyToStopAttacking());
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (!IsAttacking || _chomper.OnGround)
+        if (!_readyToDamage)
             return;
-        Player player;
-        if (player = collision.gameObject.GetComponent<Player>())
+        if (!_alreadyDamaged)
         {
-            player.GetDamage(_chomper.Damage);
-            return;
+            Player player;
+            if (player = collision.gameObject.GetComponent<Player>())
+            {
+                player.GetDamage(_chomper.Damage);
+                _alreadyDamaged = true;
+                return;
+            }
         }
-        if (collision.gameObject.GetComponent<Ground>())
+        if (collision.gameObject.GetComponent<Ground>() && _canStopAttacking)
         {
             IsAttacking = false;
             PrepareAttack = true;
+            _alreadyDamaged = false;
+            _readyToDamage = false;
             if (_player != null)
-                Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), _player, false);
+                Physics2D.IgnoreCollision(_thisCollider, _player, false);
+            _chomper.ActivateEnemyAI();
             StartCoroutine(PrepareToAttack());
-            _chomper.OnGround = true;
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private IEnumerator GetReadyToStopAttacking()
     {
-        if (collision.gameObject.GetComponent<Ground>())
-        {
-            _chomper.OnGround = false;
-        }
+        yield return new WaitForSeconds(0.05f);
+        _canStopAttacking = true;
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = new Color(1, 0, 0, 0.5f);
+        Gizmos.DrawSphere(transform.position, _radiusOfAttack);
+    }
+
 }

@@ -55,7 +55,6 @@ public abstract class Enemy : MonoBehaviour
     protected bool _movingRight;
 
     public bool IsFindPlayer;
-    public bool OnGround;
 
     protected bool _justShot;
     public bool TestMode;
@@ -201,11 +200,6 @@ public abstract class Enemy : MonoBehaviour
         {
             Die();
         }
-    }
-
-    public void ChangeSpeed(Vector2 newSpeed)
-    {
-        _rigidbody.velocity = newSpeed;
     }
 
     private void Die()
