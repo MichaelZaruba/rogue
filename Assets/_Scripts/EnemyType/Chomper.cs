@@ -5,7 +5,7 @@ using UnityEngine;
 public class Chomper : Enemy
 {
     [HideInInspector] public bool CanMove = true;
-    private void FixedUpdate()
+    private void Update()
     {
         CheckMoveRight();
         CheckMovingDirection();

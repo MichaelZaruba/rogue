@@ -188,7 +188,15 @@ public class PlayerMovement : MonoBehaviour
             if (Mathf.Abs(Rigidbody.velocity.x) > 0.01f && Mathf.Abs(Rigidbody.velocity.x) <= _characteristic.Speed)
                 _animationChange.ChangeAnimationState(Const.PlayerAnim.Player_Run);
             if(Mathf.Abs(Rigidbody.velocity.x) <= 0.01f)
+            {
+                if (Input.GetKey(KeyCode.S))
+                {
+                    _animationChange.ChangeAnimationState(Const.PlayerAnim.Player_Crouch);
+                    return;
+                }
+
                 _animationChange.ChangeAnimationState(Const.PlayerAnim.Player_Idle);
+            }
             if (Mathf.Abs(Rigidbody.velocity.x) > _characteristic.Speed + 0.01f)
                 _animationChange.ChangeAnimationState(Const.PlayerAnim.Player_Sprint);
         }

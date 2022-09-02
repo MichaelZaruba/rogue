@@ -11,6 +11,7 @@ namespace Const
         public const string Player_Dash_Attack = "dashAttack";
         public const string Player_Jump_Attack = "jumping_attack_v2";
         public const string Player_Sprint = "sprint";
+        public const string Player_Crouch = "crouch";
  
     }
 
